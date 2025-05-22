@@ -1,0 +1,27 @@
+{
+    "client:browser-client" : {
+        "from": "client:browser-client",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "useCase": "albertEinsteinUseCase",
+        "conversationRelayParamsOverride": {            
+            "language" : "en-US",
+            "ttsProvider" : "ElevenLabs",
+            "voice" : "UgBBYS2sOqTuMpoF3BR0",
+            "transcriptionProvider" : "Google",
+            "speechModel" : "telephony",
+            "interruptible" : "any",
+            "preemptible" : true,
+            "welcomeGreetingInterruptible" : "none",
+            "welcomeGreetingPreemptible" : true
+        }
+    },
+    "+15555555555": {
+        "from": "+15555555555",
+        "firstName": "Some",
+        "lastName": "PSTN-Caller",
+        "useCase": "restaurantOrderingUseCase",
+        "conversationRelayParamsOverride": {}
+    }
+
+}

@@ -1,3 +1,7 @@
+data/sessions
+crSessions.json
+*.sh
+
 # Logs
 logs
 *.log

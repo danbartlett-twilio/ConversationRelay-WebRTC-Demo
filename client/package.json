@@ -1,0 +1,36 @@
+{
+  "name": "react.dev",
+  "version": "0.0.0",
+  "main": "/src/index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@twilio-paste/core": "^20.18.1",
+    "@twilio-paste/icons": "^12.7.0",
+    "@twilio/voice-sdk": "^2.12.1",
+    "axios": "^1.9.0",
+    "react": "^18.3.1",
+    "react-audio-visualize": "^1.2.0",
+    "react-audio-voice-recorder": "^2.2.0",
+    "react-dom": "^18.3.1",
+    "react-international-phone": "^4.4.0",
+    "react-scripts": "5.0.1",
+    "react-use-websocket": "^4.8.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

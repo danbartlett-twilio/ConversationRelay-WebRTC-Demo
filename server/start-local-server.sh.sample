@@ -1,0 +1,25 @@
+# TWILIO ENVIRONMENT VARIABLES
+export TWILIO_TWIML_APP_SID=your-twiml-app-sid
+export TWILIO_ACCOUNT_SID=your-twilio-account-sid
+export TWILIO_API_KEY=your-twilio-api-key
+export TWILIO_API_SECRET=your-twilio-api-key-secret
+
+# NGROK ENVIRONMENT VARIABLES
+export WS_DOMAIN_NAME=your-ngrok-subdomain.ngrok.app
+export WS_URL=wss://your-ngrok-subdomain.ngrok.app/
+
+# AI PLATFORM SELECTION (invokeBedrock | invokeOpenAI)
+export AI_PLATFORM=invokeOpenAI
+
+# AWS ENVIRONMENT VARIABLES
+export AWS_PROFILE=local-aws-profile
+export AWS_MODEL_IDENTIFIER=bedrock-model-id
+export AWS_REGION=your-aws-region
+
+# OPEN AI ENVIRONMENT VARIABLES
+export OPENAI_API_KEY=your-open-ai-key
+export OPENAI_LLM_MODEL=gpt-4o-mini
+
+export STACK_USE_CASE=albertEinsteinUseCase
+
+npm start

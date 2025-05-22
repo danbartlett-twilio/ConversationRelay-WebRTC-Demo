@@ -1,0 +1,28 @@
+{
+    "name": "conversation-relay-bedrock-customer-service-live-voice",
+    "version": "1.0.0",
+    "description": "A simple websockets application with Amazon Bedrock and Twilio Conversation Relay.",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.mjs",
+        "test": "jest --forceExit --ci --reporters=default --reporters=jest-junit",
+        "lint": "eslint . --ext .js"
+    },
+    "jest-junit": {},
+    "author": "George Wolf",
+    "license": "MIT",
+    "dependencies": {
+        "@aws-sdk/client-apigatewaymanagementapi": "^3.777.0",
+        "@aws-sdk/client-bedrock-runtime": "^3.778.0",
+        "@aws-sdk/client-dynamodb": "^3.0.0",
+        "@aws-sdk/lib-dynamodb": "^3.0.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.5.0",
+        "express": "^4.21.2",
+        "file-system-db": "^2.1.0",
+        "openai": "^4.100.0",
+        "twilio": "^5.6.1",
+        "ws": "^8.0.0"
+    }
+}
