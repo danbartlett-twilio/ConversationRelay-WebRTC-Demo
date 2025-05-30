@@ -1,19 +1,19 @@
 {
-    "client:browser-client" : {
+    "browser-client": {
         "from": "client:browser-client",
         "firstName": "Jane",
         "lastName": "Doe",
         "useCase": "albertEinsteinUseCase",
-        "conversationRelayParamsOverride": {            
-            "language" : "en-US",
-            "ttsProvider" : "ElevenLabs",
-            "voice" : "UgBBYS2sOqTuMpoF3BR0",
-            "transcriptionProvider" : "Google",
-            "speechModel" : "telephony",
-            "interruptible" : "any",
-            "preemptible" : true,
-            "welcomeGreetingInterruptible" : "none",
-            "welcomeGreetingPreemptible" : true
+        "conversationRelayParamsOverride": {
+            "language": "en-US",
+            "ttsProvider": "Google",
+            "voice": "en-US-Neural2-D",
+            "transcriptionProvider": "Google",
+            "speechModel": "telephony",
+            "interruptible": "any",
+            "preemptible": true,
+            "welcomeGreetingInterruptible": "none",
+            "welcomeGreetingPreemptible": true
         }
     },
     "+15555555555": {
@@ -23,5 +23,4 @@
         "useCase": "restaurantOrderingUseCase",
         "conversationRelayParamsOverride": {}
     }
-
 }
