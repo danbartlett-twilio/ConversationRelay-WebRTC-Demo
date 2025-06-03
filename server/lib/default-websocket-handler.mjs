@@ -41,9 +41,20 @@ const getSessionDetails = async (callSid) => {
  * 
  * This function is called from the onMessage handler in the WebSocket server.
  */
-export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCompletion) => { 
+export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCompletion, clientSocket) => { 
+
+    console.info("defaultWebsocketHandler and body => ", body);
+
+    let now = Date.now();
+    let currentMessage = { ...body, "ts": now };
 
     try {
+
+
+        if (body?.type === "info" && clientSocket !== null) {
+            
+            clientSocket.send(JSON.stringify(currentMessage));
+        }        
 
         if (body?.type === "error") {
             console.error("Error event received from ConversationRelay server: ", body.description);
@@ -54,13 +65,18 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
         if (body?.type === "prompt" || body?.type === "dtmf") {                        
 
             const sessionDetails = await getSessionDetails(callSid);
+            
+            if (clientSocket !== null) {
+                clientSocket.send(JSON.stringify(currentMessage));
+            }
 
             const llmResult = await prepareAndCallLLM({                
                 callSid: callSid, 
                 sessionDetails: sessionDetails, // Object from database session details
                 socket: socket, 
                 body: body, 
-                toolCallCompletion: toolCallCompletion
+                toolCallCompletion: toolCallCompletion,
+                clientSocket: clientSocket
             });
                 
 

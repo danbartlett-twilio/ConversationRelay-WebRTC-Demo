@@ -15,7 +15,7 @@ import { defaultWebsocketHandler as websocketTwilioEventsHandler } from './lib/d
 
 const app = express();
 const port = 3000;
-const wsServer = new WebSocketServer({ noServer: true });
+const wss = new WebSocketServer({ noServer: true });
 const server = app.listen(port, () => {
   console.log(`App is ready.`);    
   console.debug(`WS_URL => ${process.env.WS_URL}`);
@@ -40,14 +40,14 @@ app.get('/health', (req, res) => {  res.send('Healthy'); }); // Health check end
 // Handle WebSocket Connection Established by Twilio ConversationRelay
 server.on('upgrade', (request, socket, head) => {
   
-  wsServer.handleUpgrade(request, socket, head, (socket) => {
+  wss.handleUpgrade(request, socket, head, (socket) => {
     
     // Get the Twilio callSid to use as session ID for the WebSocket connection
     const URLparams = url.parse(request.url, true).query;
     console.log("URLparams => ", URLparams);
     if(URLparams.callSid) {      
       request.callSid = URLparams.callSid;
-      wsServer.emit('connection', socket, request, head);
+      wss.emit('connection', socket, request, head);
     } else {
       console.error('No requestId found in the request URL');
       socket.terminate();
@@ -61,7 +61,7 @@ function heartbeat() {
 }
 
 const interval = setInterval(function ping() {
-  wsServer.clients.forEach(function each(ws) {
+  wss.clients.forEach(function each(ws) {
     if (ws.isAlive === false) return ws.terminate();
     ws.isAlive = false;
     ws.ping();
@@ -69,9 +69,13 @@ const interval = setInterval(function ping() {
 }, 30000);
 
 // Handler functions for post WS connection
-wsServer.on('connection', (socket, request, head) => {
+wss.on('connection', (socket, request, head) => {
+  
+  // socket is the connect for the websocket for this request
   socket.isAlive = true;
   
+  socket.callSid = request.callSid; // Store the callSid in the socket for later use
+
   // Message handler for Twilio incoming messages
   // THIS METHOD MUST NOT BE ASYNC - ONLY THE ONMESSAGE HANDLER CAN BE ASYNC
   
@@ -85,13 +89,43 @@ wsServer.on('connection', (socket, request, head) => {
     
     let toolCallCompletion = false; // False because tool call completion events do not come this way
     
-    console.info("EVENT\n" + JSON.stringify(messageJSON, null, 2)); 
+    //console.info("EVENT\n" + JSON.stringify(messageJSON, null, 2)); 
     console.info(`In onMessage handler: callSid: ${callSid}`);
 
     try {
       
+      let clientSocket = null;
+      
+      if (callSid !== 'browser-client') {
+        //console.info("wss.clients\n" + JSON.stringify(wss.clients, null, 2)); 
+        /*wss.clients.forEach(function each(client) {        
+          if (client !== socket && client.readyState === WebSocketServer.OPEN) {
+              console.info("client => \n" + JSON.stringify(client, null, 2)); 
+            }
+        });*/
+      
+        // clientSocket is the socket for the browser client and used to send
+        // events back to the browser client such as transcription and speaking events and metrics.
+        
+        for (const client of wss.clients) {
+            if (client.callSid === 'browser-client') {
+              clientSocket = client;  // This is the browser client socket
+              break;
+            }
+        }
+
+        /*const localClient = wss.clients.find(client => client.callSid === 'browser-client');
+          if (localClient) {
+            localClient.send(JSON.stringify({
+              type: 'twilio-event',
+              callSid: callSid,
+              message: messageJSON
+            }));
+          }*/
+      };
+
       // Primary handler for messages from Twilio ConversationRelay
-      await websocketTwilioEventsHandler(callSid, socket, messageJSON, toolCallCompletion); 
+      await websocketTwilioEventsHandler(callSid, socket, messageJSON, toolCallCompletion, clientSocket); 
 
     } catch (error) {
 

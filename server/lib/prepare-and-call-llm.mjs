@@ -139,7 +139,8 @@ export async function prepareAndCallLLM(prepareObj) {
             sessionDetails: prepareObj.sessionDetails,
             toolCallCompletion: prepareObj.toolCallCompletion,
             tool_choice: prepareObj.tool_choice,
-            socket: prepareObj.socket
+            socket: prepareObj.socket,
+            clientSocket: prepareObj.clientSocket
         });
         
     } catch (error) {

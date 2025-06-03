@@ -6,7 +6,8 @@ import { formatLLMMessage, returnDefaultModel } from "./llm-formatting-helpers.m
 
 export const setupCallPostHandler = async (twilioBody) => {
     
-    console.info("twilioBody.From ==>\n" + twilioBody.From);    
+    console.info("twilioBody.From ==>\n" + JSON.stringify(twilioBody.From, null, 2));
+
     /**
      * First, use the FROM caller to get the user profile. This
      * allows you to personalize the experience.
@@ -27,9 +28,10 @@ export const setupCallPostHandler = async (twilioBody) => {
     } catch (err) {
         console.error("Error getting user profile from database: ", err);
     }
-    console.info("userContext ==>\n" + JSON.stringify(userContext, null, 2));    
-
-    console.info("userContext.useCase ==>\n" + userContext.useCase);    
+    
+    //console.info("userContext ==>\n" + JSON.stringify(userContext, null, 2));    
+    //console.info("userContext.useCase ==>\n" + userContext.useCase);    
+    
     /**
      * Use the use case title from the user context if present or default to 
      * use case set in the environment variable.
@@ -53,7 +55,8 @@ export const setupCallPostHandler = async (twilioBody) => {
     } catch (err) {
         console.error("Error getting use case configuration from database: ", err);
     }
-    console.info("useCase ==>\n" + JSON.stringify(useCase, null, 2));    
+    
+    //console.info("useCase ==>\n" + JSON.stringify(useCase, null, 2));    
     
     // Set the prompt to what was returned from DynamoDB.
     let prompt = useCase.prompt;
@@ -144,6 +147,7 @@ export const setupCallPostHandler = async (twilioBody) => {
          */ 
         let conversationRelayParams = {
             ...useCase.conversationRelayParams,
+            "debug": "speaker-events tokens-played",
             ...userContext.conversationRelayParamsOverride // Override conversation relay params from user context (if needed)  
         };
 

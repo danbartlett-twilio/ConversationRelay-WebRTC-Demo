@@ -189,8 +189,10 @@ const Main = () => {
                 }
             }
             const conn = device.connect(params);
+            console.log("Call connection established: ", JSON.stringify(conn, null, 2));
             setCurrentCall(conn);
-            
+            const clientWS = registerClientWebsocket()
+            console.log("Client WS connection established: ", JSON.stringify(clientWS, null, 2));
         } else {
             console.log("Device not ready");
         }
@@ -247,6 +249,21 @@ const Main = () => {
             console.error("Error updating user: ", error);
         }
     }
+
+    // Create a new Twilio Device instance
+    const registerClientWebsocket = async () => {
+        const socket = new WebSocket("/?callSid=" + identity);
+        // Connection opened
+        socket.addEventListener("open", event => {
+            socket.send(JSON.stringify({"message": "Connection established"}));
+            console.log("Connection opened!");
+        });
+
+        // Listen for messages
+        socket.addEventListener("message", event => {
+            console.log("Message from server ", event.data)
+        });        
+    };    
 
     // Main layout of the application
     let layout = (

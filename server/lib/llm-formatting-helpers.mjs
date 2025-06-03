@@ -24,7 +24,7 @@ export async function formatLLMMessage(role, content) {
 
         }        
 
-        console.info("finalMessage in formatLLMMessage => " + JSON.stringify(finalMessage, null, 2));
+        //console.info("finalMessage in formatLLMMessage => " + JSON.stringify(finalMessage, null, 2));
 
         return finalMessage;
 

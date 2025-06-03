@@ -8,16 +8,14 @@ router.use(cors()); // Enable CORS for all routes
 router.use(express.json()); // for parsing application/json
 import { FSDB } from "file-system-db"; 
 
-
-
 // Route retrieve all useCases from data/useCases.json
 // URI:  <server>/client-data/get-use-cases
 // Method: GET
 // Description: This route retrieves all use cases from the useCases.json file and sends them as a response.
 router.get("/get-use-cases", async (req, res) => {
-        console.log("get-use-cases called");
+        //console.log("get-use-cases called");
         const useCases = new FSDB(`../data/useCases.json`, false);
-        console.log("useCases", useCases.getAll());
+        //console.log("useCases", useCases.getAll());
         const allUseCases = useCases.getAll();
   res.send(allUseCases);
 });

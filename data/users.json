@@ -6,8 +6,8 @@
         "useCase": "albertEinsteinUseCase",
         "conversationRelayParamsOverride": {
             "language": "en-US",
-            "ttsProvider": "Google",
-            "voice": "en-US-Neural2-D",
+            "ttsProvider": "ElevenLabs",
+            "voice": "SaqYcK3ZpDKBAImA8AdW",
             "transcriptionProvider": "Google",
             "speechModel": "telephony",
             "interruptible": "any",

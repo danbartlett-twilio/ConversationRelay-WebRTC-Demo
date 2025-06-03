@@ -113,6 +113,10 @@ export async function invokeOpenAI(promptObj) {
             // Send content (current chunk content) back to WebSocket & Twilio for TTS
             promptObj.socket.send(JSON.stringify({type:"text", token:chunk.choices[0]?.delta?.content, last:false}));
             
+            if (promptObj.clientSocket !== null) {
+                promptObj.clientSocket.send(JSON.stringify({type:"text", token:chunk.choices[0]?.delta?.content, last:false}));
+            }
+
             // Record details from current chunk
             returnObj.content += chunk.choices[0]?.delta?.content || '';
             returnObj.last = last;
@@ -131,7 +135,7 @@ export async function invokeOpenAI(promptObj) {
         delete returnObj.tool_calls['undefined'];
     }
 
-    console.info("In invokeOpenAi about to return...\n" + JSON.stringify(returnObj, null, 2)); 
+    //console.info("In invokeOpenAi about to return...\n" + JSON.stringify(returnObj, null, 2)); 
 
     return returnObj;
     
