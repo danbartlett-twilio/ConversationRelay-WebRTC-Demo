@@ -1,7 +1,8 @@
 import express from "express";
 import twimlRoutes from './routes/twiml.js';
-import clientRoutes from './routes/client.js';
+import clientAppRoutes from './routes/client-app.js';
 import clientDataRoutes from './routes/client-data.js';
+import clientTokenRoutes from './routes/client-token.js';
 
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -32,9 +33,10 @@ app.use(express.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // REST routes
-app.use('/client', clientRoutes); // Points to the client app in client/build
-app.use('/client-data', clientDataRoutes); // CRUD routes for client
-app.use('/twiml', twimlRoutes); // TwiML App points here when the client calls
+app.use('/client', clientAppRoutes); // Points to the client app in client/build
+app.use('/client-data', clientDataRoutes); // CRUD routes for data used in the client
+app.use('/client-token', clientTokenRoutes); // Routes for getting Twilio client tokens for voice and chat
+app.use('/twiml', twimlRoutes); // TwiML App points here when the client calls (Twilio hits this endpoint)
 app.get('/health', (req, res) => {  res.send('Healthy'); }); // Health check endpoint for load balancers
 
 // Handle WebSocket Connection Established by Twilio ConversationRelay
