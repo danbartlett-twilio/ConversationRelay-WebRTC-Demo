@@ -13,10 +13,10 @@ import { FSDB } from "file-system-db";
 // Method: GET
 // Description: This route retrieves all use cases from the useCases.json file and sends them as a response.
 router.get("/get-use-cases", async (req, res) => {
-        //console.log("get-use-cases called");
-        const useCases = new FSDB(`../data/useCases.json`, false);
-        //console.log("useCases", useCases.getAll());
-        const allUseCases = useCases.getAll();
+  //console.log("get-use-cases called");
+  const useCases = new FSDB(`../data/use-cases.json`, false);
+  //console.log("useCases", useCases.getAll());
+  const allUseCases = useCases.getAll();
   res.send(allUseCases);
 });
 
@@ -24,14 +24,14 @@ router.get("/get-use-cases", async (req, res) => {
 // Method: GET
 // Description: This route updates specific use case from data passed in the request.
 router.get("/update-use-case", async (req, res) => {
-        const useCases = new FSDB(`../data/useCases.json`, false);
+  const useCases = new FSDB(`../data/use-cases.json`, false);
   res.send('hello');
 });
 
 
 router.get("/get-users", async (req, res) => {
-        const users = new FSDB(`../data/users.json`, false);
-        const allUsers = users.getAll();
+  const users = new FSDB(`../data/users.json`, false);
+  const allUsers = users.getAll();
   res.send(allUsers);
 });
 
@@ -61,12 +61,9 @@ router.post("/update-user", async (req, res) => {
 // Method: GET
 // Description: This route updates specific user from data passed in the request.
 router.get("/get-transcription-voices", async (req, res) => {
-    const voices = new FSDB(`../data/transcriptionProviders.json`, false);
+    const voices = new FSDB(`../data/transcription-providers.json`, false);
     const allVoices = voices.getAll();
     res.send(allVoices);
 });
-
-
-
 
 export default router;

@@ -31,7 +31,8 @@ export async function prepareAndCallLLM(prepareObj) {
             // Format the prompt from the user to LLM standards.            
             let newUserChatMessage  = await formatLLMMessage("user", prepareObj.body.voicePrompt);                                                      
 
-            console.info("newUserChatMessage in prepareAndCallLLM => " + JSON.stringify(newUserChatMessage, null, 2));
+            //console.info("newUserChatMessage in prepareAndCallLLM => " + JSON.stringify(newUserChatMessage, null, 2));
+            
             // Persist the current prompt so it is included in subsequent calls.
             await savePrompt(prepareObj.callSid, newUserChatMessage);                
 
@@ -124,7 +125,7 @@ export async function prepareAndCallLLM(prepareObj) {
 
         }
 
-        console.info("messages before calling LLM\n" + JSON.stringify(messages, null, 2));   
+        //console.info("messages before calling LLM\n" + JSON.stringify(messages, null, 2));   
 
         const AIPlatformHandler = {
             invokeBedrock,
@@ -144,7 +145,9 @@ export async function prepareAndCallLLM(prepareObj) {
         });
         
     } catch (error) {
+        
         console.error("Error in prepareAndCallLLM: ", error);
         throw error;
+        
     }
 }

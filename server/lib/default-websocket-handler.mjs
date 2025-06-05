@@ -1,8 +1,10 @@
 // Code for this lambda broken into several modules 
 import { prepareAndCallLLM } from './prepare-and-call-llm.mjs';
 import { savePrompt } from './database-helpers.mjs';
-import { makeFunctionCalls } from './functions.mjs'; 
 import { formatLLMMessage } from './llm-formatting-helpers.mjs';
+
+import { makeApartmentSearchToolCalls } from './tools/apartment-search/tools.mjs';
+import { makeRestaurantOrderingToolCalls } from './tools/restaurant-ordering/tools.mjs';
 
 import { FSDB } from "file-system-db"; 
 
@@ -23,6 +25,7 @@ const getSessionDetails = async (callSid) => {
             console.error("No session details found for callSid: ", callSid);
             return;
         }
+        
         return sessionDetails;
 
     } catch (error) {
@@ -43,7 +46,7 @@ const getSessionDetails = async (callSid) => {
  */
 export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCompletion, clientSocket) => { 
 
-    console.info("defaultWebsocketHandler and body => ", body);
+    //console.info("defaultWebsocketHandler and body => ", body);
 
     let now = Date.now();
     let currentMessage = { ...body, "ts": now };
@@ -63,6 +66,8 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
         // Text prompts and dtmf events sent via WebSockets 
         // and tool call completion events follow the same steps and call the LLM
         if (body?.type === "prompt" || body?.type === "dtmf") {                        
+
+            console.info("Received prompt or dtmf => ", currentMessage);
 
             const sessionDetails = await getSessionDetails(callSid);
             
@@ -103,8 +108,22 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
             if (Object.keys(llmResult.tool_calls).length > 0 ) {
                 
                 // Send tool call(s) to handler function
-                let toolCallResult = await makeFunctionCalls(llmResult.tool_calls, callSid, sessionDetails);
- 
+                //let toolCallResult = await makeFunctionCalls(llmResult.tool_calls, callSid, sessionDetails);
+                let toolCallResult;
+                switch (sessionDetails.useCase) {
+                    case "restaurant-ordering":
+                        toolCallResult = await makeRestaurantOrderingToolCalls(llmResult.tool_calls, callSid, sessionDetails);
+                        break;
+                    case "apartment-search":
+                        toolCallResult = await makeApartmentSearchToolCalls(llmResult.tool_calls, callSid, sessionDetails);
+                        break;
+                    default:
+                        console.error("No tool calls handler found for use case: ", sessionDetails.useCase);
+                        break;
+                }
+
+                
+
                 // Upon successfully running the tool calls...
                 if (toolCallResult) {
 
@@ -117,7 +136,8 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
                         sessionDetails: sessionDetails, 
                         socket: socket, 
                         body: null, 
-                        toolCallCompletion: toolCallCompletion
+                        toolCallCompletion: toolCallCompletion,
+                        clientSocket: clientSocket
                     }); 
 
                 }

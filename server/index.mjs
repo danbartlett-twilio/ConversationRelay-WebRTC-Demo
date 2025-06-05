@@ -92,7 +92,7 @@ wss.on('connection', (socket, request, head) => {
     let toolCallCompletion = false; // False because tool call completion events do not come this way
     
     //console.info("EVENT\n" + JSON.stringify(messageJSON, null, 2)); 
-    console.info(`In onMessage handler: callSid: ${callSid}`);
+    //console.info(`In onMessage handler: callSid: ${callSid}`);
 
     try {
       

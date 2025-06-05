@@ -3,11 +3,11 @@
         "from": "client:browser-client",
         "firstName": "Jane",
         "lastName": "Doe",
-        "useCase": "restaurantOrderingUseCase",
+        "useCase": "apartment-search",
         "conversationRelayParamsOverride": {
             "language": "en-US",
             "ttsProvider": "ElevenLabs",
-            "voice": "UgBBYS2sOqTuMpoF3BR0",
+            "voice": "tnSpp4vdxKPjI9w0GnoV",
             "transcriptionProvider": "Deepgram",
             "speechModel": "nova-2-general",
             "interruptible": "any",
@@ -20,7 +20,7 @@
         "from": "+15555555555",
         "firstName": "Some",
         "lastName": "PSTN-Caller",
-        "useCase": "restaurantOrderingUseCase",
+        "useCase": "restaurant-ordering",
         "conversationRelayParamsOverride": {}
     }
 }
