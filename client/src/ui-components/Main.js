@@ -200,6 +200,7 @@ const Main = () => {
       setCurrentCall(conn);
 
       // registerClientWebsocket
+      console.log(transcriptRef);
       if (transcriptRef.current) {
         console.log("Initializing websocket connection");
         transcriptRef.current.invokeSetupWebsockToController();
@@ -269,23 +270,23 @@ const Main = () => {
   };
 
   // Create a new Twilio Device instance
-  const registerClientWebsocket = async () => {
-    // const socket = new WebSocket("/?callSid=" + identity);
-    // For developing use this url to get events without having to re-build
-    const socket = new WebSocket("ws://localhost:3000/?callSid=" + identity);
-    console.log(socket);
-    setSocket(socket);
-    // Connection opened
-    socket.addEventListener("open", (event) => {
-      socket.send(JSON.stringify({ message: "Connection established" }));
-      console.log("Connection opened!");
-    });
+  //   const registerClientWebsocket = async () => {
+  //     // const socket = new WebSocket("/?callSid=" + identity);
+  //     // For developing use this url to get events without having to re-build
+  //     const socket = new WebSocket("ws://localhost:3000/?callSid=" + identity);
+  //     console.log(socket);
+  //     setSocket(socket);
+  //     // Connection opened
+  //     socket.addEventListener("open", (event) => {
+  //       socket.send(JSON.stringify({ message: "Connection established" }));
+  //       console.log("Connection opened!");
+  //     });
 
-    // Listen for messages
-    socket.addEventListener("message", (event) => {
-      console.log("Message from server ", event.data);
-    });
-  };
+  //     // Listen for messages
+  //     socket.addEventListener("message", (event) => {
+  //       console.log("Message from server ", event.data);
+  //     });
+  //   };
 
   // Main layout of the application
   let layout = (
@@ -338,7 +339,7 @@ const Main = () => {
                     <Stack orientation="vertical" spacing="space40">
                       <StartCard placeCall={placeCall} stopCall={stopCall} />
                       <Visualizer />
-                      <Transcript />
+                      <Transcript ref={transcriptRef} identity={identity} />
                     </Stack>
                   </Box>
                 </Column>
