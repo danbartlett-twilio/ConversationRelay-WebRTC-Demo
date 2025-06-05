@@ -3,11 +3,11 @@
         "from": "client:browser-client",
         "firstName": "Jane",
         "lastName": "Doe",
-        "useCase": "restaurantOrderingUseCase",
+        "useCase": "albertEinsteinUseCase",
         "conversationRelayParamsOverride": {
             "language": "en-US",
             "ttsProvider": "ElevenLabs",
-            "voice": "UgBBYS2sOqTuMpoF3BR0",
+            "voice": "tnSpp4vdxKPjI9w0GnoV",
             "transcriptionProvider": "Deepgram",
             "speechModel": "nova-2-general",
             "interruptible": "any",

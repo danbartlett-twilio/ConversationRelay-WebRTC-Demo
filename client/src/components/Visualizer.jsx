@@ -108,9 +108,7 @@ const Visualizer = forwardRef((props, ref) => {
 
   return (
     <Box>
-      <Label htmlFor="statusArea">
-        ConversationRelay Websocket Status Area
-      </Label>
+      <Label htmlFor="statusArea">ConversationRelay Transcript</Label>
       <TextArea
         id="statusArea"
         className="status-area"

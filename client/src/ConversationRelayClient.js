@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef } from "react";
 import axios from "axios";
 import { Device } from "@twilio/voice-sdk";
 import "./styles/ConversationRelayClient.css";
@@ -132,14 +132,17 @@ export const ConversationRelayClient = () => {
               {/* <DBProfile /> */}
               {loading ? (
                 <div>
-                  { /* <Label required>Enter Phone Number</Label> */ }
+                  {/* <Label required>Enter Phone Number</Label> */}
                   <Stack orientation="horizontal" spacing="space40">
-                    { /* <PhoneInput
+                    {/* <PhoneInput
                       defaultCountry="us"
                       value={phone}
                       onChange={(phone) => setPhone(phone)}
-                    /> */ }
-                    <Button variant="destructive" onClick={() => registerVoiceClient("browser-client")}>
+                    /> */}
+                    <Button
+                      variant="destructive"
+                      onClick={() => registerVoiceClient("browser-client")}
+                    >
                       🤷‍♂️ Ask a Question
                     </Button>
                   </Stack>
@@ -159,7 +162,7 @@ export const ConversationRelayClient = () => {
                 </div>
               )}
 
-             {/*} <InPageNavigation>
+              {/*} <InPageNavigation>
                 <InPageNavigationItem
                   currentPage={whichPage}
                   onClick={() => {
