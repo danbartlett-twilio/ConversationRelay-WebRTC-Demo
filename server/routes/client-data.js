@@ -9,7 +9,6 @@ router.use(express.json()); // for parsing application/json
 import { FSDB } from "file-system-db"; 
 
 
-
 // Route retrieve all useCases from data/useCases.json
 // URI:  <server>/client-data/get-use-cases
 // Method: GET
@@ -30,7 +29,9 @@ router.get("/update-use-case", async (req, res) => {
   res.send('hello');
 });
 
-
+// URI:  <server>/client-data/get-users
+// Method: GET
+// Description: Retrieve list of all users.
 router.get("/get-users", async (req, res) => {
         const users = new FSDB(`../data/users.json`, false);
         const allUsers = users.getAll();
@@ -38,25 +39,85 @@ router.get("/get-users", async (req, res) => {
 });
 
 // URI:  <server>/client-data/update-user
-// Method: GET
+// Method: POST
 // Description: This route updates specific user from data passed in the request.
 router.post("/update-user", async (req, res) => {
     const users = new FSDB(`../data/users.json`, false);
-    // Here you would typically update the user based on some criteria
-    // For now, we will just return the users
 
     const userIdentity = req.body.identity
     users.set(userIdentity, {
-
       from: req.body.from,
+      role: req.body.role,
+      type: req.body.type, // webRtc, sip, phone
+      identity: req.body.identity,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-            useCase : req.body.useCase,
+      phone: req.body.phone,
+      email: req.body.email,
+      useCase : req.body.useCase,
       conversationRelayParamsOverride : 
       req.body.conversationRelayParamsOverride    
     });
+  res.send({ status: "success", data: users.get(userIdentity)});
+});
+
+// URI:  <server>/client-data/create-user
+// Method: POST
+// Description: API to create a new application user
+//  create user with defaults for CR Params Override
+//
+router.post("/create-user", async (req, res) => {
+    const users = new FSDB(`../data/users.json`, false);
+
+    let userIdentity = ''
+    if (req.body.type === 'sip') { 
+      userIdentity = req.body.identity.replace(/\./g, "<>");
+    } else {
+      userIdentity = req.body.identity; // webRtc or phone
+    }
+    users.set(userIdentity, {
+      from: req.body.from,
+      role: req.body.role,
+      type: req.body.type, // webRtc, sip, phone
+      identity: req.body.identity,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phone: req.body.phone,
+      email: req.body.email,
+      useCase : req.body.useCase,
+      conversationRelayParamsOverride : {
+            "language": "en-US",
+            "ttsProvider": "ElevenLabs",
+            "voice": "UgBBYS2sOqTuMpoF3BR0",
+            "transcriptionProvider": "Google",
+            "speechModel": "telephony",
+            "interruptible": "any",
+            "preemptible": true,
+            "welcomeGreetingInterruptible": "none",
+            "welcomeGreetingPreemptible": true
+      }
+    });
 
   res.send({ status: "success", data: users.get(userIdentity)});
+});
+
+// URI:  <server>/client-data/delete-user
+// Method: POST
+// Description: API to delete an application user
+router.post("/delete-user", async (req, res) => {
+    // get users.json
+    const users = new FSDB(`../data/users.json`, false);
+    let userIdentity = ''
+
+    // format identity based on user connection type
+    if (req.body.type === 'sip') { 
+      userIdentity = req.body.identity.replace(/\./g, "<>");
+    } else {
+      userIdentity = req.body.identity; // webRtc or phone
+    }
+    users.delete(userIdentity)
+
+  res.send({ status: "success", data: {identity: userIdentity}});
 });
 
 // URI:  <server>/client-data/get-transcription-voices

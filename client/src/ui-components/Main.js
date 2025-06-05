@@ -5,12 +5,15 @@ import { Device } from "@twilio/voice-sdk";
 
 import { Theme } from "@twilio-paste/core/dist/theme";
 
+import { updateUserHelper } from "../helpers/clientDataHelper";
+
 import {
     Flex, Box, Heading,
     Grid, Column, 
     Stack, Alert
 } from '@twilio-paste/core';
 
+import AppHeader from "./AppHeader";
 import StartCard from "../ui-components/StartCard"
 import BotProperties from "../ui-components/BotProperties";
 import Visualizer from "../ui-components/Visualizer";
@@ -24,13 +27,13 @@ const styles = {
 const Main = () => {
 
     const [identity, setIdentity] = useState("browser-client");
+
     const [device, setDevice] = useState();
     const [loading, setLoading] = useState(true);
     const [token, setToken] = useState("");
 
 
     const [currentCall, setCurrentCall] = useState(null);
-
 
     const [users, setUsers] = useState([]);                     // all app users ( server > data > users.json )    
     const [selectedUser, setSelectedUser] = useState(null);     // current app user
@@ -208,10 +211,14 @@ const Main = () => {
     // forwarded through props to BotProperties > useCaseCombo component
     const updateUser = async (agentParams) => {
         let data = { 
-                "identity": identity,
-                "from": "client:browser-client",
                 "firstName": "Jane",
-                "lastName": "Doe",                
+                "lastName": "Doe",
+                "from": "client:browser-client",
+                "role": selectedUser.role,
+                "identity": selectedUser.identity,
+                "type": selectedUser.type,
+                "phone": selectedUser.phone,
+                "email": selectedUser.email,             
                 "useCase": agentParams.useCase,
                 "conversationRelayParamsOverride": {            
                 "language" : "en-US",
@@ -226,101 +233,57 @@ const Main = () => {
             }
         }
 
-        //  call backend to update user configuration ( server > data > users.json )
-        try {
-            // Fetch all voices from the backend
-            const updateUserURL = process.env.REACT_APP_UPDATE_USER_URL; 
-            await axios.post(updateUserURL,  data )
-            .then((resp) => {
-                if (resp.data.status==='success') {
-                setAlertMessage('User configuration updated successfully');
-                setAlertType("neutral")
-                setShowAlert(true)
-                } else {
-                    setAlertMessage('Failed to update user configuration');
-                    setAlertType("error")
-                    setShowAlert(true)
-                }
-                setReload(!reload)
-            })
-        } catch (error) {
-            console.error("Error updating user: ", error);
+        let resp = await updateUserHelper(data)
+        if (resp.status==='success') {
+            setAlertMessage('User configuration updated successfully');
+            setAlertType("neutral")
+            setShowAlert(true)
+        } else {
+            setAlertMessage('Failed to update user configuration');
+            setAlertType("error")
+            setShowAlert(true)
         }
+            setReload(!reload)
     }
 
     // Main layout of the application
     let layout = (
-           <Theme.Provider theme="Twilio">
-        <Flex>
-            <Flex>
-                <Box padding="space100">&nbsp;</Box>
-            </Flex>
-            <Flex grow>
-                    {/* Primary Box */}
-                    <Box
-                        padding="space20"
-                        width="100%"
-                        height="20vh"
-                        style={{marginTop:'20px'}}
+        <div>
+            <Box style={{marginTop:10, }} height="100vh">
+                { showAlert && (
+                    <Alert
+                        variant={alertType}
+                        onDismiss={() => setShowAlert(false)}
+                        marginBottom="space40"
                     >
-                        <div style={styles.headTwoColumnLayout} >
-                            <div style={styles.headLeftColumn} >
-                                <img src="/images/twilio_logo.jpg" alt="Twilio Logo" width="100" height="50" /> </div>
-                            <div style={styles.headRightColumn}>                                        
-                                <Heading 
-                                    marginBottom='space0'
-                                    as="h2" 
-                                     variant="heading8"
-                                    color={{color:'#ffffff'}}
-                                    >Conversation Relay - Cloud Intelligence
-                                </Heading>
-                            </div>
-                        </div>
-                        <Box style={{marginTop:100, }} height="100vh">
-                            { showAlert && (
-                                <Alert
-                                    variant={alertType}
-                                    onDismiss={() => setShowAlert(false)}
-                                    marginBottom="space40"
-                                >
-                                    {alertMessage}
-                                </Alert>
-                            )}
-                            <Grid gutter="space40">
-                                <Column span={7}>
-                                    <Box padding="space50">
-                                        <Stack orientation="vertical" spacing="space40">
-                                            <StartCard  placeCall={placeCall} stopCall={stopCall} />
-                                            <Visualizer />
-                                            <Transcript />
-                                        </Stack>         
-                                    </Box>
-                                </Column>
-                                <Column span={5}>
-                                    <Box padding="space50">
-                                        <BotProperties 
-                                            useCases={useCases}
-                                            selectedUser={selectedUser}
-                                            updateUser={updateUser}
-                                        />
-                                    </Box>
-                                </Column>
-                            </Grid>
+                        {alertMessage}
+                    </Alert>
+                )}
+                <Grid gutter="space40">
+                    <Column span={7}>
+                        <Box padding="space50">
+                            <Stack orientation="vertical" spacing="space40">
+                                <StartCard  placeCall={placeCall} stopCall={stopCall} />
+                                <Visualizer />
+                                <Transcript />
+                            </Stack>         
                         </Box>
-                    </Box>
-                    {/* end Primary Box */}
-            </Flex>
-            <Flex>
-            <Box
-                // backgroundColor="colorBackgroundPrimaryWeak"
-                padding="space100"
-                // height="size20"
-            >
-                &nbsp;
+                    </Column>
+                    <Column span={5}>
+                        <Box padding="space50">
+                            <BotProperties 
+                                useCases={useCases}
+                                selectedUser={selectedUser}
+                                updateUser={updateUser}
+                            />
+                        </Box>
+                    </Column>
+                </Grid>
             </Box>
-            </Flex>
-        </Flex>
-        </Theme.Provider>
+
+        {/* end Primary Box */}
+        </div>
+
     )
     return layout;
 }
