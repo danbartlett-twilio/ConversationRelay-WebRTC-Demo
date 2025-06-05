@@ -13,11 +13,14 @@ function formatTime(ts) {
 }
 
 export default function MessageLog({ events = [] }) {
+  // Sort events by timestamp and reverse so newest comes first
+  const sortedEvents = [...events].sort((a, b) => a.ts - b.ts).reverse();
+
   return (
     <div className="message-log">
       <Label>Conversation Transcription</Label>
 
-      {events.map((event, index) => {
+      {sortedEvents.map((event, index) => {
         const isTokens = event.name === "tokensPlayed";
         const isVoice = event.voicePrompt && event.type === "prompt";
         if (!isTokens && !isVoice) return null;
