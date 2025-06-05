@@ -14,7 +14,7 @@ import { Theme } from "@twilio-paste/core/dist/theme";
 
 import Main from "./Main";
 import Users from "./Users/Users";
-import UseCases from "./UseCases";
+import UseCases from "./UseCases/UseCases";
 import CallHistory from "./CallHistory";
 import AppHeader from "./AppHeader";
 
