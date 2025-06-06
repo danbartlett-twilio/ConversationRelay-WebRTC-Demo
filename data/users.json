@@ -17,8 +17,7 @@
       "speechModel": "telephony",
       "interruptible": "any",
       "preemptible": true,
-      "welcomeGreetingInterruptible": "none",
-      "welcomeGreetingPreemptible": true
+      "welcomeGreetingInterruptible": "none"
     }
   },
   "+15555555555": {
@@ -39,8 +38,7 @@
       "speechModel": "telephony",
       "interruptible": "any",
       "preemptible": true,
-      "welcomeGreetingInterruptible": "none",
-      "welcomeGreetingPreemptible": true
+      "welcomeGreetingInterruptible": "none"
     }
   },
   "jdoe@demo<>sip<>twilio<>com": {
@@ -60,8 +58,7 @@
       "speechModel": "telephony",
       "interruptible": "any",
       "preemptible": true,
-      "welcomeGreetingInterruptible": "none",
-      "welcomeGreetingPreemptible": true
+      "welcomeGreetingInterruptible": "none"
     }
   }
 }
