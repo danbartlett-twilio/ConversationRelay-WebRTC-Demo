@@ -287,7 +287,7 @@ const Main = () => {
               <Stack orientation="vertical" spacing="space40">
                 <StartCard placeCall={placeCall} stopCall={stopCall} />
                 <Visualizer />
-                <Transcript />
+                <Transcript ref={transcriptRef} identity={identity} />
               </Stack>
             </Box>
           </Column>
