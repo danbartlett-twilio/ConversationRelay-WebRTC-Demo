@@ -32,6 +32,8 @@ const UseCaseCombo = (props) => {
     //   dialog state for the tts voice support information
     const [showVoiceDialog, setShowVoiceDialog] = useState(false);
 
+    const [uiChange, setUiChange] = useState(false);
+
 
       //    initialize component bases on updates to usecases and selectedUser
       useEffect(() => { 
@@ -75,14 +77,19 @@ const UseCaseCombo = (props) => {
     
       //    handler updating the use case selection
       const useCaseChange = (e) => {
+        setUiChange(true);
+
         const selectedValue = e.target.value;
+
         const selectedItem = props.useCases.find(item => item.key === selectedValue);
+        console.log('useCaseChange', selectedItem)
         if (selectedItem) {
             setSelectedUseCase(selectedItem.key);
             setSelectedSttProvider(selectedItem.value.conversationRelayParams.transcriptionProvider)
             setSelectedTtsProvider(selectedItem.value.conversationRelayParams.ttsProvider)
 
             const providerVoices = voices.find((provider) => provider.key === selectedItem.value.conversationRelayParams.ttsProvider)
+            console.log('providerVoices', providerVoices)
             setSelectedVoices(providerVoices);
             const selVoice = providerVoices.value.find((voice) => voice.value === selectedItem.value.conversationRelayParams.voice);
             setSelectedVoice(selVoice.value);
@@ -95,6 +102,7 @@ const UseCaseCombo = (props) => {
 
     // handler updating the stt provider selection
     const handle_SttChange = (e) => {
+        setUiChange(true);
         setSelectedSttProvider(e.target.value);
         e.target.value === 'Google' ? 
             setSpeechModel('telephony') : setSpeechModel('nova-2-general');
@@ -102,6 +110,7 @@ const UseCaseCombo = (props) => {
     }
     // handler updating the tts provider selection
     const handle_TtsChange = (e) => {
+        setUiChange(true);
         const selectedValue = e.target.value;
         const selectedVoice = voices.find(voice => voice.key === selectedValue);
         if (selectedVoice) {
@@ -113,12 +122,14 @@ const UseCaseCombo = (props) => {
 
     // handler updating the voice selection
     const handle_VoiceChange = (e) => {
+        setUiChange(true);
         setSelectedVoice(e.target.value);
     }
 
     // handler updating the user configuration
     // updateUser forward from main.js
     const handleUpdate = () => {
+        setUiChange(false);
         props.updateUser(
             {
                 voice: selectedVoice,
@@ -237,12 +248,21 @@ const UseCaseCombo = (props) => {
                                 </Box>
                                 </HelpText>
                         </Box>
+
+                        <Box as={'div'} marginTop="20px">
+                            { uiChange && (
+                                <Label><span style={{color:'red'}}>Configuration has changed</span></Label>
+                            )}
+                            
+                        </Box>
+
                         <Box as={'div'} marginTop="20px">
                             <Button 
-                                style={{float:'right'}} 
-                                variant={'primary'}
+                                style={{float:'right'}}
+                                disabled={!uiChange} 
+                                variant={ uiChange ? 'destructive' : 'primary'}
                                 onClick = { (e) => handleUpdate(e) }
-                                >Update User Config</Button>
+                                >Save Configuration</Button>
                         </Box>
 
                     </Card>

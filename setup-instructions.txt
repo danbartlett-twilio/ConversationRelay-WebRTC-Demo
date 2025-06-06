@@ -13,3 +13,5 @@
 7) Start server (cd server, npm install, ./start-local-server.sh )
 
 8) Web browser http://localhost:3000, watch things happen in the terminal window and the data directory....
+
+Test
