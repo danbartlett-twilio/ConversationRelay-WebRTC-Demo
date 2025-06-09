@@ -1,65 +1,64 @@
 {
-    "browser-client": {
-        "from": "client:browser-client",
-        "role": "system",
-        "type": "webRtc",
-        "identity": "browser-client",
-        "firstName": "Jane",
-        "lastName": "Doe",
-        "phone": "+13035553434",
-        "email": "jdoe@twilio.com",
-        "useCase": "albertEinsteinUseCase",
-        "conversationRelayParamsOverride": {
-            "language": "en-US",
-            "ttsProvider": "ElevenLabs",
-            "voice": "tnSpp4vdxKPjI9w0GnoV",
-            "transcriptionProvider": "Google",
-            "speechModel": "telephony",
-            "interruptible": "any",
-            "preemptible": true,
-            "welcomeGreetingInterruptible": "none",
-            "welcomeGreetingPreemptible": true
-        }
-    },
-    "+15555555555": {
-        "from": "+15555555555",
-        "role": "system",
-        "type": "phone",
-        "identity": "+15555555555",
-        "firstName": "Jane",
-        "lastName": "Doe",
-        "phone": "+15555555555",
-        "email": "jdoe@twilio.com",
-        "useCase": "restaurantOrderingUseCase",
-        "conversationRelayParamsOverride": {
-            "language": "en-US",
-            "ttsProvider": "ElevenLabs",
-            "voice": "SaqYcK3ZpDKBAImA8AdW",
-            "transcriptionProvider": "Google",
-            "speechModel": "telephony",
-            "interruptible": "any",
-            "preemptible": true,
-            "welcomeGreetingInterruptible": "none"
-        }
-    },
-    "jdoe@demo<>sip<>twilio<>com": {
-        "from": "sip:jdoe@demo.sip.twilio.com",
-        "role": "system",
-        "type": "sip",
-        "identity": "jdoe@demo.sip.twilio.com",
-        "firstName": "Jane",
-        "lastName": "Doe",
-        "phone": "+15555555555",
-        "email": "jdoe@twilio.com",
-        "conversationRelayParamsOverride": {
-            "language": "en-US",
-            "ttsProvider": "ElevenLabs",
-            "voice": "UgBBYS2sOqTuMpoF3BR0",
-            "transcriptionProvider": "Google",
-            "speechModel": "telephony",
-            "interruptible": "any",
-            "preemptible": true,
-            "welcomeGreetingInterruptible": "none"
-        }
+  "browser-client": {
+    "from": "client:browser-client",
+    "role": "system",
+    "type": "webRtc",
+    "identity": "browser-client",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "phone": "+13035553434",
+    "email": "jdoe@twilio.com",
+    "useCase": "albertEinsteinUseCase",
+    "conversationRelayParamsOverride": {
+      "language": "en-US",
+      "ttsProvider": "ElevenLabs",
+      "voice": "gUABw7pXQjhjt0kNFBTF",
+      "transcriptionProvider": "Deepgram",
+      "speechModel": "nova-2-general",
+      "interruptible": "any",
+      "preemptible": true,
+      "welcomeGreetingInterruptible": "none"
     }
+  },
+  "+15555555555": {
+    "from": "+15555555555",
+    "role": "system",
+    "type": "phone",
+    "identity": "+15555555555",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "phone": "+15555555555",
+    "email": "jdoe@twilio.com",
+    "useCase": "restaurantOrderingUseCase",
+    "conversationRelayParamsOverride": {
+      "language": "en-US",
+      "ttsProvider": "ElevenLabs",
+      "voice": "SaqYcK3ZpDKBAImA8AdW",
+      "transcriptionProvider": "Google",
+      "speechModel": "telephony",
+      "interruptible": "any",
+      "preemptible": true,
+      "welcomeGreetingInterruptible": "none"
+    }
+  },
+  "jdoe@demo<>sip<>twilio<>com": {
+    "from": "sip:jdoe@demo.sip.twilio.com",
+    "role": "system",
+    "type": "sip",
+    "identity": "jdoe@demo.sip.twilio.com",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "phone": "+15555555555",
+    "email": "jdoe@twilio.com",
+    "conversationRelayParamsOverride": {
+      "language": "en-US",
+      "ttsProvider": "ElevenLabs",
+      "voice": "UgBBYS2sOqTuMpoF3BR0",
+      "transcriptionProvider": "Google",
+      "speechModel": "telephony",
+      "interruptible": "any",
+      "preemptible": true,
+      "welcomeGreetingInterruptible": "none"
+    }
+  }
 }

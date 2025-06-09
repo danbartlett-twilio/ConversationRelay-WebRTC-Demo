@@ -57,8 +57,8 @@ const Main = () => {
   let voiceToken = useRef("");
 
   // Setup Audiovisualizer
-  const [localStream, setLocalStream] = useState(null);
-  const [remoteStream, setRemoteStream] = useState(null);
+  let localStream = null;
+  let remoteStream = null;
   const [localAnalyser, setLocalAnalyser] = useState(null);
   const [remoteAnalyser, setRemoteAnalyser] = useState(null);
 
@@ -180,28 +180,39 @@ const Main = () => {
       let params = {
         From: "browser-client",
       };
-      const conn = await device.connect(params); // shouldn't return promise - look into this
+      const call = await device.connect(params);
 
-      //   https://www.twilio.com/docs/voice/sdks/javascript/twiliocall
-      if (conn) {
-        conn.on("accept", (call) => {
+      if (call) {
+        call.on("accept", (call) => {
           console.log("✅ Call connected");
-          console.log(call.getLocalStream());
-          //   console.log(call.getRemoteStream()); null - aren't getting remote stream from cRelay
-          setLocalStream(call.getLocalStream());
-          setLocalAnalyser(setupAnalyzer(call.getLocalStream()));
         });
 
-        conn.on("disconnect", () => {
-          console.log("📞 Call ended");
-          setLocalAnalyser(null);
-          setRemoteAnalyser(null);
+        // Set local and remote streams for audio visualizer
+        call.on("volume", (inputVolume, outputVolume) => {
+          if (outputVolume > 0) {
+            if (!localStream) {
+              localStream = call.getLocalStream();
+              setLocalAnalyser(setupAnalyzer(localStream));
+            }
+          }
+          if (inputVolume > 0) {
+            if (!remoteStream) {
+              remoteStream = call.getRemoteStream();
+              setRemoteAnalyser(setupAnalyzer(remoteStream));
+            }
+          }
         });
-        conn.on("error", (err) => console.error("❌ Call error:", err));
+
+        call.on("disconnect", () => {
+          console.log("📞 Call ended");
+          localStream = null;
+          remoteStream = null;
+        });
+        call.on("error", (err) => console.error("❌ Call error:", err));
       } else {
-        console.warn("🚫 No connection object returned");
+        console.warn("🚫 No call object returned");
       }
-      setCurrentCall(conn);
+      setCurrentCall(call);
 
       // Register Client Websocket
       if (transcriptRef.current) {
