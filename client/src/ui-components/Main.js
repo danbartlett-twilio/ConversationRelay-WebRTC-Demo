@@ -20,8 +20,9 @@ import AppHeader from "./AppHeader";
 import StartCard from "../ui-components/StartCard";
 import BotProperties from "../ui-components/BotProperties";
 import Visualizer from "../ui-components/Visualizer";
+import Audiovisualizer from "../ui-components/Audiovisualizer";
 import Transcript from "../ui-components/Transcript";
-// import Transcript from "../components/Visualizer";
+import { setupAnalyzer } from "../helpers/utils";
 
 const styles = {
   wrapper: {
@@ -54,6 +55,12 @@ const Main = () => {
   const [reload, setReload] = useState(false);
 
   let voiceToken = useRef("");
+
+  // Setup Audiovisualizer
+  const [localStream, setLocalStream] = useState(null);
+  const [remoteStream, setRemoteStream] = useState(null);
+  const [localAnalyser, setLocalAnalyser] = useState(null);
+  const [remoteAnalyser, setRemoteAnalyser] = useState(null);
 
   // Fetch defined use cases and users from the backend
   useEffect(() => {
@@ -97,24 +104,14 @@ const Main = () => {
   // Register Twilio Device event handlers
   useEffect(() => {
     const registerTwilioDeviceHandlers = (device) => {
-      device.on("incoming", function (conn) {
-        console.log(
-          "Call incoming: " +
-            conn.parameters.From +
-            ", Call SID: " +
-            conn.parameters.CallSid +
-            ""
-        );
+      device.on("registered", () => console.log("✅ Device registered"));
+      device.on("incoming", (conn) => {
+        console.log("📞 Incoming call", conn);
+        conn.accept();
       });
-
-      device.on("registered", (dev) => {
-        console.log("Device ready to receive incoming calls\n");
-      });
-
-      device.on("unregistered", (dev) => {
-        console.log("Device unregistered\n");
-        setDevice(undefined);
-      });
+      device.on("disconnect", () => console.log("🔌 Disconnected"));
+      device.on("error", (e) => console.error("❌ Device error:", e));
+      device.on("cancel", () => console.log("❎ Call cancelled"));
 
       device.on("tokenWillExpire", async (dev) => {
         console.log("Device token is expiring\n");
@@ -127,29 +124,31 @@ const Main = () => {
         setToken(res.data);
         dev.updateToken(res.data);
       });
-
-      device.on("error", (dev) => {
-        console.log("Device encountered error\n", dev);
-        setDevice(undefined);
-      });
-
-      device.on("destroyed", (dev) => {
-        console.log("Device destroyed\n");
-        setDevice(undefined);
-      });
     };
 
     // Create a new Twilio Device instance
     const createVoiceDevice = async () => {
       //  get Token from the backend
       const myDevice = await new Device(voiceToken.current, {
+        rtcConfiguration: {
+          iceServers: [{ urls: ["stun:stun.l.google.com:19302"] }],
+          iceTransportPolicy: "all",
+          bundlePolicy: "balanced",
+          rtcpMuxPolicy: "require",
+          sdpSemantics: "unified-plan",
+        },
+        audioConstraints: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+        },
         logLevel: 5,
         codecPreferences: ["opus", "pcmu"],
       });
       setDevice(myDevice);
-      setLoading(false);
-      myDevice.register();
       registerTwilioDeviceHandlers(myDevice);
+      myDevice.register();
+      setLoading(false);
     };
 
     // create the get token, create/register device
@@ -179,41 +178,36 @@ const Main = () => {
     if (device && !currentCall) {
       console.log("Placing call to: ", phone);
       let params = {
-        rtcConfiguration: {
-          iceServers: [{ urls: ["stun:stun.l.google.com:19302"] }],
-          iceTransportPolicy: "all",
-          bundlePolicy: "balanced",
-          rtcpMuxPolicy: "require",
-          sdpSemantics: "unified-plan",
-        },
-        audioConstraints: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true,
-        },
-        params: {
-          From: "browser-client",
-        },
+        From: "browser-client",
       };
-      const conn = device.connect(params);
-      console.log(
-        "Call connection established: ",
-        JSON.stringify(conn, null, 2)
-      );
+      const conn = await device.connect(params); // shouldn't return promise - look into this
+
+      //   https://www.twilio.com/docs/voice/sdks/javascript/twiliocall
+      if (conn) {
+        conn.on("accept", (call) => {
+          console.log("✅ Call connected");
+          console.log(call.getLocalStream());
+          //   console.log(call.getRemoteStream()); null - aren't getting remote stream from cRelay
+          setLocalStream(call.getLocalStream());
+          setLocalAnalyser(setupAnalyzer(call.getLocalStream()));
+        });
+
+        conn.on("disconnect", () => {
+          console.log("📞 Call ended");
+          setLocalAnalyser(null);
+          setRemoteAnalyser(null);
+        });
+        conn.on("error", (err) => console.error("❌ Call error:", err));
+      } else {
+        console.warn("🚫 No connection object returned");
+      }
       setCurrentCall(conn);
 
-      // registerClientWebsocket
-      console.log(transcriptRef);
+      // Register Client Websocket
       if (transcriptRef.current) {
         console.log("Initializing websocket connection");
         transcriptRef.current.invokeSetupWebsockToController();
       }
-
-      //   const clientWS = registerClientWebsocket();
-      //   console.log(
-      //     "Client WS connection established: ",
-      //     JSON.stringify(clientWS, null, 2)
-      //   );
     } else {
       console.log("Device not ready");
     }
@@ -286,7 +280,16 @@ const Main = () => {
             <Box padding="space50">
               <Stack orientation="vertical" spacing="space40">
                 <StartCard placeCall={placeCall} stopCall={stopCall} />
-                <Visualizer />
+                <div className="mb-4">
+                  <p className="text-green-400">🎙️ Microphone</p>
+                  <Audiovisualizer analyser={localAnalyser} color="#4caf50" />
+                </div>
+
+                <div className="mb-4">
+                  <p className="text-blue-400">🔊 Remote Audio</p>
+                  <Audiovisualizer analyser={remoteAnalyser} color="#2196f3" />
+                </div>
+
                 <Transcript ref={transcriptRef} identity={identity} />
               </Stack>
             </Box>
