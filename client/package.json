@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@twilio-paste/core": "^20.18.1",
-    "@twilio-paste/icons": "^12.7.0",
+    "@twilio-paste/icons": "^12.9.0",
     "@twilio/voice-sdk": "^2.12.1",
     "axios": "^1.9.0",
     "nanoid": "^5.1.5",

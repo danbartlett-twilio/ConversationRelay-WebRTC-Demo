@@ -37,8 +37,6 @@ const Main = () => {
 
   // Client Websocket
   const transcriptRef = useRef();
-  //   const [socket, setSocket] = useState(null);
-
   const [currentCall, setCurrentCall] = useState(null);
 
   const [users, setUsers] = useState([]); // all app users ( server > data > users.json )
@@ -57,12 +55,13 @@ const Main = () => {
   let voiceToken = useRef("");
 
   // Setup Audiovisualizer
-  let localStream = null;
-  let remoteStream = null;
+  let localStream = null; //update useRef / useState
+  let remoteStream = null; //update useRef
+
   const [localAnalyser, setLocalAnalyser] = useState(null);
   const [remoteAnalyser, setRemoteAnalyser] = useState(null);
 
-  // Fetch defined use cases and users from the backend
+  // Fetch defined use case from the backend
   useEffect(() => {
     const fetchUseCases = async () => {
       const useCasesURL = process.env.REACT_APP_GET_ALL_USE_CASE_URL;
@@ -74,7 +73,7 @@ const Main = () => {
     fetchUseCases();
   }, []);
 
-  // Fetch defined use cases and users from the backend
+  // Fetch defined user from the backend
   useEffect(() => {
     const findUser = (users) => {
       const user = users.find((user) => user.key === identity)?.value;
@@ -87,7 +86,7 @@ const Main = () => {
       }
     };
 
-    //   get all users from the backend
+    // Get all users from backend
     const fetchUsers = async () => {
       const usersURL = process.env.REACT_APP_GET_ALL_USERS_URL;
       try {
@@ -101,7 +100,7 @@ const Main = () => {
     fetchUsers();
   }, [reload]);
 
-  // Register Twilio Device event handlers
+  // Register Voice Client & Twilio Device Handlers
   useEffect(() => {
     const registerTwilioDeviceHandlers = (device) => {
       device.on("registered", () => console.log("✅ Device registered"));
@@ -291,16 +290,16 @@ const Main = () => {
             <Box padding="space50">
               <Stack orientation="vertical" spacing="space40">
                 <StartCard placeCall={placeCall} stopCall={stopCall} />
-                <div className="mb-4">
-                  <p className="text-green-400">🎙️ Microphone</p>
-                  <Audiovisualizer analyser={localAnalyser} color="#4caf50" />
-                </div>
-
-                <div className="mb-4">
-                  <p className="text-blue-400">🔊 Remote Audio</p>
-                  <Audiovisualizer analyser={remoteAnalyser} color="#2196f3" />
-                </div>
-
+                <Heading as="h1" variant="heading40" marginBottom="space0">
+                  Audio Visualizer
+                </Heading>
+                <Audiovisualizer
+                  localAnalyser={localAnalyser}
+                  remoteAnalyser={remoteAnalyser}
+                />
+                <Heading as="h1" variant="heading40" marginBottom="space0">
+                  Conversation Transcription
+                </Heading>
                 <Transcript ref={transcriptRef} identity={identity} />
               </Stack>
             </Box>
@@ -316,7 +315,6 @@ const Main = () => {
           </Column>
         </Grid>
       </Box>
-
       {/* end Primary Box */}
     </div>
   );

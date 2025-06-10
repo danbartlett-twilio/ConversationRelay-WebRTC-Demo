@@ -1,5 +1,7 @@
 // import React from "react";
-import { Label } from "@twilio-paste/core";
+import { Avatar, AvatarGroup, Stack } from "@twilio-paste/core";
+import botImage from "../images/bot.png";
+import { AgentIcon } from "@twilio-paste/icons/esm/AgentIcon";
 
 // Helper to format time
 function formatTime(ts) {
@@ -18,8 +20,6 @@ export default function MessageLog({ events = [] }) {
 
   return (
     <div className="message-log">
-      <Label>Conversation Transcription</Label>
-
       {sortedEvents.map((event, index) => {
         const isTokens = event.name === "tokensPlayed";
         const isVoice = event.voicePrompt && event.type === "prompt";
@@ -28,16 +28,58 @@ export default function MessageLog({ events = [] }) {
         const speaker = isTokens ? "System" : "User";
         const content = isTokens ? event.value : event.voicePrompt;
 
+        // return (
+        //   <div
+        //     key={index}
+        //     className={`message-container ${isTokens ? "left" : "right"}`}
+        //   >
+        //     <div className={`message-bubble ${isTokens ? "remote" : "local"}`}>
+        //       <div className="message-text">{content}</div>
+        //       <div className="message-meta">
+        //         {/* <Avatar
+        //           // size="sizeIcon110"
+        //           name="Conversation Relay Avatar"
+        //           src={botImage}
+        //           color="decorative30"
+        //         /> */}
+        //         {/* <Avatar
+        //           size="sizeIcon110"
+        //           name="User Avatar"
+        //           icon={AgentIcon}
+        //           color="decorative20"
+        //         /> */}
+        //         {speaker} • {formatTime(event.ts)}
+        //       </div>
+        //     </div>
+        //   </div>
+        // );
+
         return (
           <div
             key={index}
             className={`message-container ${isTokens ? "left" : "right"}`}
           >
-            <div className={`message-bubble ${isTokens ? "gray" : "blue"}`}>
+            <div className="message-avatar">
+              {isTokens ? (
+                <Avatar
+                  size="sizeIcon40"
+                  name="System"
+                  src={botImage}
+                  color="decorative30"
+                />
+              ) : (
+                <Avatar
+                  size="sizeIcon40"
+                  name="User"
+                  icon={AgentIcon}
+                  color="decorative20"
+                />
+              )}
+            </div>
+
+            <div className={`message-bubble ${isTokens ? "remote" : "local"}`}>
               <div className="message-text">{content}</div>
-              <div className="message-meta">
-                {speaker} • {formatTime(event.ts)}
-              </div>
+              <div className="message-meta">{formatTime(event.ts)}</div>
             </div>
           </div>
         );
