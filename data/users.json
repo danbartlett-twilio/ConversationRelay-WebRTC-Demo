@@ -3,7 +3,7 @@
         "from": "client:browser-client",
         "firstName": "Jane",
         "lastName": "Doe",
-        "useCase": "apartment-search",
+        "useCase": "albert-einstein",
         "conversationRelayParamsOverride": {
             "language": "en-US",
             "ttsProvider": "ElevenLabs",

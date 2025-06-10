@@ -82,11 +82,9 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
                 body: body, 
                 toolCallCompletion: toolCallCompletion,
                 clientSocket: clientSocket
-            });
-                
+            });                
 
             console.info("llmResult\n" + JSON.stringify(llmResult, null, 2));
-
 
             // Format the llmResult into a chat message to persist to the database
             let newAssistantChatMessage = await formatLLMMessage("assistant",llmResult.content)            
@@ -159,10 +157,8 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
              * 
              */
 
-            // PUT records
-            // pk = event.requestContext.connectionId 
-            // sk = interrupt
-            // ts = unix timestamp
+            console.info("Received interrupt event: ", currentMessage);
+            clientSocket.send(JSON.stringify(currentMessage));
      
         } else if (body?.type === "setup") {
 
@@ -189,9 +185,9 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
              * This implementation does utilize the setup event.
              */
             
-            // PUT record
-            // pk = event.requestContext.connectionId 
-            // sk = setup
+            console.info("Received setup event: ", currentMessage);            
+            clientSocket.send(JSON.stringify(currentMessage));
+
             try {
                 
                 // Establish the connection in the DB and in the message handler functions...
@@ -218,9 +214,8 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
              * This implementation does not use the end event.
              */
 
-            // PUT record
-            // pk = event.requestContext.connectionId 
-            // sk = end
+            console.info("Received interrupt event: ", currentMessage);
+            clientSocket.send(JSON.stringify(currentMessage));
             
         }
     } catch (error) {

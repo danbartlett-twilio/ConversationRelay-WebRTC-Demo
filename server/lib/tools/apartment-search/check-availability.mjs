@@ -7,7 +7,13 @@ async function checkAvailability(tool) {
     const { date, time, type, apartmentType } = JSON.parse(tool.function.arguments);
   
     const appointments = new FSDB(`../data/use-cases/apartment-search/data.appointments.json`, false);
-    const availableAppointments = appointments.getAll();   
+    const availableAppointmentsRaw = appointments.getAll();   
+    
+    // Format these messages to be ingested by LLM
+    const availableAppointments = availableAppointmentsRaw.map(appointment => {                
+      console.log(`[checkAvailability] Appointment:`, appointment);  
+      return { ...appointment.value.appointment };
+    });         
 
     console.log(
       `[checkAvailability] Current available appointments:`,
