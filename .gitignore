@@ -1,6 +1,6 @@
 data/sessions
 client/build/*
-crSessions.json
+cr-sessions.json
 *.sh
 
 # Logs

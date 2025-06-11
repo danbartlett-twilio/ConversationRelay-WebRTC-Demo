@@ -1,8 +1,10 @@
 // Code for this lambda broken into several modules 
 import { prepareAndCallLLM } from './prepare-and-call-llm.mjs';
 import { savePrompt } from './database-helpers.mjs';
-import { makeFunctionCalls } from './functions.mjs'; 
 import { formatLLMMessage } from './llm-formatting-helpers.mjs';
+
+import { makeApartmentSearchToolCalls } from './tools/apartment-search/tools.mjs';
+import { makeRestaurantOrderingToolCalls } from './tools/restaurant-ordering/tools.mjs';
 
 import { FSDB } from "file-system-db"; 
 
@@ -23,6 +25,7 @@ const getSessionDetails = async (callSid) => {
             console.error("No session details found for callSid: ", callSid);
             return;
         }
+        
         return sessionDetails;
 
     } catch (error) {
@@ -43,7 +46,7 @@ const getSessionDetails = async (callSid) => {
  */
 export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCompletion, clientSocket) => { 
 
-    console.info("defaultWebsocketHandler and body => ", body);
+    //console.info("defaultWebsocketHandler and body => ", body);
 
     let now = Date.now();
     let currentMessage = { ...body, "ts": now };
@@ -64,6 +67,8 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
         // and tool call completion events follow the same steps and call the LLM
         if (body?.type === "prompt" || body?.type === "dtmf") {                        
 
+            console.info("Received prompt or dtmf => ", currentMessage);
+
             const sessionDetails = await getSessionDetails(callSid);
             
             if (clientSocket !== null) {
@@ -77,11 +82,9 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
                 body: body, 
                 toolCallCompletion: toolCallCompletion,
                 clientSocket: clientSocket
-            });
-                
+            });                
 
             console.info("llmResult\n" + JSON.stringify(llmResult, null, 2));
-
 
             // Format the llmResult into a chat message to persist to the database
             let newAssistantChatMessage = await formatLLMMessage("assistant",llmResult.content)            
@@ -103,8 +106,22 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
             if (Object.keys(llmResult.tool_calls).length > 0 ) {
                 
                 // Send tool call(s) to handler function
-                let toolCallResult = await makeFunctionCalls(llmResult.tool_calls, callSid, sessionDetails);
- 
+                //let toolCallResult = await makeFunctionCalls(llmResult.tool_calls, callSid, sessionDetails);
+                let toolCallResult;
+                switch (sessionDetails.useCase) {
+                    case "restaurant-ordering":
+                        toolCallResult = await makeRestaurantOrderingToolCalls(llmResult.tool_calls, callSid, sessionDetails);
+                        break;
+                    case "apartment-search":
+                        toolCallResult = await makeApartmentSearchToolCalls(llmResult.tool_calls, callSid, sessionDetails);
+                        break;
+                    default:
+                        console.error("No tool calls handler found for use case: ", sessionDetails.useCase);
+                        break;
+                }
+
+                
+
                 // Upon successfully running the tool calls...
                 if (toolCallResult) {
 
@@ -117,7 +134,8 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
                         sessionDetails: sessionDetails, 
                         socket: socket, 
                         body: null, 
-                        toolCallCompletion: toolCallCompletion
+                        toolCallCompletion: toolCallCompletion,
+                        clientSocket: clientSocket
                     }); 
 
                 }
@@ -139,10 +157,8 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
              * 
              */
 
-            // PUT records
-            // pk = event.requestContext.connectionId 
-            // sk = interrupt
-            // ts = unix timestamp
+            console.info("Received interrupt event: ", currentMessage);
+            clientSocket.send(JSON.stringify(currentMessage));
      
         } else if (body?.type === "setup") {
 
@@ -169,9 +185,9 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
              * This implementation does utilize the setup event.
              */
             
-            // PUT record
-            // pk = event.requestContext.connectionId 
-            // sk = setup
+            console.info("Received setup event: ", currentMessage);            
+            clientSocket.send(JSON.stringify(currentMessage));
+
             try {
                 
                 // Establish the connection in the DB and in the message handler functions...
@@ -198,9 +214,8 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
              * This implementation does not use the end event.
              */
 
-            // PUT record
-            // pk = event.requestContext.connectionId 
-            // sk = end
+            console.info("Received interrupt event: ", currentMessage);
+            clientSocket.send(JSON.stringify(currentMessage));
             
         }
     } catch (error) {

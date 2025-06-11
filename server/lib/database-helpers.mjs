@@ -23,8 +23,10 @@ export async function savePrompt(callSid, newChatMessage) {
         return true;
 
     } catch (error) {
+        
         console.error("Error saving prompt to database: ", error);
         throw error;
+
     }
 };
 
@@ -35,16 +37,18 @@ export async function savePrompt(callSid, newChatMessage) {
  * to chats are automatically returned in chronological order.
  */
 export async function returnAllChats(callSid) {
-   try { 
+    try { 
 
-    const sessionChats = new FSDB(`../data/sessions/${callSid}/chats.json`, false);
-    
-    return sessionChats.getAll().map(chat => {                        
-        return { ...chat.value };
-    });
+        const sessionChats = new FSDB(`../data/sessions/${callSid}/chats.json`, false);
+        
+        return sessionChats.getAll().map(chat => {                        
+            return { ...chat.value };
+        });
 
-   } catch (error) {
+    } catch (error) {
+
         console.error("Error getting all chats: ", error);
         throw error;
+        
     }   
 }

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "file-system-db": "^2.1.0"
+  }
+}

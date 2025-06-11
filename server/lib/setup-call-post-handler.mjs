@@ -1,7 +1,7 @@
 import { FSDB } from "file-system-db";  // https://github.com/WillTDA/File-System-DB
-const useCases = new FSDB("../data/useCases.json", false);
+const useCases = new FSDB("../data/use-cases.json", false);
 const users = new FSDB("../data/users.json", false);
-const crSessions = new FSDB("../data/crSessions.json", false);
+const crSessions = new FSDB("../data/cr-sessions.json", false);
 import { formatLLMMessage, returnDefaultModel } from "./llm-formatting-helpers.mjs"; //
 
 export const setupCallPostHandler = async (twilioBody) => {
@@ -17,7 +17,7 @@ export const setupCallPostHandler = async (twilioBody) => {
         "pk": twilioBody.From,
         "firstName": "Jane",
         "lastName": "Doe",
-        "useCase": "albertEinsteinUseCase",
+        "useCase": "albert-einstein",
         "conversationRelayParamsOverride": {}
     }; 
     try {       
@@ -73,6 +73,20 @@ export const setupCallPostHandler = async (twilioBody) => {
         prompt = prompt.replace('<<USER_CONTEXT>>', `First ask for the user's first and last name to use during the call.`);
     }    
    
+    let timeZone = (process.env.TIMEZONE) ? process.env.TIMEZONE : "America/Los_Angeles";  // Edit to your specifications or could be dynamic based on user
+    
+    const currentDate = new Date();
+    const dateFormatter = new Intl.DateTimeFormat('en-US', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        timeZone: timeZone
+    });
+    
+    prompt = prompt.replace('<<CURRENT_DATE>>', dateFormatter.format(currentDate));
+
     /**
      * ConversationRelay can handle DTMF events. DTMF handlers can be configured
      * here and then saved into database for the session. ConversationRelay will
