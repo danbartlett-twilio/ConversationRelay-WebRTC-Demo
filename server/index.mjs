@@ -46,7 +46,7 @@ server.on("upgrade", (request, socket, head) => {
   wss.handleUpgrade(request, socket, head, (socket) => {
     // Get the Twilio callSid to use as session ID for the WebSocket connection
     const URLparams = url.parse(request.url, true).query;
-    console.log("URLparams => ", URLparams);
+    //console.log("URLparams => ", URLparams);
     if (URLparams.callSid) {
       request.callSid = URLparams.callSid;
       wss.emit("connection", socket, request, head);
@@ -113,14 +113,6 @@ wss.on("connection", (socket, request, head) => {
           }
         }
 
-        /*const localClient = wss.clients.find(client => client.callSid === 'browser-client');
-          if (localClient) {
-            localClient.send(JSON.stringify({
-              type: 'twilio-event',
-              callSid: callSid,
-              message: messageJSON
-            }));
-          }*/
       }
 
       // Primary handler for messages from Twilio ConversationRelay

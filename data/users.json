@@ -1,29 +1,49 @@
 {
-  "browser-client": {
-    "from": "client:browser-client",
-    "role": "system",
-    "type": "webRtc",
-    "identity": "browser-client",
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "useCase": "albert-einstein",
-    "conversationRelayParamsOverride": {
-      "language": "en-US",
-      "ttsProvider": "ElevenLabs",
-      "voice": "tnSpp4vdxKPjI9w0GnoV",
-      "transcriptionProvider": "Deepgram",
-      "speechModel": "nova-2-general",
-      "interruptible": "any",
-      "preemptible": true,
-      "welcomeGreetingInterruptible": "none",
-      "welcomeGreetingPreemptible": true
+    "browser-client": {
+        "from": "browser-client",
+        "role": "system",
+        "type": "webRtc",
+        "identity": "browser-client",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "useCase": "rhyming-parrot",
+        "conversationRelayParamsOverride": {
+            "language": "en-US",
+            "ttsProvider": "ElevenLabs",
+            "voice": "gUABw7pXQjhjt0kNFBTF",
+            "transcriptionProvider": "Deepgram",
+            "speechModel": "nova-2-general",
+            "interruptible": "any",
+            "preemptible": true,
+            "welcomeGreetingInterruptible": "none",
+            "welcomeGreetingPreemptible": true
+        }
+    },
+    "+15555555555": {
+        "from": "+15555555555",
+        "firstName": "Some",
+        "lastName": "PSTN-Caller",
+        "useCase": "restaurant-ordering",
+        "conversationRelayParamsOverride": {}
+    },
+    "client:browser-client": {
+        "from": "browser-client",
+        "role": "system",
+        "type": "webRtc",
+        "identity": "client:browser-client",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "useCase": "rhyming-parrot",
+        "conversationRelayParamsOverride": {
+            "language": "en-US",
+            "ttsProvider": "ElevenLabs",
+            "voice": "tnSpp4vdxKPjI9w0GnoV",
+            "transcriptionProvider": "Deepgram",
+            "speechModel": "nova-2-general",
+            "interruptible": "any",
+            "preemptible": true,
+            "welcomeGreetingInterruptible": "none",
+            "welcomeGreetingPreemptible": true
+        }
     }
-  },
-  "+15555555555": {
-    "from": "+15555555555",
-    "firstName": "Some",
-    "lastName": "PSTN-Caller",
-    "useCase": "restaurant-ordering",
-    "conversationRelayParamsOverride": {}
-  }
 }
