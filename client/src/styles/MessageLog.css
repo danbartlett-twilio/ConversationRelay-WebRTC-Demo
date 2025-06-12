@@ -62,3 +62,49 @@
   text-align: right;
   opacity: 0.8;
 }
+
+.interrupt-container {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+@keyframes pulseInterrupt {
+  0% {
+    box-shadow: 0 0 0 0 rgba(26, 35, 126, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(26, 35, 126, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(26, 35, 126, 0);
+  }
+}
+
+.interrupt-message {
+  background-color: #ede7f6; /* soft blue-grey */
+  color: #4527a0; /* deep indigo for contrast */
+  padding: 12px 16px;
+  border-radius: 10px;
+  max-width: 80%;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d1c4e9;
+}
+
+.message-bubble.remote {
+  background-color: #f44336;
+  color: #ffffff;
+}
+
+.latency-text {
+  background-color: #fdecea; /* light red/pink */
+  color: #a94442; /* dark red text */
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}

@@ -22,6 +22,7 @@ const Transcript = forwardRef((props, ref) => {
 
   const setupWebsockToController = async () => {
     // For developing use this url to get events without having to re-build
+    // TO DO - update this socket
     console.log("registering socket");
     const socket = new WebSocket(
       "ws://localhost:3000/?callSid=" + props.identity
@@ -37,10 +38,43 @@ const Transcript = forwardRef((props, ref) => {
       console.log("Connection opened!");
     });
 
+    let clientTs = 0;
+    let agentTs = 0;
+    let latency;
+
     // Listen for messages
     socket.addEventListener("message", (event) => {
       const data = JSON.parse(event.data);
-      console.log(data);
+      // console.log(data);
+
+      if (data.type === "info" && data.name !== "tokensPlayed") {
+        if (data.name === "clientSpeaking" && data.value === "off") {
+          clientTs = data.ts;
+        }
+        if (data.name === "agentSpeaking" && data.value === "on") {
+          agentTs = data.ts;
+        }
+
+        // latency is the total time in ms for agent to start speaking after client stops speaking
+        latency = agentTs - clientTs;
+
+        if (
+          latency > 0 &&
+          clientTs > 0 &&
+          data.name === "agentSpeaking" &&
+          data.value === "on"
+        ) {
+          console.log(`latency is ${latency}ms`);
+          setEvents((prevEvents) => [
+            ...prevEvents,
+            { type: "latency", value: latency },
+          ]);
+        }
+      }
+
+      if (data.type === "interrupt") {
+        setEvents((prevEvents) => [...prevEvents, data]);
+      }
 
       if (data.type === "info" && data.name === "tokensPlayed") {
         setEvents((prevEvents) => [...prevEvents, data]);
