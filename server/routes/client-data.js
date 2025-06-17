@@ -136,7 +136,7 @@ router.get("/get-transcription-voices", async (req, res) => {
 // Description: Gets all session from the local database
 router.get("/get-sessions", async (req, res) => {
   const sessions = new FSDB(`../data/cr-sessions.json`, false);  
-  res.send(sessions.getAll());
+  res.send(sessions.getAll().reverse());
 });
 
 // URI:  <server>/client-data/get-session?callSid=<callSid>
@@ -144,11 +144,11 @@ router.get("/get-sessions", async (req, res) => {
 // Description: Returns the session data for a specific callSid (details and chats)
 router.get("/get-session", async (req, res) => {
   const URLparams = url.parse(req.url, true).query;
-  console.log("URLparams => ", URLparams);
+  //console.log("URLparams => ", URLparams);
   const crSession = new FSDB(`../data/sessions/${URLparams.callSid}/session.json`, false);  
   const sessionChats = new FSDB(`../data/sessions/${URLparams.callSid}/chats.json`, false);  
   
-  res.send({sessionData:{sessionData:crSession.getAll(), sessionChats:sessionChats.getAll()}});
+  res.send({sessionData:{sessionData:crSession.getAll(), sessionChats:sessionChats.getAll().reverse()}});
 });
 
 
