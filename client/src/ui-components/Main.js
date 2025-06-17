@@ -287,7 +287,7 @@ const Main = () => {
           </Alert>
         )}
         <Grid gutter="space40">
-          <Column span={7}>
+          <Column span={9}>
             <Box paddingTop="space50">
               <Stack orientation="vertical" spacing="space40">
                 <StartCard placeCall={placeCall} stopCall={stopCall} />
@@ -305,7 +305,7 @@ const Main = () => {
               </Stack>
             </Box>
           </Column>
-          <Column span={5}>
+          <Column span={3}>
             <Box paddingTop="space50">
               <BotProperties
                 useCases={useCases}
