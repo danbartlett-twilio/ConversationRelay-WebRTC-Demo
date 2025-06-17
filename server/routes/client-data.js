@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import cors from "cors";
+import url from "url";
 //import path from "path";
 //import { fileURLToPath } from 'url';
 
@@ -41,6 +42,9 @@ router.get("/get-users", async (req, res) => {
 // Method: POST
 // Description: This route updates specific user from data passed in the request.
 router.post("/update-user", async (req, res) => {
+  
+  console.log("update-user called with body: ", req.body);
+  
   const users = new FSDB(`../data/users.json`, false);
 
   const userIdentity = req.body.identity;
@@ -126,5 +130,26 @@ router.get("/get-transcription-voices", async (req, res) => {
   const allVoices = voices.getAll();
   res.send(allVoices);
 });
+
+// URI:  <server>/client-data/get-sessions
+// Method: GET
+// Description: Gets all session from the local database
+router.get("/get-sessions", async (req, res) => {
+  const sessions = new FSDB(`../data/cr-sessions.json`, false);  
+  res.send(sessions.getAll().reverse());
+});
+
+// URI:  <server>/client-data/get-session?callSid=<callSid>
+// Method: GET
+// Description: Returns the session data for a specific callSid (details and chats)
+router.get("/get-session", async (req, res) => {
+  const URLparams = url.parse(req.url, true).query;
+  //console.log("URLparams => ", URLparams);
+  const crSession = new FSDB(`../data/sessions/${URLparams.callSid}/session.json`, false);  
+  const sessionChats = new FSDB(`../data/sessions/${URLparams.callSid}/chats.json`, false);  
+  
+  res.send({sessionData:{sessionData:crSession.getAll(), sessionChats:sessionChats.getAll().reverse()}});
+});
+
 
 export default router;

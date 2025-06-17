@@ -21,7 +21,8 @@ export const setupCallPostHandler = async (twilioBody) => {
         "conversationRelayParamsOverride": {}
     }; 
     try {       
-        let user = users.get(twilioBody.From);  // Pull user profile from database
+        let from = twilioBody.From.replace("client:", ""); // Remove "client:" prefix if present
+        let user = users.get(from);  // Pull user profile from database
         if (user !== undefined) {
             userContext = user;
         }        

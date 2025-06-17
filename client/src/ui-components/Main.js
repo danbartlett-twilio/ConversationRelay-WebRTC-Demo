@@ -239,7 +239,7 @@ const Main = () => {
     let data = {
       firstName: "Jane",
       lastName: "Doe",
-      from: "client:browser-client",
+      from: "browser-client",
       role: selectedUser.role,
       identity: selectedUser.identity,
       type: selectedUser.type,
