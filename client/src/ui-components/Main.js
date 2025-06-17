@@ -275,7 +275,8 @@ const Main = () => {
   // Main layout of the application
   let layout = (
     <div>
-      <Box style={{ marginTop: 10 }} height="100vh">
+      <Box style={{ marginTop: 10 }} height="100vh" padding="space50">
+        {/* Alert message make same size as rest */}
         {showAlert && (
           <Alert
             variant={alertType}
@@ -287,7 +288,7 @@ const Main = () => {
         )}
         <Grid gutter="space40">
           <Column span={7}>
-            <Box padding="space50">
+            <Box paddingTop="space50">
               <Stack orientation="vertical" spacing="space40">
                 <StartCard placeCall={placeCall} stopCall={stopCall} />
                 <Heading as="h1" variant="heading40" marginBottom="space0">
@@ -305,7 +306,7 @@ const Main = () => {
             </Box>
           </Column>
           <Column span={5}>
-            <Box padding="space50">
+            <Box paddingTop="space50">
               <BotProperties
                 useCases={useCases}
                 selectedUser={selectedUser}
