@@ -1,4 +1,5 @@
 import { useState, useRef, useImperativeHandle, forwardRef } from "react";
+import { Stack, Heading, Card } from "@twilio-paste/core";
 
 import MessageLog from "./MessageLog";
 import "../styles/MessageLog.css"; // Import the CSS styles
@@ -93,7 +94,16 @@ const Transcript = forwardRef((props, ref) => {
     }
   };
 
-  let layout = <MessageLog events={events} />;
+  let layout = (
+    <Stack orientation="vertical" spacing="space40">
+      <Card padding="space120">
+        <Heading as="h1" variant="heading30" marginBottom="space40">
+          Conversation Transcription
+        </Heading>
+        <MessageLog events={events} />
+      </Card>
+    </Stack>
+  );
 
   return layout;
 });

@@ -6,15 +6,7 @@ import { Theme } from "@twilio-paste/core/dist/theme";
 
 import { updateUserHelper } from "../helpers/clientDataHelper";
 
-import {
-  Flex,
-  Box,
-  Heading,
-  Grid,
-  Column,
-  Stack,
-  Alert,
-} from "@twilio-paste/core";
+import { Flex, Box, Grid, Column, Stack, Alert } from "@twilio-paste/core";
 
 import AppHeader from "./AppHeader";
 import StartCard from "../ui-components/StartCard";
@@ -287,25 +279,19 @@ const Main = () => {
           </Alert>
         )}
         <Grid gutter="space40">
-          <Column span={9}>
+          <Column span={8}>
             <Box paddingTop="space50">
               <Stack orientation="vertical" spacing="space40">
                 <StartCard placeCall={placeCall} stopCall={stopCall} />
-                <Heading as="h1" variant="heading40" marginBottom="space0">
-                  Audio Visualizer
-                </Heading>
                 <Audiovisualizer
                   localAnalyser={localAnalyser}
                   remoteAnalyser={remoteAnalyser}
                 />
-                <Heading as="h1" variant="heading40" marginBottom="space0">
-                  Conversation Transcription
-                </Heading>
                 <Transcript ref={transcriptRef} identity={identity} />
               </Stack>
             </Box>
           </Column>
-          <Column span={3}>
+          <Column span={4}>
             <Box paddingTop="space50">
               <BotProperties
                 useCases={useCases}

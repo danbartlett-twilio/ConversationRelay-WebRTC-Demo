@@ -107,7 +107,16 @@
 // export default Audiovisualizer;
 
 import React, { useEffect, useRef } from "react";
-import { Avatar, Stack, Box, Flex } from "@twilio-paste/core";
+import {
+  Avatar,
+  Stack,
+  Box,
+  Flex,
+  Heading,
+  Card,
+  Paragraph,
+  Button,
+} from "@twilio-paste/core";
 import { AgentIcon } from "@twilio-paste/icons/esm/AgentIcon";
 import botImage from "../images/bot.png";
 
@@ -177,32 +186,40 @@ const Audiovisualizer = ({ localAnalyser, remoteAnalyser }) => {
   }, [localAnalyser, remoteAnalyser]);
 
   return (
-    <Box width="100%" style={{ border: "1px solid red" }} display="flex">
-      {/* <Stack orientation="horizontal" spacing="space40"> */}
-      <Avatar
-        size="sizeIcon110"
-        name="Conversation Relay Avatar"
-        src={botImage}
-        color="decorative30"
-      />
-      <Box flexGrow={1}>
-        <canvas
-          ref={canvasRef}
-          style={{
-            width: "100%",
-            height: "120px",
-            display: "block",
-          }}
+    //  <Box width="100%" display="flex">
+    //   {/* style={{ border: "1px solid red" }} */}
+
+    // </Box>
+
+    <Card padding="space120">
+      <Heading as="h1" variant="heading30" marginBottom="space40">
+        Audio Visualizer
+      </Heading>
+      <Stack orientation="horizontal" spacing="space40">
+        <Avatar
+          size="sizeIcon110"
+          name="Conversation Relay Avatar"
+          src={botImage}
+          color="decorative30"
         />
-      </Box>
-      <Avatar
-        size="sizeIcon110"
-        name="User Avatar"
-        icon={AgentIcon}
-        color="decorative20"
-      />
-      {/* </Stack> */}
-    </Box>
+        <Box flexGrow={1}>
+          <canvas
+            ref={canvasRef}
+            style={{
+              width: "100%",
+              height: "120px",
+              display: "block",
+            }}
+          />
+        </Box>
+        <Avatar
+          size="sizeIcon110"
+          name="User Avatar"
+          icon={AgentIcon}
+          color="decorative20"
+        />
+      </Stack>
+    </Card>
   );
 };
 
