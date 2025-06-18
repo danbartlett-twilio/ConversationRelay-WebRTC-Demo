@@ -11,147 +11,123 @@ import {
 
 import { SearchIcon } from "@twilio-paste/icons/esm/SearchIcon";
 
-import AddUserForm from './AddUserForm';
-import UserRecord from './UserRecord';
+import SelectedCall from './SelectedCall';
+import CallRecord from './CallRecord';
 
-import { updateUserHelper, createUserHelper, deleteUserHelper } from '../../helpers/clientDataHelper';
-
-//  DEV only - locally set users
-// const usersData = [
-//     { "key": 'Alice', "value" : { role: "system", firstName: "Alice", lastName:"Jones", type:'webRtc', identity: 'ajones', phone: '+13035551111', email: 'test'}} ,
-//      { "key" : 'Bob', "value" : { role: "user", firstName: "Bob", lastName:"Jones", type:'webRtc', identity: 'bjones', phone: '+13035552222', email: 'test'}} ,
-//      { "key" :'Charlie', "value": { role: "system", firstName: "Charlie", lastName:"Avila", type:'sip', identity: 'sip:cavila@domain.com', phone: '+13035553333',email: 'test'}} ,
-//      { "key" :'David', "value": { role: "user", firstName: "David", lastName:"James", type:'phone', identity: '+13035551212', phone: '+13035554444', email: 'test'}} ,
-//      { "key" :'Eve', "value": { role: "user", firstName: "Eve", lastName:"Smith", type:'sip', identity: 'sip:esmith@domain.com', phone: '+13035555555', email: 'test'}}
-//     ]
+import { deleteCallHelper } from '../../helpers/clientDataHelper';
 
 
-const Users = () => {
+const CallList = () => {
     const [search, setSearch] = useState('');
-    const [users, setUsers] = useState([]);
-    const [filteredUsers, setFilteredUsers] = useState([]);
-    const [selectedUser, setSelectedUser] = useState(null);
+    const [sessions, setSessions] = useState([]);
+    const [filteredSessions, setFilteredSessions] = useState([]);
+    const [selectedCall, setSelectedCall] = useState(null);
+    const [selectedCallChat, setSelectedCallChat] = useState(null);
     const [reload, setReload] = useState(false);
 
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-    const [deleteUser, setDeleteUser] = useState(null);
+    const [deleteCall, setDeleteCall] = useState(null);
 
     // Alert state alert state for updating current user configuration
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const [alertType, setAlertType] = useState("neutral");
 
-
-    // State for the side modal dialog
-    const dialog = useSideModalState({})
-
-
     // Fetch all users from the backend when the component mounts or reload state changes
     useEffect(() => {
         //   get all users from the backend
-        const fetchUsers = async () => {
-            const usersURL = process.env.REACT_APP_GET_ALL_USERS_URL;
+
+        const fetchSessions = async () => {
+            const sessionsURL = process.env.REACT_APP_GET_ALL_SESSIONS_URL;
             try {
-                const response = await axios.get(usersURL);
-                setUsers(response.data);
-                setFilteredUsers(response.data);
+                const response = await axios.get(sessionsURL);
+                setSessions(response.data);
+                setFilteredSessions(response.data);
             } catch (error) {
                 console.error("Error fetching users: ", error);
             }
         }
-        fetchUsers();   
+        fetchSessions();   
     },[reload])
 
-    //  DEV only - locally set users
-    // useEffect(() => {
-    //     // Simulate fetching users from an API
-    //     setUsers(users);
-    //     setFilteredUsers(users);
-    // }
-    // , []);
+
+    useEffect(() => {
+        console.log('selectedCall changed', selectedCall)
+
+        const fetchSessionChat = async () => {
+            if(selectedCall){
+                const sessionURL = process.env.REACT_APP_GET_SESSION_URL + `?callSid=${selectedCall.key}`;
+                try {
+                    const response = await axios.get(sessionURL);
+                    console.log('session data', response.data)
+                    setSelectedCallChat(response.data.sessionData.sessionChats);
+                } catch (error) {
+                    console.error("Error fetching session chat: ", error);
+                }
+            }
+        }
+        fetchSessionChat();
+    }, [selectedCall])
+
 
     // handler to clear search input and reset filtered users
     const clearSearch = () => {
         setSearch('');
-        setFilteredUsers(users);
+        setFilteredSessions(sessions);
     }
 
     // handler to filter users based on search input
     const handleSearchChange = (event) => {
         setSearch( event.target.value.toLowerCase())
-        setFilteredUsers(Object.values(users).filter(user => user.value.firstName.toLowerCase().includes(event.target.value.toLowerCase())))
+        setFilteredSessions(Object.values(sessions).filter(call => call.value.useCase.toLowerCase().includes(event.target.value.toLowerCase())))
     }
 
     // handler to select a user from the list and display their details
-    const handleUserSelect = (user) => { 
-        console.log('handleUserSelect', user)
-        setSelectedUser(user)
-    }
-
-    // handler to clear user detail form
-    const clearSelectedUser = () => { 
-        setSelectedUser(null)
-    }
-
-    // handler to display side drawer to a new user
-    const handleAddUser = () => {   
-        setSelectedUser(null);
-        dialog.show()
+    const handleCallSelect = (call) => { 
+        console.log('handleUserSelect', call)
+         setSelectedCall(call)
     }
 
     // handler to refresh the user list
     const handleRefresh = () => { 
-        setSelectedUser(null);
+        setSelectedCall(null);
         setReload(!reload) 
-        setAlertMessage('User list reloaded');
+        setAlertMessage('Session list reloaded');
         setAlertType("neutral")
         setShowAlert(true)
     }
 
-
-    // handler to update a selected user from the list
-    const updateUser = async (userAttributes) => {
-        let resp = await updateUserHelper(userAttributes);
-        if(resp.status==='success'){
-            setAlertMessage('User configuration was successfully updated');
-            setAlertType("neutral")
-            setShowAlert(true)
-        } else {
-            setAlertMessage('An error has occurred updating this user.');
-            setAlertType("error")
-            setShowAlert(true)
-        }
-        setShowDeleteDialog(false);
-        clearSelectedUser()
-        setReload(!reload);
+    // handler to display the delete user dialog
+    const dialogDeleteCall = (call) => { 
+        setShowDeleteDialog(true)
+        setDeleteCall(call);
     }
 
-    // handler to display the delete user dialog
-    const dialogDeleteUser = (user) => { 
-        setShowDeleteDialog(true)
-        setDeleteUser(user);
+    const handleCloseDeleteDialog = () => {
+        setShowDeleteDialog(false)
+        setDeleteCall(null);
     }
 
     // handler to delete a user from the list
-    const handleUserDelete = async () => {
-        console.log('handleUserDelete', deleteUser)
-        const identity = {identity: deleteUser.key}
+    const handleCallDelete = async () => {
+        console.log('handleCallDelete', deleteCall)
+        const callSid = {callSid: deleteCall.key}
        //  Call server API to create the user
-       let resp = await deleteUserHelper(identity);
+       let resp = await deleteCallHelper(callSid);
 
         if(resp.status==='success'){
-            setAlertMessage('User configuration was successfully deleted');
+            setAlertMessage('Session history was successfully deleted');
             setAlertType("neutral")
             setShowAlert(true)
         } else {
-            setAlertMessage('An error has occurred deleting this user.');
+            setAlertMessage('An error has occurred deleting this session data.');
             setAlertType("error")
             setShowAlert(true)
         }
         setShowDeleteDialog(false);
-        setDeleteUser(null);
+        setDeleteCall(null);
         setReload(!reload);
-        dialog.hide()
+
     }
 
     // handler to create new application users
@@ -216,8 +192,8 @@ const Users = () => {
                     </Column>
                     <Column span={4}>
                         <Card marginLeft={'100px'} width="100%" >
-                            <Heading as="h3" variant="heading30" marginBottom="space40">Application Users</Heading>
-                            <Paragraph marginBottom="space40">Manage users for your application. Users can be added, deleted, and updated.</Paragraph>
+                            <Heading as="h3" variant="heading30" marginBottom="space40">Ai Session History</Heading>
+                            <Paragraph marginBottom="space40">Review past Ai Sessions, their details and transcripts.</Paragraph>
                             
                             <Box overflowY="auto" height="auto" maxHeight="500px">
                                 <Box style={{marginBottom: '20px'}} padding="space20">
@@ -242,14 +218,14 @@ const Users = () => {
                                     <THead stickyHeader top={0}>
                                         <Tr>
                                             <Th>View</Th>
-                                            <Th>User</Th>
+                                            <Th>Ai Session</Th>
                                             <Th>Delete</Th>
                                         </Tr>
                                     </THead>
                                     <TBody>
                                         {
-                                            Object.values(filteredUsers).filter(user => user.value.role === 'user').map((user, index) => (
-                                                <UserRecord key={index} user={user} deleteUser={dialogDeleteUser} userSelect={handleUserSelect}/>
+                                            Object.values(filteredSessions).map((call, index) => (
+                                                <CallRecord key={index} call={call} deleteCall={dialogDeleteCall} callSelect={handleCallSelect}/>
                                             ))
                                         }
                                     </TBody>
@@ -259,53 +235,38 @@ const Users = () => {
                                 <Box as="div" style={{marginLeft: '10px', marginRight:'10px', marginTop:'20px'}}  >
                                     <Button variant="secondary" size="small" onClick={()=> handleRefresh()} fullWidth>Refresh</Button>
                                 </Box>
-
-                            <Box as="div" style={{marginBottom: '10px'}} padding="space60" >
-                                <Button variant="primary"  onClick={()=> handleAddUser()} fullWidth>Add User</Button>
-                            </Box>
                         </Card>
                     </Column>
                     <Column span={8}>
                         <Card>
-                            <Heading as="h3" variant="heading30" marginBottom="space40">User Details</Heading>
-                            <Paragraph marginBottom="space40">Update a selected user's details.</Paragraph>                        
-                            <AddUserForm mode={'edit'} selectedUser={selectedUser} updateUser={updateUser} clearForm={clearSelectedUser} />
+                            <Heading as="h3" variant="heading30" marginBottom="space40">Session Details</Heading>
+                            <Paragraph marginBottom="space40">Details of the Ai session.</Paragraph>                        
+                            <SelectedCall mode={'edit'} selectedCall={selectedCall} selectedCallChat={selectedCallChat} />
                         </Card>
                     </Column>
 
                 </Grid>
 
-                {/* Side modal for add user features */}
-                <SideModalContainer state={dialog}>
-                    {/* Place this button wherever you want to trigger the modal */}
-                    <SideModal aria-label="Add User Modal" width="400px">
-                        <SideModalHeader>
-                        <SideModalHeading>Add User</SideModalHeading>
-                        </SideModalHeader>
-                        <SideModalBody>
-                        {/* Modal content here */}
-                            <AddUserForm mode={'add'} createUser={createUser}/>
-                        </SideModalBody>
-                    </SideModal>
-                </SideModalContainer>
 
                 
                 {/* Alert visualization for user deletion */}
                 <AlertDialog
-                    heading="Delete User"
+                    heading="Delete Ai Session"
                     isOpen={showDeleteDialog}
-                    onConfirm={handleUserDelete}
+                    onConfirm={handleCallDelete}
                     onConfirmLabel="Delete"
-                    onDismiss={() => setShowDeleteDialog(false)}
+                    onDismiss={() => handleCloseDeleteDialog(false)}
                     onDismissLabel="Cancel"
                 >
-                    <Paragraph>Are you sure you want to delete this user?</Paragraph>
-                    <Text>Name: {deleteUser?.value.firstName} {deleteUser?.value.lastName}</Text>
-                    <DetailText>Identity: {deleteUser?.value.identity} ({deleteUser?.value.type})</DetailText>
+                    <Paragraph>Are you sure you want to delete this Ai Session?</Paragraph>
+                    <Paragraph>CallSid: {deleteCall?.key}</Paragraph>
+                    <Paragraph>This will delete all session and transcript data for the selected session.</Paragraph>
+                    <Paragraph>This action cannot be undone.</Paragraph>
+
                 </AlertDialog>
             </Box>
         </div>
     )
     return layout
 }
-export default Users;
+export default CallList;

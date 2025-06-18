@@ -12,7 +12,7 @@ import { Theme } from "@twilio-paste/core/dist/theme";
 import Main from "./Main";
 import Users from "./Users/Users";
 import UseCases from "./UseCases/UseCases";
-import CallHistory from "./CallHistory";
+import CallHistory from "./CallHistory/CallHistory";
 import AppHeader from "./AppHeader";
 
 const styles = {
@@ -45,7 +45,7 @@ const Wrapper = () => {
   // handler to manage page selection
   const showPage = (page) => {
     switch (page) {
-      case "main":
+      case "demo":
         return <Main />;
       case "users":
         return <Users />;
@@ -83,15 +83,15 @@ const Wrapper = () => {
             padding="space60"
             // backgroundColor="colorBackgroundPrimaryWeaker"
           >
-            <AppHeader />
-            <Box as="div" padding="space60">
+            <AppHeader currentPage={page} setCurrentPage={handlePageClick} />
+            {/* <Box as="div" padding="space60">
               <div style={{ float: "right", paddingRight: "30px" }}>
                 <ButtonGroup attached>
                   <Tooltip text="Demo ConversationRelay">
                     <Button
                       variant="secondary"
-                      disabled={page === "main"}
-                      onClick={() => handlePageClick("main")}
+                      disabled={page === "demo"}
+                      onClick={() => handlePageClick("demo")}
                     >
                       <CallActiveIcon decorative />
                       Demo
@@ -127,8 +127,8 @@ const Wrapper = () => {
                   </Button>
                 </ButtonGroup>
               </div>
-            </Box>
-            <Box padding="space100">{showPage(page)}</Box>
+            </Box> */}
+            <Box padding="space50">{showPage(page)}</Box>
           </Box>
         </Flex>
 

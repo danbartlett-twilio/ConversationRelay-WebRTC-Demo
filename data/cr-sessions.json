@@ -1,0 +1,43 @@
+{
+    "CA166ce92e22f640be802813f1d741a98f": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "albert-einstein",
+        "userContext": {
+            "from": "browser-client",
+            "role": "user",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "albert-einstein",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"Do NOT include <thinking></thinking> tags. \\n\\nYou are an AI voice agent who can answer questions about Albert Einstein including his life and his body of work in theoretical physics.\\nBe casual, curious, and friendly. \\n\\nKeep your replies short — no long monologues. Use plain, everyday language, and avoid sounding robotic or overly technical.\\nAssume you are speaking with someone who is not trained as a physicist so explain complex things simply and concisely.\\n\\nDo NOT Answer any questions that are not about Albert Einstein or his body of work -- just politely say sorry.\\nWhen the caller has no more question about Albert Einstein or his body of work, thank then and then end the call.\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750181486243,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA166ce92e22f640be802813f1d741a98f",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    }
+}

@@ -18,18 +18,19 @@ const UserRecord = (props) => {
     let layout = (
         <Tr>
           <Td>
-                <Button variant="secondary_icon" size="icon_small" aria-label="Delete user" onClick={() => handleDeleteUser()}>
-                  <DeleteIcon decorative={false} title="Delete user" />
-                </Button>
-          </Td>
-          <Th scope="row">
-              <Text as="span">{props.user.value.firstName} {props.user.value.lastName}</Text>
-              <DetailText marginTop='space0'>{props.user.value.identity} ({props.user.value.type})</DetailText>
-          </Th>
-          <Td>
             <Button variant="secondary_icon" size="icon_small" aria-label="Edit user"  onClick={ () => handleUserEdit()}>
               <EditIcon decorative={false} title="Edit user"/>
             </Button>
+          </Td>
+          <Th scope="row">
+              <Text as="span" color="blue" style={{cursor: 'pointer'}} onClick={ () => handleUserEdit()}>{props.user.value.firstName} {props.user.value.lastName}</Text>
+              <DetailText marginTop='space0'>{props.user.value.identity} ({props.user.value.type})</DetailText>
+          </Th>
+          <Td>
+
+              <Button variant="secondary_icon" size="icon_small" aria-label="Delete user" onClick={() => handleDeleteUser()}>
+                <DeleteIcon decorative={false} title="Delete user" />
+              </Button>            
           </Td>
         </Tr>
     )

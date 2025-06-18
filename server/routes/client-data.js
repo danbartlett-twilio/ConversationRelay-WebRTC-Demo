@@ -42,9 +42,8 @@ router.get("/get-users", async (req, res) => {
 // Method: POST
 // Description: This route updates specific user from data passed in the request.
 router.post("/update-user", async (req, res) => {
-  
   console.log("update-user called with body: ", req.body);
-  
+
   const users = new FSDB(`../data/users.json`, false);
 
   const userIdentity = req.body.identity;
@@ -135,7 +134,7 @@ router.get("/get-transcription-voices", async (req, res) => {
 // Method: GET
 // Description: Gets all session from the local database
 router.get("/get-sessions", async (req, res) => {
-  const sessions = new FSDB(`../data/cr-sessions.json`, false);  
+  const sessions = new FSDB(`../data/cr-sessions.json`, false);
   res.send(sessions.getAll().reverse());
 });
 
@@ -145,11 +144,38 @@ router.get("/get-sessions", async (req, res) => {
 router.get("/get-session", async (req, res) => {
   const URLparams = url.parse(req.url, true).query;
   //console.log("URLparams => ", URLparams);
-  const crSession = new FSDB(`../data/sessions/${URLparams.callSid}/session.json`, false);  
-  const sessionChats = new FSDB(`../data/sessions/${URLparams.callSid}/chats.json`, false);  
-  
-  res.send({sessionData:{sessionData:crSession.getAll(), sessionChats:sessionChats.getAll().reverse()}});
+  const crSession = new FSDB(
+    `../data/sessions/${URLparams.callSid}/session.json`,
+    false
+  );
+  const sessionChats = new FSDB(
+    `../data/sessions/${URLparams.callSid}/chats.json`,
+    false
+  );
+
+  res.send({
+    sessionData: {
+      sessionData: crSession.getAll(),
+      sessionChats: sessionChats.getAll().reverse(),
+    },
+  });
 });
 
+router.post("/delete-session", async (req, res) => {
+  // get users.json
+  const callSid = req.body.callSid;
+  console.log("Request to delete callSid: ", callSid);
+
+  // delete session from cr-sessions.json
+  const sessions = new FSDB(`../data/cr-sessions.json`, false);
+  sessions.delete(callSid);
+
+  // delete session folder
+  let deleteFolder = `../data/sessions/${callSid}`;
+  await import("node:fs").then((fs) =>
+    fs.rmSync(deleteFolder, { recursive: true, force: true })
+  );
+  res.send({ status: "success", data: { callSid: callSid } });
+});
 
 export default router;
