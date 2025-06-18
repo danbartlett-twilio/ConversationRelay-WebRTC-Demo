@@ -1,16 +1,16 @@
 {
     "browser-client": {
         "from": "browser-client",
-        "role": "system",
+        "role": "user",
         "type": "webRtc",
         "identity": "browser-client",
         "firstName": "Jane",
         "lastName": "Doe",
-        "useCase": "rhyming-parrot",
+        "useCase": "albert-einstein",
         "conversationRelayParamsOverride": {
             "language": "en-US",
             "ttsProvider": "ElevenLabs",
-            "voice": "gUABw7pXQjhjt0kNFBTF",
+            "voice": "tnSpp4vdxKPjI9w0GnoV",
             "transcriptionProvider": "Deepgram",
             "speechModel": "nova-2-general",
             "interruptible": "any",

@@ -5,6 +5,8 @@ import url from "url";
 //import path from "path";
 //import { fileURLToPath } from 'url';
 
+
+
 router.use(cors()); // Enable CORS for all routes
 router.use(express.json()); // for parsing application/json
 import { FSDB } from "file-system-db";
@@ -136,7 +138,7 @@ router.get("/get-transcription-voices", async (req, res) => {
 // Description: Gets all session from the local database
 router.get("/get-sessions", async (req, res) => {
   const sessions = new FSDB(`../data/cr-sessions.json`, false);  
-  res.send(sessions.getAll());
+  res.send(sessions.getAll().reverse());
 });
 
 // URI:  <server>/client-data/get-session?callSid=<callSid>
@@ -144,11 +146,26 @@ router.get("/get-sessions", async (req, res) => {
 // Description: Returns the session data for a specific callSid (details and chats)
 router.get("/get-session", async (req, res) => {
   const URLparams = url.parse(req.url, true).query;
-  console.log("URLparams => ", URLparams);
+  //console.log("URLparams => ", URLparams);
   const crSession = new FSDB(`../data/sessions/${URLparams.callSid}/session.json`, false);  
   const sessionChats = new FSDB(`../data/sessions/${URLparams.callSid}/chats.json`, false);  
   
-  res.send({sessionData:{sessionData:crSession.getAll(), sessionChats:sessionChats.getAll()}});
+  res.send({sessionData:{sessionData:crSession.getAll(), sessionChats:sessionChats.getAll().reverse()}});
+});
+
+router.post("/delete-session", async (req, res) => {
+  // get users.json
+  const callSid = req.body.callSid;
+  console.log("Request to delete callSid: ", callSid);
+
+  // delete session from cr-sessions.json
+  const sessions = new FSDB(`../data/cr-sessions.json`, false);
+  sessions.delete(callSid);
+
+  // delete session folder
+  let deleteFolder = `../data/sessions/${callSid}`;
+  await import("node:fs").then((fs) => fs.rmSync(deleteFolder, { recursive: true, force: true }));
+  res.send({ status: "success", data: { callSid: callSid } });
 });
 
 
