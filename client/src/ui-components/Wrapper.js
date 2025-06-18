@@ -40,7 +40,7 @@ const styles = {
 };
 
 const Wrapper = () => {
-  const [page, setPage] = useState("calls");
+  const [page, setPage] = useState("main");
 
   // handler to manage page selection
   const showPage = (page) => {
@@ -83,7 +83,7 @@ const Wrapper = () => {
             padding="space60"
             // backgroundColor="colorBackgroundPrimaryWeaker"
           >
-            <AppHeader currentPage={page} setCurrentPage={handlePageClick}/>
+            <AppHeader currentPage={page} setCurrentPage={handlePageClick} />
             {/* <Box as="div" padding="space60">
               <div style={{ float: "right", paddingRight: "30px" }}>
                 <ButtonGroup attached>
