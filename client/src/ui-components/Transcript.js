@@ -1,7 +1,8 @@
 import { useState, useRef, useImperativeHandle, forwardRef } from "react";
 import { Stack, Heading, Card } from "@twilio-paste/core";
 
-import MessageLog from "./MessageLog";
+// import MessageLog from "./MessageLog";
+import MessageLog from "../ui-components/Transcription/MessageLog";
 import "../styles/MessageLog.css"; // Import the CSS styles
 
 const Transcript = forwardRef((props, ref) => {
@@ -47,6 +48,7 @@ const Transcript = forwardRef((props, ref) => {
     socket.addEventListener("message", (event) => {
       const data = JSON.parse(event.data);
       // console.log(data);
+      console.log(events);
 
       if (data.type === "info" && data.name !== "tokensPlayed") {
         if (data.name === "clientSpeaking" && data.value === "off") {

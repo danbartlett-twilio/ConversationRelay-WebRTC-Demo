@@ -1,7 +1,7 @@
 {
     "browser-client": {
         "from": "browser-client",
-        "role": "user",
+        "role": "system",
         "type": "webRtc",
         "identity": "browser-client",
         "firstName": "Jane",
@@ -27,13 +27,13 @@
         "conversationRelayParamsOverride": {}
     },
     "client:browser-client": {
-        "from": "browser-client",
-        "role": "system",
+        "role": "user",
         "type": "webRtc",
         "identity": "client:browser-client",
-        "firstName": "Jane",
+        "firstName": "John",
         "lastName": "Doe",
-        "useCase": "rhyming-parrot",
+        "phone": "",
+        "email": "",
         "conversationRelayParamsOverride": {
             "language": "en-US",
             "ttsProvider": "ElevenLabs",

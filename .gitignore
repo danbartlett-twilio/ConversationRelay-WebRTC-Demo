@@ -1,6 +1,6 @@
 data/sessions
 data/cr-sessions.json
-data/users.json
+# data/users.json
 client/build/*
 *.sh
 
