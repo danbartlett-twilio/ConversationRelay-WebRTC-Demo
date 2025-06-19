@@ -267,8 +267,12 @@ const Main = () => {
   // Main layout of the application
   let layout = (
     <div>
-      <Box style={{ marginTop: 10 }} height="100vh" padding="space50">
-        {/* Alert message make same size as rest */}
+      <Box
+        style={{ marginTop: 10 }}
+        width="100%"
+        height="100vh"
+        padding="space50"
+      >
         {showAlert && (
           <Alert
             variant={alertType}
@@ -279,7 +283,7 @@ const Main = () => {
           </Alert>
         )}
         <Grid gutter="space40">
-          <Column span={8}>
+          <Column span={[12, 12, 8]}>
             <Box paddingTop="space50">
               <Stack orientation="vertical" spacing="space40">
                 <StartCard placeCall={placeCall} stopCall={stopCall} />
@@ -291,7 +295,7 @@ const Main = () => {
               </Stack>
             </Box>
           </Column>
-          <Column span={4}>
+          <Column span={[12, 12, 4]}>
             <Box paddingTop="space50">
               <BotProperties
                 useCases={useCases}

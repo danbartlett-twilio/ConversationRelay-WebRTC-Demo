@@ -68,14 +68,14 @@ const Wrapper = () => {
     <Theme.Provider theme="Twilio">
       <Flex>
         <Flex>
-          <Box
+          {/* <Box
             width="200px"
             padding="space200"
             backgroundColor={"#ccc"}
             height={"500vh"}
           >
             &nbsp;
-          </Box>
+          </Box> */}
         </Flex>
         <Flex grow>
           <Box
@@ -133,14 +133,14 @@ const Wrapper = () => {
         </Flex>
 
         <Flex>
-          <Box
+          {/* <Box
             width="200px"
             padding="space200"
             backgroundColor={"#ccc"}
             height={"500vh"}
           >
             &nbsp;
-          </Box>
+          </Box> */}
         </Flex>
       </Flex>
     </Theme.Provider>

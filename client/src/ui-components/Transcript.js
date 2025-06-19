@@ -48,7 +48,6 @@ const Transcript = forwardRef((props, ref) => {
     socket.addEventListener("message", (event) => {
       const data = JSON.parse(event.data);
       // console.log(data);
-      console.log(events);
 
       if (data.type === "info" && data.name !== "tokensPlayed") {
         if (data.name === "clientSpeaking" && data.value === "off") {
