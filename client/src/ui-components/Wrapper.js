@@ -67,80 +67,14 @@ const Wrapper = () => {
   let layout = (
     <Theme.Provider theme="Twilio">
       <Flex>
-        <Flex>
-          {/* <Box
-            width="200px"
-            padding="space200"
-            backgroundColor={"#ccc"}
-            height={"500vh"}
-          >
-            &nbsp;
-          </Box> */}
-        </Flex>
         <Flex grow>
           <Box
             width="100%"
-            padding="space60"
             // backgroundColor="colorBackgroundPrimaryWeaker"
           >
             <AppHeader currentPage={page} setCurrentPage={handlePageClick} />
-            {/* <Box as="div" padding="space60">
-              <div style={{ float: "right", paddingRight: "30px" }}>
-                <ButtonGroup attached>
-                  <Tooltip text="Demo ConversationRelay">
-                    <Button
-                      variant="secondary"
-                      disabled={page === "demo"}
-                      onClick={() => handlePageClick("demo")}
-                    >
-                      <CallActiveIcon decorative />
-                      Demo
-                    </Button>
-                  </Tooltip>
-                  <Tooltip text="Manage Users">
-                    <Button
-                      variant="secondary"
-                      disabled={page === "users"}
-                      onClick={() => handlePageClick("users")}
-                    >
-                      <UsersIcon decorative />
-                      Users
-                    </Button>
-                  </Tooltip>
-                  <Tooltip text="Manage AI Experiences">
-                    <Button
-                      variant="secondary"
-                      disabled={page === "useCases"}
-                      onClick={() => handlePageClick("useCases")}
-                    >
-                      <DirectoryIcon decorative />
-                      UseCases
-                    </Button>
-                  </Tooltip>
-                  <Button
-                    variant="secondary"
-                    disabled={page === "calls"}
-                    onClick={() => handlePageClick("calls")}
-                  >
-                    <DirectoryIcon decorative />
-                    Call History
-                  </Button>
-                </ButtonGroup>
-              </div>
-            </Box> */}
-            <Box padding="space50">{showPage(page)}</Box>
+            <Box>{showPage(page)}</Box>
           </Box>
-        </Flex>
-
-        <Flex>
-          {/* <Box
-            width="200px"
-            padding="space200"
-            backgroundColor={"#ccc"}
-            height={"500vh"}
-          >
-            &nbsp;
-          </Box> */}
         </Flex>
       </Flex>
     </Theme.Provider>

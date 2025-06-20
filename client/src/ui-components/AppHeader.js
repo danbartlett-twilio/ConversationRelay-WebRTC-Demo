@@ -1,9 +1,18 @@
 import { useState } from "react";
 import {
-  Box, Heading, Topbar, TopbarActions, Button,
-  MenuButton, useMenuState, Menu, MenuItem
-
- } from "@twilio-paste/core";
+  Box,
+  Heading,
+  Topbar,
+  TopbarActions,
+  Button,
+  ButtonGroup,
+  Tooltip,
+  page,
+  MenuButton,
+  useMenuState,
+  Menu,
+  MenuItem,
+} from "@twilio-paste/core";
 
 import { LogoTwilioIcon } from "@twilio-paste/icons/esm/LogoTwilioIcon";
 import { MenuIcon } from "@twilio-paste/icons/esm/MenuIcon";
@@ -13,125 +22,176 @@ import { HistoryIcon } from "@twilio-paste/icons/esm/HistoryIcon";
 import { DirectoryIcon } from "@twilio-paste/icons/esm/DirectoryIcon";
 
 const styles = {
-    wrapper: { width: '100%',},
+  wrapper: { width: "100%" },
   headTwoColumnLayout: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width:'100%',
-    padding:'20px'
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    padding: "20px",
   },
   headLeftColumn: {
-    width: '200px',
+    width: "200px",
     flexShrink: 0,
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
   },
   headRightColumn: {
     flex: 1,
-    textAlign: 'left',
-    color: '#ffffff',
+    textAlign: "left",
+    color: "#ffffff",
   },
 };
-
 
 const AppHeader = (props) => {
   const menu = useMenuState();
 
   const handlePageClick = (page) => {
     props.setCurrentPage(page);
-    menu.hide()
-  }
+    menu.hide();
+  };
 
-    let layout = (
-      <Box>
-        <Topbar id="header">
-          <TopbarActions justify="start">
-            <Box display="flex" alignItems="center">
-              <Box marginRight="space50">
-                  <MenuButton {...menu} variant="primary_icon">
-                      <MenuIcon decorative={false} size="sizeIcon80" title="AppMenu" />
-                  </MenuButton>
-                  <Menu {...menu} aria-label="App Menu">
-                    <MenuItem {...menu}>
-                      <Button 
-                        variant={"primary_icon"} 
-                        onClick={() => handlePageClick('demo')}
-                        disabled={props.currentPage === "demo"}
-                        >
-                        <CallActiveIcon decorative />
-                        Demo
-                      </Button>
-                    </MenuItem>
-                    <MenuItem {...menu}>
-                    <Button
-                      variant={"primary_icon"}
-                      disabled={props.currentPage === "users"}
-                      onClick={() => handlePageClick('users')}
-                    >
-                      <UsersIcon decorative />
-                      Users
-                    </Button>
-                    </MenuItem>
-                    <MenuItem {...menu}>
-                      <Button
-                      variant={"primary_icon"}
-                      disabled={props.currentPage === "useCases"}
-                      onClick={() => handlePageClick("useCases")}
-                    >
-                      <DirectoryIcon decorative />
-                      UseCases
-                    </Button>
-                    </MenuItem>
-                    <MenuItem {...menu}>
-                      <Button
-                        variant={"primary_icon"}
-                        disabled={props.currentPage === "calls"}
-                        onClick={() => handlePageClick("calls")}
-                      >
-                        <DirectoryIcon decorative />
-                        Call History
-                      </Button>
-                    </MenuItem>
-                  </Menu>
-              </Box>
-
-              <Box paddingRight="space20">
-                <LogoTwilioIcon size={'sizeIcon50'} color="red" decorative={false} title="Description of icon" />
-              </Box>
-              <Heading
-                marginBottom="space0"
-                paddingLeft="space30"
-                as="h2"
-                variant="heading20"
-                color={{ color: "#ffffff" }}
-              >
-                ConversationRelay - WebRTC Demo
-              </Heading>
+  let layout = (
+    <Box>
+      <Topbar id="header">
+        <TopbarActions justify="start">
+          <Box display="flex" alignItems="center">
+            <Box paddingRight="space20">
+              <LogoTwilioIcon
+                size={"sizeIcon50"}
+                color="red"
+                decorative={false}
+                title="Description of icon"
+              />
             </Box>
-          </TopbarActions>
-        </Topbar>
-      </Box>
+            <Heading
+              marginBottom="space0"
+              paddingLeft="space30"
+              as="h2"
+              variant="heading20"
+              color={{ color: "#ffffff" }}
+            >
+              ConversationRelay
+            </Heading>
+          </Box>
+        </TopbarActions>
+        <TopbarActions justify="end">
+          <Box display={["none", "none", "block"]}>
+            <ButtonGroup attached>
+              <Tooltip text="Demo ConversationRelay">
+                <Button
+                  variant="secondary"
+                  disabled={page === "demo"}
+                  onClick={() => handlePageClick("demo")}
+                >
+                  <CallActiveIcon decorative />
+                  Demo
+                </Button>
+              </Tooltip>
+              <Tooltip text="Manage Users">
+                <Button
+                  variant="secondary"
+                  disabled={page === "users"}
+                  onClick={() => handlePageClick("users")}
+                >
+                  <UsersIcon decorative />
+                  Users
+                </Button>
+              </Tooltip>
+              <Tooltip text="Manage AI Experiences">
+                <Button
+                  variant="secondary"
+                  disabled={page === "useCases"}
+                  onClick={() => handlePageClick("useCases")}
+                >
+                  <DirectoryIcon decorative />
+                  UseCases
+                </Button>
+              </Tooltip>
+              <Button
+                variant="secondary"
+                disabled={page === "calls"}
+                onClick={() => handlePageClick("calls")}
+              >
+                <DirectoryIcon decorative />
+                Call History
+              </Button>
+            </ButtonGroup>
+          </Box>
+          {/* Responsive for mobile hamburger menu */}
+          <Box display={["block", "block", "none"]}>
+            <MenuButton {...menu} variant="primary_icon">
+              <MenuIcon decorative={false} size="sizeIcon80" title="AppMenu" />
+            </MenuButton>
+            <Menu {...menu} aria-label="App Menu">
+              <MenuItem
+                {...menu}
+                onClick={() => handlePageClick("demo")}
+                disabled={props.currentPage === "demo"}
+              >
+                <Box display="flex" alignItems="center" columnGap="space30">
+                  <CallActiveIcon decorative />
+                  Demo
+                </Box>
+              </MenuItem>
 
-      // TODO: Old Header - Remove
-        // <div style={styles.wrapper}>
-        // <div style={styles.headTwoColumnLayout} >
-        //     <div style={styles.headLeftColumn} >
-        //         <img src="/images/twilio_logo.jpg" alt="Twilio Logo" width="100" height="50" /> </div>
-        //     <div style={styles.headRightColumn}>                                        
-        //         <Heading 
-        //             marginBottom='space0'
-        //             as="h2" 
-        //                 variant="heading8"
-        //             color={{color:'#ffffff'}}
-        //             >Conversation Relay - Cloud Intelligence
-        //         </Heading>
-                
-        //     </div>
-        // </div>
-        // </div>
-    )
-    return layout
-}
+              <MenuItem
+                {...menu}
+                onClick={() => handlePageClick("users")}
+                disabled={props.currentPage === "users"}
+              >
+                <Box display="flex" alignItems="center" columnGap="space30">
+                  <UsersIcon decorative />
+                  Users
+                </Box>
+              </MenuItem>
+
+              <MenuItem
+                {...menu}
+                onClick={() => handlePageClick("useCases")}
+                disabled={props.currentPage === "useCases"}
+              >
+                <Box display="flex" alignItems="center" columnGap="space30">
+                  <DirectoryIcon decorative />
+                  Use Cases
+                </Box>
+              </MenuItem>
+
+              <MenuItem
+                {...menu}
+                onClick={() => handlePageClick("calls")}
+                disabled={props.currentPage === "calls"}
+              >
+                <Box display="flex" alignItems="center" columnGap="space30">
+                  <DirectoryIcon decorative />
+                  Call History
+                </Box>
+              </MenuItem>
+            </Menu>
+          </Box>
+        </TopbarActions>
+      </Topbar>
+    </Box>
+
+    // TODO: Old Header - Remove
+    // <div style={styles.wrapper}>
+    // <div style={styles.headTwoColumnLayout} >
+    //     <div style={styles.headLeftColumn} >
+    //         <img src="/images/twilio_logo.jpg" alt="Twilio Logo" width="100" height="50" /> </div>
+    //     <div style={styles.headRightColumn}>
+    //         <Heading
+    //             marginBottom='space0'
+    //             as="h2"
+    //                 variant="heading8"
+    //             color={{color:'#ffffff'}}
+    //             >Conversation Relay - Cloud Intelligence
+    //         </Heading>
+
+    //     </div>
+    // </div>
+    // </div>
+  );
+  return layout;
+};
 export default AppHeader;
