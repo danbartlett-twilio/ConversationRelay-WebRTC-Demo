@@ -131,6 +131,7 @@ export const setupCallPostHandler = async (twilioBody) => {
         let sessionData = {                  
             llmModel: llmModel, // LLM model to use for this session
             useCase: useCaseTitle,
+            welcomeGreeting: useCase.welcomeGreeting, // Welcome greeting for the session
             userContext: userContext,
             systemPrompt: [ { text: prompt } ],
             tools: tools, // tools passed into session -- can be changed dynamically.
