@@ -49,3 +49,21 @@ export const deleteUserHelper = async(identity) => {
             return { status: "error", message: error.message };
         }    
 }
+
+
+export const deleteCallHelper = async (callSid) => {
+    const deleteCallUrl = process.env.REACT_APP_DELETE_SESSION_URL
+    console.log('deleteCallHelper', deleteCallUrl, callSid)
+    try {
+        return await axios.post(deleteCallUrl,  callSid )
+        .then((resp) => {
+            console.log('Call deleted', resp.data);
+            return resp.data
+        })
+    } catch (error) {
+        console.error('Error deleting call', error);
+        return { status: "error", message: error.message };
+    }
+
+
+}

@@ -1,6 +1,7 @@
 data/sessions
+data/cr-sessions.json
+# data/users.json
 client/build/*
-cr-sessions.json
 *.sh
 
 # Logs

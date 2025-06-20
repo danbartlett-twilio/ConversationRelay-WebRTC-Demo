@@ -12,7 +12,7 @@ import { Theme } from "@twilio-paste/core/dist/theme";
 import Main from "./Main";
 import Users from "./Users/Users";
 import UseCases from "./UseCases/UseCases";
-import CallHistory from "./CallHistory";
+import CallHistory from "./CallHistory/CallHistory";
 import AppHeader from "./AppHeader";
 
 const styles = {
@@ -45,7 +45,7 @@ const Wrapper = () => {
   // handler to manage page selection
   const showPage = (page) => {
     switch (page) {
-      case "main":
+      case "demo":
         return <Main />;
       case "users":
         return <Users />;
@@ -67,79 +67,13 @@ const Wrapper = () => {
   let layout = (
     <Theme.Provider theme="Twilio">
       <Flex>
-        <Flex>
-          <Box
-            width="200px"
-            padding="space200"
-            backgroundColor={"#ccc"}
-            height={"500vh"}
-          >
-            &nbsp;
-          </Box>
-        </Flex>
         <Flex grow>
           <Box
             width="100%"
-            padding="space60"
             // backgroundColor="colorBackgroundPrimaryWeaker"
           >
-            <AppHeader />
-            <Box as="div" padding="space60">
-              <div style={{ float: "right", paddingRight: "30px" }}>
-                <ButtonGroup attached>
-                  <Tooltip text="Demo ConversationRelay">
-                    <Button
-                      variant="secondary"
-                      disabled={page === "main"}
-                      onClick={() => handlePageClick("main")}
-                    >
-                      <CallActiveIcon decorative />
-                      Demo
-                    </Button>
-                  </Tooltip>
-                  <Tooltip text="Manage Users">
-                    <Button
-                      variant="secondary"
-                      disabled={page === "users"}
-                      onClick={() => handlePageClick("users")}
-                    >
-                      <UsersIcon decorative />
-                      Users
-                    </Button>
-                  </Tooltip>
-                  <Tooltip text="Manage AI Experiences">
-                    <Button
-                      variant="secondary"
-                      disabled={page === "useCases"}
-                      onClick={() => handlePageClick("useCases")}
-                    >
-                      <DirectoryIcon decorative />
-                      UseCases
-                    </Button>
-                  </Tooltip>
-                  <Button
-                    variant="secondary"
-                    disabled={page === "calls"}
-                    onClick={() => handlePageClick("calls")}
-                  >
-                    <DirectoryIcon decorative />
-                    Call History
-                  </Button>
-                </ButtonGroup>
-              </div>
-            </Box>
-            <Box padding="space100">{showPage(page)}</Box>
-          </Box>
-        </Flex>
-
-        <Flex>
-          <Box
-            width="200px"
-            padding="space200"
-            backgroundColor={"#ccc"}
-            height={"500vh"}
-          >
-            &nbsp;
+            <AppHeader currentPage={page} setCurrentPage={handlePageClick} />
+            <Box>{showPage(page)}</Box>
           </Box>
         </Flex>
       </Flex>

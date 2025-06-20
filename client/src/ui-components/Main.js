@@ -6,15 +6,7 @@ import { Theme } from "@twilio-paste/core/dist/theme";
 
 import { updateUserHelper } from "../helpers/clientDataHelper";
 
-import {
-  Flex,
-  Box,
-  Heading,
-  Grid,
-  Column,
-  Stack,
-  Alert,
-} from "@twilio-paste/core";
+import { Flex, Box, Grid, Column, Stack, Alert } from "@twilio-paste/core";
 
 import AppHeader from "./AppHeader";
 import StartCard from "../ui-components/StartCard";
@@ -275,7 +267,12 @@ const Main = () => {
   // Main layout of the application
   let layout = (
     <div>
-      <Box style={{ marginTop: 10 }} height="100vh">
+      <Box
+        style={{ marginTop: 10 }}
+        width="100%"
+        height="100vh"
+        padding="space50"
+      >
         {showAlert && (
           <Alert
             variant={alertType}
@@ -286,26 +283,20 @@ const Main = () => {
           </Alert>
         )}
         <Grid gutter="space40">
-          <Column span={7}>
-            <Box padding="space50">
+          <Column span={[12, 12, 8]}>
+            <Box paddingTop="space50">
               <Stack orientation="vertical" spacing="space40">
                 <StartCard placeCall={placeCall} stopCall={stopCall} />
-                <Heading as="h1" variant="heading40" marginBottom="space0">
-                  Audio Visualizer
-                </Heading>
                 <Audiovisualizer
                   localAnalyser={localAnalyser}
                   remoteAnalyser={remoteAnalyser}
                 />
-                <Heading as="h1" variant="heading40" marginBottom="space0">
-                  Conversation Transcription
-                </Heading>
                 <Transcript ref={transcriptRef} identity={identity} />
               </Stack>
             </Box>
           </Column>
-          <Column span={5}>
-            <Box padding="space50">
+          <Column span={[12, 12, 4]}>
+            <Box paddingTop="space50">
               <BotProperties
                 useCases={useCases}
                 selectedUser={selectedUser}
