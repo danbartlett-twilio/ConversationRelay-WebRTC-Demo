@@ -165,7 +165,6 @@ const SelectedCall = (props) => {
                       borderRadius={"10px"}
                       overflowY="auto"
                       maxHeight={"500px"}
-                      maxWidth={"800px"}
                     >
                       {props.selectedCallChat && (
                         <MessageLog events={props.selectedCallChat} />

@@ -2,8 +2,12 @@
 import { Avatar } from "@twilio-paste/core";
 
 import {
-  ChatLog, ChatMessage, ChatMessageMeta, ChatMessageMetaItem, ChatBubble
-} from "@twilio-paste/core"
+  ChatLog,
+  ChatMessage,
+  ChatMessageMeta,
+  ChatMessageMetaItem,
+  ChatBubble,
+} from "@twilio-paste/core";
 
 import { AgentIcon } from "@twilio-paste/icons/esm/AgentIcon";
 import { ProductAutopilotIcon } from "@twilio-paste/icons/esm/ProductAutopilotIcon";
@@ -21,34 +25,35 @@ function formatTime(ts) {
 
 export default function MessageLog({ events = [] }) {
   // Sort events by timestamp and reverse so newest comes first
-  const sortedEvents = [...events].sort((a, b) => a.value.timestamp - b.value.timestamp);
+  const sortedEvents = [...events].sort(
+    (a, b) => a.value.timestamp - b.value.timestamp
+  );
 
   return (
     <ChatLog>
-      { sortedEvents.map((event, index) => {
-        let isTokens= false
-        event.value.role === 'assistant'? isTokens = true: isTokens=false
+      {sortedEvents.map((event, index) => {
+        let isTokens = false;
+        event.value.role === "assistant"
+          ? (isTokens = true)
+          : (isTokens = false);
         // Avoid display of "system" messages
-        if(event.value.role ==='system') { return}
+        if (event.value.role === "system") {
+          return;
+        }
 
         return (
-          <ChatMessage 
-            
-            variant={isTokens ? "inbound" : "outbound"} key={index}
-            >
-            <ChatBubble backgroundColor="red">
-              {event.value.content}
-            </ChatBubble>
+          <ChatMessage variant={isTokens ? "inbound" : "outbound"} key={index}>
+            <ChatBubble backgroundColor="red">{event.value.content}</ChatBubble>
             <ChatMessageMeta aria-label="">
               <ChatMessageMetaItem>
-                {(!isTokens)? formatTime(event.value.timestamp): <></> }
+                {!isTokens ? formatTime(event.value.timestamp) : <></>}
                 <Avatar
-                   size="sizeIcon50"
-                   name={isTokens ? "Assistant" : "User"}
-                   icon={isTokens? ProductAutopilotIcon : AgentIcon}
-                   color={isTokens? "decorative20" : "decorative40"}
-               /> 
-               {(isTokens)? formatTime(event.value.timestamp): <></> }
+                  size="sizeIcon50"
+                  name={isTokens ? "Assistant" : "User"}
+                  icon={isTokens ? ProductAutopilotIcon : AgentIcon}
+                  color={isTokens ? "decorative30" : "decorative20"}
+                />
+                {isTokens ? formatTime(event.value.timestamp) : <></>}
               </ChatMessageMetaItem>
             </ChatMessageMeta>
           </ChatMessage>

@@ -10,13 +10,6 @@ import {
   ChatMessageMeta,
   ChatMessageMetaItem,
   ChatBubble,
-  AIChatLog,
-  AIChatMessage,
-  AIChatMessageBody,
-  AIChatMessageAuthor,
-  AIChatMessageActionGroup,
-  AIChatMessageActionCard,
-  AIChatMessageLoading,
 } from "@twilio-paste/core";
 
 // Helper to format time
@@ -59,30 +52,13 @@ export default function MessageLog({ events = [] }) {
                     size="sizeIcon50"
                     name={isTokens ? "Assistant" : "User"}
                     icon={isTokens ? ProductAutopilotIcon : AgentIcon}
-                    color={isTokens ? "decorative20" : "decorative40"}
+                    color={isTokens ? "decorative30" : "decorative20"}
                   />
 
                   {isTokens ? formatTime(event.ts) : <></>}
                 </ChatMessageMetaItem>
               </ChatMessageMeta>
             </ChatMessage>
-
-            // <AIChatLog variant={speaker} key={index}>
-            //   <AIChatMessage variant={speaker}>
-            //     <AIChatMessageAuthor
-            //       avatarIcon={
-            //         speaker === "bot" ? ProductAutopilotIcon : AgentIcon
-            //       }
-            //       //   avatarSrc={botImage}
-            //       aria-label={speaker === "bot" ? "AI Said" : "You Said"}
-            //     >
-            //       {isTokens ? "Conversation Relay" : "User"}
-            //     </AIChatMessageAuthor>
-
-            //     <AIChatMessageBody>{content}</AIChatMessageBody>
-            //     {formatTime(event.ts)}
-            //   </AIChatMessage>
-            // </AIChatLog>
           );
         }
 
@@ -101,30 +77,8 @@ export default function MessageLog({ events = [] }) {
                 Response Latency: {event.value}ms
               </ChatBubble>
               <ChatMessageMeta aria-label="">
-                <ChatMessageMetaItem>
-                  <Avatar
-                    size="sizeIcon50"
-                    name={"Assistant"}
-                    icon={ProductAutopilotIcon}
-                    color={"decorative20"}
-                  />
-                </ChatMessageMetaItem>
+                <ChatMessageMetaItem></ChatMessageMetaItem>
               </ChatMessageMeta>
-
-              {/* <div key={index} className="message-container left">
-                <div className="message-avatar">
-                  <Avatar
-                    size="sizeIcon40"
-                    name="System"
-                    src={botImage}
-                    color="decorative30"
-                  />
-                </div>
-
-                <div className="latency-text">
-                  Response Latency: {event.value}ms
-                </div>
-              </div> */}
             </ChatMessage>
           );
         }
