@@ -198,7 +198,12 @@ const CallList = () => {
   // Render the users page
   let layout = (
     <div>
-      <Box style={{ marginTop: 10 }} height="100vh">
+      <Box
+        style={{ marginTop: 10 }}
+        width="100%"
+        height="100vh"
+        padding="space50"
+      >
         <Grid gutter="space40">
           <Column span={[12, 12, 12]}>
             <div style={{ marginBottom: "10px" }}>

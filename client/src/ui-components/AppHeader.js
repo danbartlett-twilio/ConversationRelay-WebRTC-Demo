@@ -106,17 +106,19 @@ const AppHeader = (props) => {
                   onClick={() => handlePageClick("useCases")}
                 >
                   <DirectoryIcon decorative />
-                  UseCases
+                  Use Cases
                 </Button>
               </Tooltip>
-              <Button
-                variant="secondary"
-                disabled={page === "calls"}
-                onClick={() => handlePageClick("calls")}
-              >
-                <DirectoryIcon decorative />
-                Call History
-              </Button>
+              <Tooltip text="View Previous Calls">
+                <Button
+                  variant="secondary"
+                  disabled={page === "calls"}
+                  onClick={() => handlePageClick("calls")}
+                >
+                  <DirectoryIcon decorative />
+                  Call History
+                </Button>
+              </Tooltip>
             </ButtonGroup>
           </Box>
           {/* Responsive for mobile hamburger menu */}
