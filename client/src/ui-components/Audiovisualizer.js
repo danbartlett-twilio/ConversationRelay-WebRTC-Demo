@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { Avatar, Box, Flex, Heading, Card, Button } from "@twilio-paste/core";
 import { AgentIcon } from "@twilio-paste/icons/esm/AgentIcon";
+import { ProductAutopilotIcon } from "@twilio-paste/icons/esm/ProductAutopilotIcon";
+
 import botImage from "../images/bot.png";
 
 const Audiovisualizer = ({ localAnalyser, remoteAnalyser }) => {
@@ -13,6 +15,8 @@ const Audiovisualizer = ({ localAnalyser, remoteAnalyser }) => {
     const container = canvas.parentElement;
     const ctx = canvas.getContext("2d");
 
+    remoteAnalyser.fftSize = 1024;
+    localAnalyser.fftSize = 1024;
     const localData = new Uint8Array(localAnalyser.frequencyBinCount);
     const remoteData = new Uint8Array(remoteAnalyser.frequencyBinCount);
 
@@ -37,8 +41,9 @@ const Audiovisualizer = ({ localAnalyser, remoteAnalyser }) => {
 
       ctx.clearRect(0, 0, width, height);
 
-      ctx.fillStyle = "#f44336";
-      const remoteBarWidth = width / 2 / remoteData.length;
+      // Remote analyser
+      ctx.fillStyle = "#0E7C3A";
+      const remoteBarWidth = (width * 2) / remoteData.length;
       remoteAnalyser.getByteFrequencyData(remoteData);
       remoteData.forEach((val, i) => {
         const barHeight = (val / 255) * centerY;
@@ -46,8 +51,9 @@ const Audiovisualizer = ({ localAnalyser, remoteAnalyser }) => {
         ctx.fillRect(x, centerY - barHeight, remoteBarWidth - 1, barHeight * 2);
       });
 
+      // Local analyser
       ctx.fillStyle = "#2196f3";
-      const localBarWidth = width / 2 / localData.length;
+      const localBarWidth = (width * 2) / localData.length;
       localAnalyser.getByteFrequencyData(localData);
       const MIN_THRESHOLD = 100;
       localData.forEach((val, i) => {
@@ -73,11 +79,11 @@ const Audiovisualizer = ({ localAnalyser, remoteAnalyser }) => {
       <Heading as="h1" variant="heading30" marginBottom="space40">
         Audio Visualizer
       </Heading>
-      <Box width="100%" display="flex">
+      <Box width="100%" display={["flex", "flex", "flex"]}>
         <Avatar
           size="sizeIcon110"
           name="Conversation Relay Avatar"
-          src={botImage}
+          icon={ProductAutopilotIcon}
           color="decorative30"
         />
         <Box flexGrow={1} paddingX={"space50"}>
