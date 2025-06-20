@@ -115,7 +115,7 @@ const AppHeader = (props) => {
                   disabled={page === "calls"}
                   onClick={() => handlePageClick("calls")}
                 >
-                  <DirectoryIcon decorative />
+                  <HistoryIcon decorative />
                   Call History
                 </Button>
               </Tooltip>
@@ -166,7 +166,7 @@ const AppHeader = (props) => {
                 disabled={props.currentPage === "calls"}
               >
                 <Box display="flex" alignItems="center" columnGap="space30">
-                  <DirectoryIcon decorative />
+                  <HistoryIcon decorative />
                   Call History
                 </Box>
               </MenuItem>
