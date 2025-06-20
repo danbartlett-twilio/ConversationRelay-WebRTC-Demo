@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 
 import { StopIcon } from "@twilio-paste/icons/esm/StopIcon";
-import { CallIcon } from "@twilio-paste/icons/esm/CallIcon";
+import { MicrophoneOnIcon } from "@twilio-paste/icons/esm/MicrophoneOnIcon";
 
 const StartCard = (props) => {
   const [pausePressed, setPausePressed] = useState(true);
@@ -51,7 +51,7 @@ const StartCard = (props) => {
           >
             Talk to Conversation Relay Agent
             {pausePressed ? (
-              <CallIcon decorative />
+              <MicrophoneOnIcon decorative />
             ) : (
               <StopIcon decorative color="colorTextError" />
             )}
