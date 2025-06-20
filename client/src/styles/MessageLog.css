@@ -71,26 +71,28 @@
 
 @keyframes pulseInterrupt {
   0% {
-    box-shadow: 0 0 0 0 rgba(26, 35, 126, 0.4);
+    box-shadow: 0 0 0 0 rgba(183, 28, 28, 0.4); /* deep red */
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(26, 35, 126, 0);
+    box-shadow: 0 0 0 10px rgba(183, 28, 28, 0); /* fade out */
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(26, 35, 126, 0);
+    box-shadow: 0 0 0 0 rgba(183, 28, 28, 0);
   }
 }
 
 .interrupt-message {
-  background-color: #ede7f6; /* soft blue-grey */
-  color: #4527a0; /* deep indigo for contrast */
+  background-color: #ffebee; /* light red */
+  color: #b71c1c; /* deep red */
   padding: 12px 16px;
   border-radius: 10px;
   max-width: 80%;
   text-align: center;
   font-size: 14px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #d1c4e9;
+  border: 1px solid #ef9a9a;
+  animation: pulseInterrupt 2s infinite;
+  margin: 0 auto; /* centers horizontally */
 }
 
 .message-bubble.remote {

@@ -33,7 +33,7 @@ const StartCard = (props) => {
           Conversation Relay WebRTC Quickstart
         </Heading>
         <Paragraph>
-          Connecting to an Ai Agent is simple. Press the button below to get
+          Connecting to an AI Agent is simple. Press the button below to get
           started.
         </Paragraph>
         <Stack orientation={"horizontal"} spacing="space40">
