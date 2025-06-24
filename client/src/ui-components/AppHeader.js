@@ -82,27 +82,27 @@ const AppHeader = (props) => {
               <Tooltip text="Demo ConversationRelay">
                 <Button
                   variant="secondary"
-                  disabled={page === "demo"}
+                  disabled={props.currentPage === "demo"}
                   onClick={() => handlePageClick("demo")}
                 >
                   <CallActiveIcon decorative />
                   Demo
                 </Button>
               </Tooltip>
-              <Tooltip text="Manage Users">
+              {/* <Tooltip text="Manage Users">
                 <Button
                   variant="secondary"
-                  disabled={page === "users"}
+                  disabled={props.currentPage === "users"}
                   onClick={() => handlePageClick("users")}
                 >
                   <UsersIcon decorative />
                   Users
                 </Button>
-              </Tooltip>
+              </Tooltip> */}
               <Tooltip text="Manage AI Experiences">
                 <Button
                   variant="secondary"
-                  disabled={page === "useCases"}
+                  disabled={props.currentPage === "useCases"}
                   onClick={() => handlePageClick("useCases")}
                 >
                   <DirectoryIcon decorative />
@@ -112,7 +112,7 @@ const AppHeader = (props) => {
               <Tooltip text="View Previous Calls">
                 <Button
                   variant="secondary"
-                  disabled={page === "calls"}
+                  disabled={props.currentPage === "calls"}
                   onClick={() => handlePageClick("calls")}
                 >
                   <HistoryIcon decorative />
@@ -138,7 +138,7 @@ const AppHeader = (props) => {
                 </Box>
               </MenuItem>
 
-              <MenuItem
+              {/* <MenuItem
                 {...menu}
                 onClick={() => handlePageClick("users")}
                 disabled={props.currentPage === "users"}
@@ -147,7 +147,7 @@ const AppHeader = (props) => {
                   <UsersIcon decorative />
                   Users
                 </Box>
-              </MenuItem>
+              </MenuItem> */}
 
               <MenuItem
                 {...menu}
@@ -175,24 +175,6 @@ const AppHeader = (props) => {
         </TopbarActions>
       </Topbar>
     </Box>
-
-    // TODO: Old Header - Remove
-    // <div style={styles.wrapper}>
-    // <div style={styles.headTwoColumnLayout} >
-    //     <div style={styles.headLeftColumn} >
-    //         <img src="/images/twilio_logo.jpg" alt="Twilio Logo" width="100" height="50" /> </div>
-    //     <div style={styles.headRightColumn}>
-    //         <Heading
-    //             marginBottom='space0'
-    //             as="h2"
-    //                 variant="heading8"
-    //             color={{color:'#ffffff'}}
-    //             >Conversation Relay - Cloud Intelligence
-    //         </Heading>
-
-    //     </div>
-    // </div>
-    // </div>
   );
   return layout;
 };

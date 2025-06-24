@@ -2,14 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import {
-  Form,
   FormControl,
   Label,
   Box,
   Select,
   Option,
-  Card,
-  Button,
   HelpText,
   Modal,
   ModalHeader,
@@ -18,7 +15,6 @@ import {
   Paragraph,
   Grid,
   Column,
-  Heading,
 } from "@twilio-paste/core";
 
 //  default transcription and tts providers
@@ -37,9 +33,6 @@ const ttsProviders = [
 const UseCaseCombo = (props) => {
   // local component state
   const [useCases, setUseCases] = useState(null);
-  const [selectedUseCase, setSelectedUseCase] = useState(
-    props.useCases[0] || null
-  );
 
   const [voices, setVoices] = useState(null);
   const [selectedVoices, setSelectedVoices] = useState(null);
@@ -51,28 +44,32 @@ const UseCaseCombo = (props) => {
 
   //   dialog state for the tts voice support information
   const [showVoiceDialog, setShowVoiceDialog] = useState(false);
-
   const [uiChange, setUiChange] = useState(false);
 
   //    initialize component bases on updates to usecases and selectedUser
   useEffect(() => {
-    setUseCases(props.useCases);
-    setSelectedUseCase(props.selectedUser?.useCase);
-
     // set selected parameters based on the selected user configuration
     setSelectedSttProvider(
-      props.selectedUser?.conversationRelayParamsOverride?.transcriptionProvider
+      props.selectedUseCase?.value.conversationRelayParams?.transcriptionProvider
     );
     setSelectedTtsProvider(
-      props.selectedUser?.conversationRelayParamsOverride?.ttsProvider
+      props.selectedUseCase?.value.conversationRelayParams?.ttsProvider
     );
     setSelectedVoice(
-      props.selectedUser?.conversationRelayParamsOverride?.voice
+      props.selectedUseCase?.value.conversationRelayParams?.voice
     );
-    setSpeechModel(
-      props.selectedUser?.conversationRelayParamsOverride?.speechModel
-    );
-  }, [props.useCases, props.selectedUser]);
+    // set the speech model based on the selected use case
+    if(props.selectedUseCase?.value.conversationRelayParams?.transcriptionProvider ===
+    "Google") {
+      setSpeechModel("telephony"); 
+      props.propertyChange('speechModel', "telephony")
+    } else {
+      setSpeechModel("nova-2-general");
+      props.propertyChange('speechModel', "nova-2-general")
+    }
+
+    props.uiChange()
+  }, [ props.selectedUseCase]);
 
   // Fetch all voices from the backend
   useEffect(() => {
@@ -88,11 +85,12 @@ const UseCaseCombo = (props) => {
           const providerVoices = resp.data.find(
             (provider) =>
               provider.key ===
-              props.selectedUser?.conversationRelayParamsOverride?.ttsProvider
+              props.selectedUseCase?.value.conversationRelayParams?.ttsProvider
           );
+          console.log("providerVoices", providerVoices);
           setSelectedVoices(providerVoices);
           setSelectedVoice(
-            props.selectedUser?.conversationRelayParamsOverride?.voice
+            props.selectedUseCase?.value.conversationRelayParams?.voice
           );
         });
       } catch (error) {
@@ -100,85 +98,42 @@ const UseCaseCombo = (props) => {
       }
     };
     getVoices();
-  }, [props.useCases]);
-
-  //    handler updating the use case selection
-  const useCaseChange = (e) => {
-    setUiChange(true);
-
-    const selectedValue = e.target.value;
-
-    const selectedItem = props.useCases.find(
-      (item) => item.key === selectedValue
-    );
-    console.log("useCaseChange", selectedItem);
-    if (selectedItem) {
-      setSelectedUseCase(selectedItem.key);
-      setSelectedSttProvider(
-        selectedItem.value.conversationRelayParams.transcriptionProvider
-      );
-      setSelectedTtsProvider(
-        selectedItem.value.conversationRelayParams.ttsProvider
-      );
-
-      const providerVoices = voices.find(
-        (provider) =>
-          provider.key ===
-          selectedItem.value.conversationRelayParams.ttsProvider
-      );
-      console.log("providerVoices", providerVoices);
-      setSelectedVoices(providerVoices);
-      const selVoice = providerVoices.value.find(
-        (voice) =>
-          voice.value === selectedItem.value.conversationRelayParams.voice
-      );
-      setSelectedVoice(selVoice.value);
-
-      // set 'speech model' based on the selected use case
-      selectedItem.value.conversationRelayParams.transcriptionProvider ===
-      "Google"
-        ? setSpeechModel("telephony")
-        : setSpeechModel("nova-2-general");
-    }
-  };
+  }, [props.selectedUseCase]);
 
   // handler updating the stt provider selection
   const handle_SttChange = (e) => {
-    setUiChange(true);
+    props.uiChange(true)
     setSelectedSttProvider(e.target.value);
-    e.target.value === "Google"
-      ? setSpeechModel("telephony")
-      : setSpeechModel("nova-2-general");
+    props.propertyChange('sttProvider', e.target.value)
+    if(e.target.value === "Google") {
+      setSpeechModel("telephony"); 
+      props.propertyChange('speechModel', "telephony")
+    }else {
+      setSpeechModel("nova-2-general");
+      props.propertyChange('speechModel', "nova-2-general")
+    }
   };
+
   // handler updating the tts provider selection
   const handle_TtsChange = (e) => {
-    setUiChange(true);
+    props.uiChange(true)
     const selectedValue = e.target.value;
     const selectedVoice = voices.find((voice) => voice.key === selectedValue);
     if (selectedVoice) {
       setSelectedTtsProvider(selectedValue);
       setSelectedVoices(selectedVoice);
       setSelectedVoice(selectedVoice?.value[0]?.value);
+
+      props.propertyChange('ttsProvider', selectedValue)
+      props.propertyChange('voice', selectedVoice?.value[0]?.value)
     }
   };
 
   // handler updating the voice selection
   const handle_VoiceChange = (e) => {
-    setUiChange(true);
+    props.uiChange(true)
     setSelectedVoice(e.target.value);
-  };
-
-  // handler updating the user configuration
-  // updateUser forward from main.js
-  const handleUpdate = () => {
-    setUiChange(false);
-    props.updateUser({
-      voice: selectedVoice,
-      ttsProvider: selectedTtsProvider,
-      sttProvider: selectedSttProvider,
-      useCase: selectedUseCase,
-      speechModel: speechModel,
-    });
+    props.propertyChange('voice', e.target.value)
   };
 
   // handler showing the tts voice modal dialog
@@ -194,28 +149,8 @@ const UseCaseCombo = (props) => {
 
   //  layout for the use case combo
   let layout = (
-    <Form>
+    <div>
       <FormControl>
-        <Heading as="h1" variant="heading30" marginBottom="space40">
-          Demo Configuration
-        </Heading>
-        <Label htmlFor="useCaseSelect" required>
-          Select a Use Case
-        </Label>
-        <Select
-          id="useCaseSelect"
-          htmlFor="useCaseSelect"
-          value={selectedUseCase}
-          onChange={(e) => useCaseChange(e)}
-        >
-          {useCases?.map((useCase) => {
-            return (
-              <Option key={useCase.key} value={useCase.key}>
-                {useCase.value.title}
-              </Option>
-            );
-          })}
-        </Select>
         <Box as="div" marginTop="space40">
           {/* Transcription Provider select component */}
           <Box as={"div"}>
@@ -227,6 +162,7 @@ const UseCaseCombo = (props) => {
               htmlFor="stt_provider"
               value={selectedSttProvider}
               onChange={handle_SttChange}
+              disabled={props.disabled}
             >
               {transcriptionProviders.map((item) => {
                 return (
@@ -247,6 +183,7 @@ const UseCaseCombo = (props) => {
               id="tts_provider"
               htmlFor="tts_provider"
               value={selectedTtsProvider}
+              disabled={props.disabled}
               onChange={handle_TtsChange}
             >
               {ttsProviders.map((item) => {
@@ -268,6 +205,7 @@ const UseCaseCombo = (props) => {
               id="voice"
               htmlFor="voice"
               value={selectedVoice}
+              disabled={props.disabled}
               onChange={handle_VoiceChange}
             >
               {selectedVoices?.value?.map((item) => {
@@ -288,25 +226,6 @@ const UseCaseCombo = (props) => {
                 Voice support information
               </Box>
             </HelpText>
-          </Box>
-
-          <Box as={"div"} marginTop="20px">
-            {uiChange && (
-              <Label>
-                <span style={{ color: "red" }}>Configuration has changed</span>
-              </Label>
-            )}
-          </Box>
-
-          <Box as={"div"} marginTop="20px">
-            <Button
-              style={{ float: "right" }}
-              disabled={!uiChange}
-              variant={uiChange ? "destructive" : "primary"}
-              onClick={(e) => handleUpdate(e)}
-            >
-              Save Configuration
-            </Button>
           </Box>
         </Box>
       </FormControl>
@@ -361,7 +280,7 @@ const UseCaseCombo = (props) => {
           <Paragraph>&nbsp;</Paragraph>
         </ModalBody>
       </Modal>
-    </Form>
+    </div>
   );
   return layout;
 };

@@ -13,6 +13,7 @@
     "@twilio-paste/icons": "^12.9.0",
     "@twilio/voice-sdk": "^2.12.1",
     "axios": "^1.9.0",
+    "jotai": "^2.12.5",
     "nanoid": "^5.1.5",
     "react": "^18.3.1",
     "react-audio-visualize": "^1.2.0",
@@ -20,7 +21,8 @@
     "react-dom": "^18.3.1",
     "react-international-phone": "^4.4.0",
     "react-scripts": "5.0.1",
-    "react-use-websocket": "^4.8.1"
+    "react-use-websocket": "^4.8.1",
+    "uuid": "^11.1.0"
   },
   "browserslist": {
     "production": [

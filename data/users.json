@@ -6,7 +6,7 @@
         "identity": "browser-client",
         "firstName": "Jane",
         "lastName": "Doe",
-        "useCase": "albert-einstein",
+        "useCase": "458b9299-25be-4fa3-8d6f-b10b1f3dba2b",
         "conversationRelayParamsOverride": {
             "language": "en-US",
             "ttsProvider": "ElevenLabs",

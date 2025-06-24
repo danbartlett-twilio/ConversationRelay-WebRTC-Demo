@@ -1,17 +1,14 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { useAtom } from "jotai";
 
-import { Flex, Box, Button, ButtonGroup, Tooltip } from "@twilio-paste/core";
-
-import { CallActiveIcon } from "@twilio-paste/icons/esm/CallActiveIcon";
-import { UsersIcon } from "@twilio-paste/icons/esm/UsersIcon";
-import { HistoryIcon } from "@twilio-paste/icons/esm/HistoryIcon";
-import { DirectoryIcon } from "@twilio-paste/icons/esm/DirectoryIcon";
+import { appPage, appDevice, appCurrentCall } from "../jotaiState/appState"
+import { Flex, Box } from "@twilio-paste/core";
 
 import { Theme } from "@twilio-paste/core/dist/theme";
 
 import Main from "./Main";
 import Users from "./Users/Users";
-import UseCases from "./UseCases/UseCases";
+import UseCases from './UseCases/UseCases'
 import CallHistory from "./CallHistory/CallHistory";
 import AppHeader from "./AppHeader";
 
@@ -40,7 +37,22 @@ const styles = {
 };
 
 const Wrapper = () => {
-  const [page, setPage] = useState("main");
+  const [page, setPage] = useAtom(appPage);
+  const [device, setDevice] = useAtom(appDevice);
+  const [currentCall, setCurrentCall] = useAtom(appCurrentCall);
+
+
+  // useEffect to handle device disconnection when page changes
+  // This ensures that when the user navigates away from the 'demo' page,
+  // the device disconnects from any ongoing calls or connections.
+  useEffect(() => {
+    if(page !='demo'&& device) {
+      device.disconnectAll()
+      setCurrentCall(null)
+
+      ;}
+  },[page]
+)
 
   // handler to manage page selection
   const showPage = (page) => {

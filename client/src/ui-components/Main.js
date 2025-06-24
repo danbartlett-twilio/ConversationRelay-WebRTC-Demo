@@ -2,6 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Device } from "@twilio/voice-sdk";
 
+import { useAtom } from "jotai";
+import { appDevice, appCurrentCall } from "../jotaiState/appState";
+
 import { Theme } from "@twilio-paste/core/dist/theme";
 
 import { updateUserHelper } from "../helpers/clientDataHelper";
@@ -15,6 +18,7 @@ import Visualizer from "../ui-components/Visualizer";
 import Audiovisualizer from "../ui-components/Audiovisualizer";
 import Transcript from "../ui-components/Transcript";
 import { setupAnalyzer } from "../helpers/utils";
+import { use } from "react";
 
 const styles = {
   wrapper: {
@@ -23,13 +27,16 @@ const styles = {
 };
 const Main = () => {
   const [identity, setIdentity] = useState("browser-client");
-  const [device, setDevice] = useState();
+  //const [device, setDevice] = useState();
+
+  const [device, setDevice] = useAtom(appDevice); // Jotai state for device
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState("");
 
   // Client Websocket
   const transcriptRef = useRef();
-  const [currentCall, setCurrentCall] = useState(null);
+  // const [currentCall, setCurrentCall] = useState(null);
+  const [currentCall, setCurrentCall] = useAtom(appCurrentCall); // Jotai state for current call
 
   const [users, setUsers] = useState([]); // all app users ( server > data > users.json )
   const [selectedUser, setSelectedUser] = useState(null); // current app user
@@ -137,6 +144,7 @@ const Main = () => {
         codecPreferences: ["opus", "pcmu"],
       });
       setDevice(myDevice);
+
       registerTwilioDeviceHandlers(myDevice);
       myDevice.register();
       setLoading(false);
@@ -162,6 +170,15 @@ const Main = () => {
     };
     registerVoiceClient(identity);
   }, []);
+
+      useEffect(() => {
+        if (showAlert) {
+            const timer = setTimeout(() => {
+                setShowAlert(false);
+            }, 5000); // Hide alert after 5 seconds
+            return () => clearTimeout(timer);
+        }
+    },[showAlert])
 
   // Handler to iniitate the Ai conversations
   // forwarded through props to StartCard component

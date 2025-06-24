@@ -64,6 +64,37 @@ export const deleteCallHelper = async (callSid) => {
         console.error('Error deleting call', error);
         return { status: "error", message: error.message };
     }
+}
 
 
+export const updateUseCaseHelper = async(useCaseAttributes) => {
+
+    //  call backend to update user configuration ( server > data > users.json )
+    try {
+        // Fetch all voices from the backend
+        const updateUseCaseURL = process.env.REACT_APP_UPDATE_USE_CASE_URL; 
+        console.log('updateUseCaseHelper', updateUseCaseURL, useCaseAttributes)
+        return await axios.post(updateUseCaseURL,  useCaseAttributes )
+        .then((resp) => {
+            return resp.data
+        })
+    } catch (error) {
+        return { status: "error", message: error.message };
+    }
+}
+
+export const deleteUseCaseHelper = async(useCaseAttributes) => {
+
+    //  call backend to update user configuration ( server > data > users.json )
+    try {
+        // Fetch all voices from the backend
+        const deleteUseCaseURL = process.env.REACT_APP_DELETE_USE_CASE_URL; 
+        console.log('deleteUseCaseHelper', deleteUseCaseURL, useCaseAttributes)
+        return await axios.post(deleteUseCaseURL,  useCaseAttributes )
+        .then((resp) => {
+            return resp.data
+        })
+    } catch (error) {
+        return { status: "error", message: error.message };
+    }
 }

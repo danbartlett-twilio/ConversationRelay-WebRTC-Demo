@@ -39,14 +39,7 @@ import {
   deleteUserHelper,
 } from "../../helpers/clientDataHelper";
 
-//  DEV only - locally set users
-// const usersData = [
-//     { "key": 'Alice', "value" : { role: "system", firstName: "Alice", lastName:"Jones", type:'webRtc', identity: 'ajones', phone: '+13035551111', email: 'test'}} ,
-//      { "key" : 'Bob', "value" : { role: "user", firstName: "Bob", lastName:"Jones", type:'webRtc', identity: 'bjones', phone: '+13035552222', email: 'test'}} ,
-//      { "key" :'Charlie', "value": { role: "system", firstName: "Charlie", lastName:"Avila", type:'sip', identity: 'sip:cavila@domain.com', phone: '+13035553333',email: 'test'}} ,
-//      { "key" :'David', "value": { role: "user", firstName: "David", lastName:"James", type:'phone', identity: '+13035551212', phone: '+13035554444', email: 'test'}} ,
-//      { "key" :'Eve', "value": { role: "user", firstName: "Eve", lastName:"Smith", type:'sip', identity: 'sip:esmith@domain.com', phone: '+13035555555', email: 'test'}}
-//     ]
+
 
 const Users = () => {
   const [search, setSearch] = useState("");
@@ -82,13 +75,14 @@ const Users = () => {
     fetchUsers();
   }, [reload]);
 
-  //  DEV only - locally set users
-  // useEffect(() => {
-  //     // Simulate fetching users from an API
-  //     setUsers(users);
-  //     setFilteredUsers(users);
-  // }
-  // , []);
+      useEffect(() => {
+        if (showAlert) {
+            const timer = setTimeout(() => {
+                setShowAlert(false);
+            }, 5000); // Hide alert after 5 seconds
+            return () => clearTimeout(timer);
+        }
+    },[showAlert])
 
   // handler to clear search input and reset filtered users
   const clearSearch = () => {

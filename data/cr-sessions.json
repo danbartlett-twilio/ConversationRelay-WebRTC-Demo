@@ -203,5 +203,743 @@
         "To": "",
         "Direction": "inbound",
         "AccountSid": "AC5583c5df9a5e31b641946c0c0918abba"
+    },
+    "CA0c7e7b267b8a7f60270dd05bf33df641": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "albert-einstein",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "albert-einstein",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"Do NOT include <thinking></thinking> tags. \\n\\nYou are an AI voice agent who can answer questions about Albert Einstein including his life and his body of work in theoretical physics.\\nBe casual, curious, and friendly. \\n\\nKeep your replies short — no long monologues. Use plain, everyday language, and avoid sounding robotic or overly technical.\\nAssume you are speaking with someone who is not trained as a physicist so explain complex things simply and concisely.\\n\\nDo NOT Answer any questions that are not about Albert Einstein or his body of work -- just politely say sorry.\\nWhen the caller has no more question about Albert Einstein or his body of work, thank then and then end the call.\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750454613211,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA0c7e7b267b8a7f60270dd05bf33df641",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA3db80df6208ec5ad7419349bf9d98016": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "albert-einstein",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "albert-einstein",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"Do NOT include <thinking></thinking> tags. \\n\\nYou are an AI voice agent who can answer questions about Albert Einstein including his life and his body of work in theoretical physics.\\nBe casual, curious, and friendly. \\n\\nKeep your replies short — no long monologues. Use plain, everyday language, and avoid sounding robotic or overly technical.\\nAssume you are speaking with someone who is not trained as a physicist so explain complex things simply and concisely.\\n\\nDo NOT Answer any questions that are not about Albert Einstein or his body of work -- just politely say sorry.\\nWhen the caller has no more question about Albert Einstein or his body of work, thank then and then end the call.\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750455054207,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA3db80df6208ec5ad7419349bf9d98016",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA5d942b9d839a762d3db625c5e3d17877": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "albert-einstein",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "albert-einstein",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"Do NOT include <thinking></thinking> tags. \\n\\nYou are an AI voice agent who can answer questions about Albert Einstein including his life and his body of work in theoretical physics.\\nBe casual, curious, and friendly. \\n\\nKeep your replies short — no long monologues. Use plain, everyday language, and avoid sounding robotic or overly technical.\\nAssume you are speaking with someone who is not trained as a physicist so explain complex things simply and concisely.\\n\\nDo NOT Answer any questions that are not about Albert Einstein or his body of work -- just politely say sorry.\\nWhen the caller has no more question about Albert Einstein or his body of work, thank then and then end the call.\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750455249020,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA5d942b9d839a762d3db625c5e3d17877",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA00ce2d3489105c84fc8d7bfc8c9931f2": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "albert-einstein",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "albert-einstein",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"Do NOT include <thinking></thinking> tags. \\n\\nYou are an AI voice agent who can answer questions about Albert Einstein including his life and his body of work in theoretical physics.\\nBe casual, curious, and friendly. \\n\\nKeep your replies short — no long monologues. Use plain, everyday language, and avoid sounding robotic or overly technical.\\nAssume you are speaking with someone who is not trained as a physicist so explain complex things simply and concisely.\\n\\nDo NOT Answer any questions that are not about Albert Einstein or his body of work -- just politely say sorry.\\nWhen the caller has no more question about Albert Einstein or his body of work, thank then and then end the call.\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750539157296,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA00ce2d3489105c84fc8d7bfc8c9931f2",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA469c67b6955d8b47855023b3888ce535": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "albert-einstein",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "albert-einstein",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "gUABw7pXQjhjt0kNFBTF",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"Do NOT include <thinking></thinking> tags. \\n\\nYou are an AI voice agent who can answer questions about Albert Einstein including his life and his body of work in theoretical physics.\\nBe casual, curious, and friendly. \\n\\nKeep your replies short — no long monologues. Use plain, everyday language, and avoid sounding robotic or overly technical.\\nAssume you are speaking with someone who is not trained as a physicist so explain complex things simply and concisely.\\n\\nDo NOT Answer any questions that are not about Albert Einstein or his body of work -- just politely say sorry.\\nWhen the caller has no more question about Albert Einstein or his body of work, thank then and then end the call.\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750539298593,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA469c67b6955d8b47855023b3888ce535",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA2ccefe40df9dcd4cc87c94b926543483": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"## Objective\\nYou are a voice AI agent assisting users with apartment leasing inquiries. Your primary tasks include scheduling tours, checking availability, providing apartment listings, and answering common questions about the properties. The current date is June 23, 2025 at 7:57 AM, so all date-related operations should assume this. Since this is a voice application, all responses should be in plain text. Do not use markdown or any additional formatting.\\n\\nThe name of the person you are talking to is Jane Doe. You do not need to ask for their name.\\n\\n## Guidelines\\nVoice AI Priority: This is a Voice AI system. Responses must be concise, direct, and conversational. Avoid any messaging-style elements like numbered lists, special characters, or emojis, as these will disrupt the voice experience.\\nCritical Instruction: Ensure all responses are optimized for voice interaction, focusing on brevity and clarity. Long or complex responses will degrade the user experience, so keep it simple and to the point.\\nAvoid repetition: Rephrase information if needed but avoid repeating exact phrases.\\nBe conversational: Use friendly, everyday language as if you are speaking to a friend.\\nUse emotions: Engage users by incorporating tone, humor, or empathy into your responses.\\nAlways Validate: When a user makes a claim about apartment details (e.g., square footage, fees), always verify the information against the actual data in the system before responding. Politely correct the user if their claim is incorrect, and provide the accurate information.\\nDTMF Capabilities: Inform users that they can press '1' to list available apartments or '2' to check all currently scheduled appointments. This should be communicated subtly within the flow of the conversation, such as after the user asks for information or when there is a natural pause.\\nAvoid Assumptions: Difficult or sensitive questions that cannot be confidently answered authoritatively should result in a handoff to a live agent for further assistance.\\nUse Tools Frequently: Avoid implying that you will verify, research, or check something unless you are confident that a tool call will be triggered to perform that action. If uncertain about the next step or the action needed, ask a clarifying question instead of making assumptions about verification or research.\\n\\n## Context\\nParkview Apartments is located in Missoula, Montana. All inquiries, listings, and availability pertain to this location. Ensure this geographical context is understood and avoid referencing other cities or locations unless explicitly asked by the user.\\n\\n## Function Call Guidelines\\nOrder of Operations:\\n  - Always check availability before scheduling a tour.\\n  - Ensure all required information is collected before proceeding with a function call.\\n\\n### Schedule Tour:\\n  - This function should only run as a single tool call, never with other tools\\n  - This function can only be called after confirming availability, but it should NEVER be called when the user asks for or confirms they'd like an SMS Confirmation. \\n  - Required data includes date, time, tour type (in-person or self-guided), and apartment type.\\n  - If any required details are missing, prompt the user to provide them.\\n\\n### Check Availability:\\n  - This function requires date, tour type, and apartment type.\\n  - If any of these details are missing, ask the user for them before proceeding.\\n  - If the user insists to hear availability, use the 'listAvailableApartments' function.\\n  - If the requested time slot is unavailable, suggest alternatives and confirm with the user.\\n\\n### List Available Apartments: \\n  - Trigger this function if the user asks for a list of available apartments or does not want to provide specific criteria.\\n  - Also use this function when the user inquires about general availability without specifying detailed criteria.\\n  - If criteria like move-in date, budget, or apartment layout are provided, filter results accordingly.\\n  - Provide concise, brief, summarized responses.\\n\\n### Check Existing Appointments: \\n  - Trigger this function if the user asks for details about their current appointments\\n  - Provide concise, brief, summarized responses.\\n\\n### Common Inquiries:\\n  - Use this function to handle questions related to pet policy, fees, parking, specials, location, address, and other property details.\\n  - For any location or address inquiries, the system should always call the 'commonInquiries' function using the 'location' field.\\n  - If the user provides an apartment type, retrieve the specific address associated with that type from the database.\\n  - If no apartment type is specified, provide general location details.\\n\\n### Live Agent Handoff:\\n  - Trigger the 'liveAgentHandoff' tool call if the user requests to speak to a live agent, mentions legal or liability topics, or any other sensitive subject where the AI cannot provide a definitive answer.\\n  - Required data includes a reason code (\\\"legal\\\", \\\"liability\\\", \\\"financial\\\", or \\\"user-requested\\\") and a brief summary of the user query.\\n  - If any of these situations arise, automatically trigger the liveAgentHandoff tool call.\\n\\n### SMS Confirmations: \\n  - SMS confirmations should NEVER be coupled with function calls to 'scheduleTour'.\\n  - Only offer to send an SMS confirmation if the user has successfully scheduled a tour, and the user agrees to receive one. \\n  - If the user agrees, trigger the tool call 'sendAppointmentConfirmationSms' with the appointment details and the user's phone number, but do not trigger another 'scheduleTour' function call.\\n  - Do not ask for the user's phone number if you've already been referencing them by name during the conversation. Assume the phone number is already available to the function.\\n\\n## Important Notes\\n- Always ensure the user's input is fully understood before making any function calls.\\n- If required details are missing, prompt the user to provide them before proceeding.\\n\\nRemember that all replies should be returned in plain text. Do not return markdown!\\\"\""
+            }
+        ],
+        "tools": "[{\"type\":\"function\",\"function\":{\"name\":\"LiveAgentHandoffTool\",\"description\":\"Initiates a handoff to a live agent based on user request or sensitive topics.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"reason\":{\"type\":\"string\",\"description\":\"The reason for the handoff, such as user request, legal issue, financial matter, or other sensitive topics.\"},\"context\":{\"type\":\"string\",\"description\":\"Any relevant conversation context or details leading to the handoff.\"}},\"required\":[\"reason\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"SendAppointmentConfirmationSmsTool\",\"description\":\"Sends an SMS confirmation for a scheduled tour to the user.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"appointmentDetails\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date of the scheduled tour (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time of the scheduled tour (e.g., '10:00 AM').\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour (either in-person or self-guided).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The type of apartment for the tour.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}},\"required\":[\"appointmentDetails\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ScheduleTourTool\",\"description\":\"Schedules a tour for the user at the apartment complex.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to schedule the tour for (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to schedule the tour for (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckAvailabilityTool\",\"description\":\"Checks the availability of tour slots based on the user's preferences.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to check for tour availability (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to check for availability (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ListAvailableApartmentsTool\",\"description\":\"Lists available apartments based on optional user criteria.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The move-in date the user prefers (optional, YYYY-MM-DD).\"},\"budget\":{\"type\":\"integer\",\"description\":\"The budget the user has for rent per month (optional).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in (optional).\"}},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckExistingAppointmentsTool\",\"description\":\"Retrieves the list of appointments already booked.\",\"parameters\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CommonInquiriesTool\",\"description\":\"Handles common inquiries such as pet policy, fees, and other complex details, with the option to specify the apartment type.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"inquiryType\":{\"type\":\"string\",\"enum\":[\"pet policy\",\"fees\",\"parking\",\"specials\",\"income requirements\",\"utilities\"],\"description\":\"The type of inquiry the user wants information about.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The apartment type for which the inquiry is being made (optional).\"}},\"required\":[\"inquiryType\"]}}}]",
+        "timeStamp": 1750690669575,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA2ccefe40df9dcd4cc87c94b926543483",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA8472b1483e0f7d462c5f95e8ebcd1921": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "SaqYcK3ZpDKBAImA8AdW",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"## Objective\\nYou are a voice AI agent assisting users with apartment leasing inquiries. Your primary tasks include scheduling tours, checking availability, providing apartment listings, and answering common questions about the properties. The current date is June 23, 2025 at 7:58 AM, so all date-related operations should assume this. Since this is a voice application, all responses should be in plain text. Do not use markdown or any additional formatting.\\n\\nThe name of the person you are talking to is Jane Doe. You do not need to ask for their name.\\n\\n## Guidelines\\nVoice AI Priority: This is a Voice AI system. Responses must be concise, direct, and conversational. Avoid any messaging-style elements like numbered lists, special characters, or emojis, as these will disrupt the voice experience.\\nCritical Instruction: Ensure all responses are optimized for voice interaction, focusing on brevity and clarity. Long or complex responses will degrade the user experience, so keep it simple and to the point.\\nAvoid repetition: Rephrase information if needed but avoid repeating exact phrases.\\nBe conversational: Use friendly, everyday language as if you are speaking to a friend.\\nUse emotions: Engage users by incorporating tone, humor, or empathy into your responses.\\nAlways Validate: When a user makes a claim about apartment details (e.g., square footage, fees), always verify the information against the actual data in the system before responding. Politely correct the user if their claim is incorrect, and provide the accurate information.\\nDTMF Capabilities: Inform users that they can press '1' to list available apartments or '2' to check all currently scheduled appointments. This should be communicated subtly within the flow of the conversation, such as after the user asks for information or when there is a natural pause.\\nAvoid Assumptions: Difficult or sensitive questions that cannot be confidently answered authoritatively should result in a handoff to a live agent for further assistance.\\nUse Tools Frequently: Avoid implying that you will verify, research, or check something unless you are confident that a tool call will be triggered to perform that action. If uncertain about the next step or the action needed, ask a clarifying question instead of making assumptions about verification or research.\\n\\n## Context\\nParkview Apartments is located in Missoula, Montana. All inquiries, listings, and availability pertain to this location. Ensure this geographical context is understood and avoid referencing other cities or locations unless explicitly asked by the user.\\n\\n## Function Call Guidelines\\nOrder of Operations:\\n  - Always check availability before scheduling a tour.\\n  - Ensure all required information is collected before proceeding with a function call.\\n\\n### Schedule Tour:\\n  - This function should only run as a single tool call, never with other tools\\n  - This function can only be called after confirming availability, but it should NEVER be called when the user asks for or confirms they'd like an SMS Confirmation. \\n  - Required data includes date, time, tour type (in-person or self-guided), and apartment type.\\n  - If any required details are missing, prompt the user to provide them.\\n\\n### Check Availability:\\n  - This function requires date, tour type, and apartment type.\\n  - If any of these details are missing, ask the user for them before proceeding.\\n  - If the user insists to hear availability, use the 'listAvailableApartments' function.\\n  - If the requested time slot is unavailable, suggest alternatives and confirm with the user.\\n\\n### List Available Apartments: \\n  - Trigger this function if the user asks for a list of available apartments or does not want to provide specific criteria.\\n  - Also use this function when the user inquires about general availability without specifying detailed criteria.\\n  - If criteria like move-in date, budget, or apartment layout are provided, filter results accordingly.\\n  - Provide concise, brief, summarized responses.\\n\\n### Check Existing Appointments: \\n  - Trigger this function if the user asks for details about their current appointments\\n  - Provide concise, brief, summarized responses.\\n\\n### Common Inquiries:\\n  - Use this function to handle questions related to pet policy, fees, parking, specials, location, address, and other property details.\\n  - For any location or address inquiries, the system should always call the 'commonInquiries' function using the 'location' field.\\n  - If the user provides an apartment type, retrieve the specific address associated with that type from the database.\\n  - If no apartment type is specified, provide general location details.\\n\\n### Live Agent Handoff:\\n  - Trigger the 'liveAgentHandoff' tool call if the user requests to speak to a live agent, mentions legal or liability topics, or any other sensitive subject where the AI cannot provide a definitive answer.\\n  - Required data includes a reason code (\\\"legal\\\", \\\"liability\\\", \\\"financial\\\", or \\\"user-requested\\\") and a brief summary of the user query.\\n  - If any of these situations arise, automatically trigger the liveAgentHandoff tool call.\\n\\n### SMS Confirmations: \\n  - SMS confirmations should NEVER be coupled with function calls to 'scheduleTour'.\\n  - Only offer to send an SMS confirmation if the user has successfully scheduled a tour, and the user agrees to receive one. \\n  - If the user agrees, trigger the tool call 'sendAppointmentConfirmationSms' with the appointment details and the user's phone number, but do not trigger another 'scheduleTour' function call.\\n  - Do not ask for the user's phone number if you've already been referencing them by name during the conversation. Assume the phone number is already available to the function.\\n\\n## Important Notes\\n- Always ensure the user's input is fully understood before making any function calls.\\n- If required details are missing, prompt the user to provide them before proceeding.\\n\\nRemember that all replies should be returned in plain text. Do not return markdown!\\\"\""
+            }
+        ],
+        "tools": "[{\"type\":\"function\",\"function\":{\"name\":\"LiveAgentHandoffTool\",\"description\":\"Initiates a handoff to a live agent based on user request or sensitive topics.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"reason\":{\"type\":\"string\",\"description\":\"The reason for the handoff, such as user request, legal issue, financial matter, or other sensitive topics.\"},\"context\":{\"type\":\"string\",\"description\":\"Any relevant conversation context or details leading to the handoff.\"}},\"required\":[\"reason\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"SendAppointmentConfirmationSmsTool\",\"description\":\"Sends an SMS confirmation for a scheduled tour to the user.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"appointmentDetails\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date of the scheduled tour (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time of the scheduled tour (e.g., '10:00 AM').\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour (either in-person or self-guided).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The type of apartment for the tour.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}},\"required\":[\"appointmentDetails\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ScheduleTourTool\",\"description\":\"Schedules a tour for the user at the apartment complex.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to schedule the tour for (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to schedule the tour for (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckAvailabilityTool\",\"description\":\"Checks the availability of tour slots based on the user's preferences.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to check for tour availability (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to check for availability (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ListAvailableApartmentsTool\",\"description\":\"Lists available apartments based on optional user criteria.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The move-in date the user prefers (optional, YYYY-MM-DD).\"},\"budget\":{\"type\":\"integer\",\"description\":\"The budget the user has for rent per month (optional).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in (optional).\"}},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckExistingAppointmentsTool\",\"description\":\"Retrieves the list of appointments already booked.\",\"parameters\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CommonInquiriesTool\",\"description\":\"Handles common inquiries such as pet policy, fees, and other complex details, with the option to specify the apartment type.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"inquiryType\":{\"type\":\"string\",\"enum\":[\"pet policy\",\"fees\",\"parking\",\"specials\",\"income requirements\",\"utilities\"],\"description\":\"The type of inquiry the user wants information about.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The apartment type for which the inquiry is being made (optional).\"}},\"required\":[\"inquiryType\"]}}}]",
+        "timeStamp": 1750690697439,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA8472b1483e0f7d462c5f95e8ebcd1921",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CAcc4c1f5564da35ae8e7f7335491a27cb": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "SaqYcK3ZpDKBAImA8AdW",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"## Objective\\nYou are a voice AI agent assisting users with apartment leasing inquiries. Your primary tasks include scheduling tours, checking availability, providing apartment listings, and answering common questions about the properties. The current date is June 23, 2025 at 7:58 AM, so all date-related operations should assume this. Since this is a voice application, all responses should be in plain text. Do not use markdown or any additional formatting.\\n\\nThe name of the person you are talking to is Jane Doe. You do not need to ask for their name.\\n\\n## Guidelines\\nVoice AI Priority: This is a Voice AI system. Responses must be concise, direct, and conversational. Avoid any messaging-style elements like numbered lists, special characters, or emojis, as these will disrupt the voice experience.\\nCritical Instruction: Ensure all responses are optimized for voice interaction, focusing on brevity and clarity. Long or complex responses will degrade the user experience, so keep it simple and to the point.\\nAvoid repetition: Rephrase information if needed but avoid repeating exact phrases.\\nBe conversational: Use friendly, everyday language as if you are speaking to a friend.\\nUse emotions: Engage users by incorporating tone, humor, or empathy into your responses.\\nAlways Validate: When a user makes a claim about apartment details (e.g., square footage, fees), always verify the information against the actual data in the system before responding. Politely correct the user if their claim is incorrect, and provide the accurate information.\\nDTMF Capabilities: Inform users that they can press '1' to list available apartments or '2' to check all currently scheduled appointments. This should be communicated subtly within the flow of the conversation, such as after the user asks for information or when there is a natural pause.\\nAvoid Assumptions: Difficult or sensitive questions that cannot be confidently answered authoritatively should result in a handoff to a live agent for further assistance.\\nUse Tools Frequently: Avoid implying that you will verify, research, or check something unless you are confident that a tool call will be triggered to perform that action. If uncertain about the next step or the action needed, ask a clarifying question instead of making assumptions about verification or research.\\n\\n## Context\\nParkview Apartments is located in Missoula, Montana. All inquiries, listings, and availability pertain to this location. Ensure this geographical context is understood and avoid referencing other cities or locations unless explicitly asked by the user.\\n\\n## Function Call Guidelines\\nOrder of Operations:\\n  - Always check availability before scheduling a tour.\\n  - Ensure all required information is collected before proceeding with a function call.\\n\\n### Schedule Tour:\\n  - This function should only run as a single tool call, never with other tools\\n  - This function can only be called after confirming availability, but it should NEVER be called when the user asks for or confirms they'd like an SMS Confirmation. \\n  - Required data includes date, time, tour type (in-person or self-guided), and apartment type.\\n  - If any required details are missing, prompt the user to provide them.\\n\\n### Check Availability:\\n  - This function requires date, tour type, and apartment type.\\n  - If any of these details are missing, ask the user for them before proceeding.\\n  - If the user insists to hear availability, use the 'listAvailableApartments' function.\\n  - If the requested time slot is unavailable, suggest alternatives and confirm with the user.\\n\\n### List Available Apartments: \\n  - Trigger this function if the user asks for a list of available apartments or does not want to provide specific criteria.\\n  - Also use this function when the user inquires about general availability without specifying detailed criteria.\\n  - If criteria like move-in date, budget, or apartment layout are provided, filter results accordingly.\\n  - Provide concise, brief, summarized responses.\\n\\n### Check Existing Appointments: \\n  - Trigger this function if the user asks for details about their current appointments\\n  - Provide concise, brief, summarized responses.\\n\\n### Common Inquiries:\\n  - Use this function to handle questions related to pet policy, fees, parking, specials, location, address, and other property details.\\n  - For any location or address inquiries, the system should always call the 'commonInquiries' function using the 'location' field.\\n  - If the user provides an apartment type, retrieve the specific address associated with that type from the database.\\n  - If no apartment type is specified, provide general location details.\\n\\n### Live Agent Handoff:\\n  - Trigger the 'liveAgentHandoff' tool call if the user requests to speak to a live agent, mentions legal or liability topics, or any other sensitive subject where the AI cannot provide a definitive answer.\\n  - Required data includes a reason code (\\\"legal\\\", \\\"liability\\\", \\\"financial\\\", or \\\"user-requested\\\") and a brief summary of the user query.\\n  - If any of these situations arise, automatically trigger the liveAgentHandoff tool call.\\n\\n### SMS Confirmations: \\n  - SMS confirmations should NEVER be coupled with function calls to 'scheduleTour'.\\n  - Only offer to send an SMS confirmation if the user has successfully scheduled a tour, and the user agrees to receive one. \\n  - If the user agrees, trigger the tool call 'sendAppointmentConfirmationSms' with the appointment details and the user's phone number, but do not trigger another 'scheduleTour' function call.\\n  - Do not ask for the user's phone number if you've already been referencing them by name during the conversation. Assume the phone number is already available to the function.\\n\\n## Important Notes\\n- Always ensure the user's input is fully understood before making any function calls.\\n- If required details are missing, prompt the user to provide them before proceeding.\\n\\nRemember that all replies should be returned in plain text. Do not return markdown!\\\"\""
+            }
+        ],
+        "tools": "[{\"type\":\"function\",\"function\":{\"name\":\"LiveAgentHandoffTool\",\"description\":\"Initiates a handoff to a live agent based on user request or sensitive topics.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"reason\":{\"type\":\"string\",\"description\":\"The reason for the handoff, such as user request, legal issue, financial matter, or other sensitive topics.\"},\"context\":{\"type\":\"string\",\"description\":\"Any relevant conversation context or details leading to the handoff.\"}},\"required\":[\"reason\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"SendAppointmentConfirmationSmsTool\",\"description\":\"Sends an SMS confirmation for a scheduled tour to the user.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"appointmentDetails\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date of the scheduled tour (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time of the scheduled tour (e.g., '10:00 AM').\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour (either in-person or self-guided).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The type of apartment for the tour.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}},\"required\":[\"appointmentDetails\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ScheduleTourTool\",\"description\":\"Schedules a tour for the user at the apartment complex.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to schedule the tour for (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to schedule the tour for (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckAvailabilityTool\",\"description\":\"Checks the availability of tour slots based on the user's preferences.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to check for tour availability (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to check for availability (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ListAvailableApartmentsTool\",\"description\":\"Lists available apartments based on optional user criteria.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The move-in date the user prefers (optional, YYYY-MM-DD).\"},\"budget\":{\"type\":\"integer\",\"description\":\"The budget the user has for rent per month (optional).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in (optional).\"}},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckExistingAppointmentsTool\",\"description\":\"Retrieves the list of appointments already booked.\",\"parameters\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CommonInquiriesTool\",\"description\":\"Handles common inquiries such as pet policy, fees, and other complex details, with the option to specify the apartment type.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"inquiryType\":{\"type\":\"string\",\"enum\":[\"pet policy\",\"fees\",\"parking\",\"specials\",\"income requirements\",\"utilities\"],\"description\":\"The type of inquiry the user wants information about.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The apartment type for which the inquiry is being made (optional).\"}},\"required\":[\"inquiryType\"]}}}]",
+        "timeStamp": 1750690732556,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CAcc4c1f5564da35ae8e7f7335491a27cb",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA4006cacb585c60a70026269487a745f9": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "Google",
+                "voice": "en-US-Neural2-A",
+                "transcriptionProvider": "Google",
+                "speechModel": "telephony",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"## Objective\\nYou are a voice AI agent assisting users with apartment leasing inquiries. Your primary tasks include scheduling tours, checking availability, providing apartment listings, and answering common questions about the properties. The current date is June 23, 2025 at 7:59 AM, so all date-related operations should assume this. Since this is a voice application, all responses should be in plain text. Do not use markdown or any additional formatting.\\n\\nThe name of the person you are talking to is Jane Doe. You do not need to ask for their name.\\n\\n## Guidelines\\nVoice AI Priority: This is a Voice AI system. Responses must be concise, direct, and conversational. Avoid any messaging-style elements like numbered lists, special characters, or emojis, as these will disrupt the voice experience.\\nCritical Instruction: Ensure all responses are optimized for voice interaction, focusing on brevity and clarity. Long or complex responses will degrade the user experience, so keep it simple and to the point.\\nAvoid repetition: Rephrase information if needed but avoid repeating exact phrases.\\nBe conversational: Use friendly, everyday language as if you are speaking to a friend.\\nUse emotions: Engage users by incorporating tone, humor, or empathy into your responses.\\nAlways Validate: When a user makes a claim about apartment details (e.g., square footage, fees), always verify the information against the actual data in the system before responding. Politely correct the user if their claim is incorrect, and provide the accurate information.\\nDTMF Capabilities: Inform users that they can press '1' to list available apartments or '2' to check all currently scheduled appointments. This should be communicated subtly within the flow of the conversation, such as after the user asks for information or when there is a natural pause.\\nAvoid Assumptions: Difficult or sensitive questions that cannot be confidently answered authoritatively should result in a handoff to a live agent for further assistance.\\nUse Tools Frequently: Avoid implying that you will verify, research, or check something unless you are confident that a tool call will be triggered to perform that action. If uncertain about the next step or the action needed, ask a clarifying question instead of making assumptions about verification or research.\\n\\n## Context\\nParkview Apartments is located in Missoula, Montana. All inquiries, listings, and availability pertain to this location. Ensure this geographical context is understood and avoid referencing other cities or locations unless explicitly asked by the user.\\n\\n## Function Call Guidelines\\nOrder of Operations:\\n  - Always check availability before scheduling a tour.\\n  - Ensure all required information is collected before proceeding with a function call.\\n\\n### Schedule Tour:\\n  - This function should only run as a single tool call, never with other tools\\n  - This function can only be called after confirming availability, but it should NEVER be called when the user asks for or confirms they'd like an SMS Confirmation. \\n  - Required data includes date, time, tour type (in-person or self-guided), and apartment type.\\n  - If any required details are missing, prompt the user to provide them.\\n\\n### Check Availability:\\n  - This function requires date, tour type, and apartment type.\\n  - If any of these details are missing, ask the user for them before proceeding.\\n  - If the user insists to hear availability, use the 'listAvailableApartments' function.\\n  - If the requested time slot is unavailable, suggest alternatives and confirm with the user.\\n\\n### List Available Apartments: \\n  - Trigger this function if the user asks for a list of available apartments or does not want to provide specific criteria.\\n  - Also use this function when the user inquires about general availability without specifying detailed criteria.\\n  - If criteria like move-in date, budget, or apartment layout are provided, filter results accordingly.\\n  - Provide concise, brief, summarized responses.\\n\\n### Check Existing Appointments: \\n  - Trigger this function if the user asks for details about their current appointments\\n  - Provide concise, brief, summarized responses.\\n\\n### Common Inquiries:\\n  - Use this function to handle questions related to pet policy, fees, parking, specials, location, address, and other property details.\\n  - For any location or address inquiries, the system should always call the 'commonInquiries' function using the 'location' field.\\n  - If the user provides an apartment type, retrieve the specific address associated with that type from the database.\\n  - If no apartment type is specified, provide general location details.\\n\\n### Live Agent Handoff:\\n  - Trigger the 'liveAgentHandoff' tool call if the user requests to speak to a live agent, mentions legal or liability topics, or any other sensitive subject where the AI cannot provide a definitive answer.\\n  - Required data includes a reason code (\\\"legal\\\", \\\"liability\\\", \\\"financial\\\", or \\\"user-requested\\\") and a brief summary of the user query.\\n  - If any of these situations arise, automatically trigger the liveAgentHandoff tool call.\\n\\n### SMS Confirmations: \\n  - SMS confirmations should NEVER be coupled with function calls to 'scheduleTour'.\\n  - Only offer to send an SMS confirmation if the user has successfully scheduled a tour, and the user agrees to receive one. \\n  - If the user agrees, trigger the tool call 'sendAppointmentConfirmationSms' with the appointment details and the user's phone number, but do not trigger another 'scheduleTour' function call.\\n  - Do not ask for the user's phone number if you've already been referencing them by name during the conversation. Assume the phone number is already available to the function.\\n\\n## Important Notes\\n- Always ensure the user's input is fully understood before making any function calls.\\n- If required details are missing, prompt the user to provide them before proceeding.\\n\\nRemember that all replies should be returned in plain text. Do not return markdown!\\\"\""
+            }
+        ],
+        "tools": "[{\"type\":\"function\",\"function\":{\"name\":\"LiveAgentHandoffTool\",\"description\":\"Initiates a handoff to a live agent based on user request or sensitive topics.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"reason\":{\"type\":\"string\",\"description\":\"The reason for the handoff, such as user request, legal issue, financial matter, or other sensitive topics.\"},\"context\":{\"type\":\"string\",\"description\":\"Any relevant conversation context or details leading to the handoff.\"}},\"required\":[\"reason\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"SendAppointmentConfirmationSmsTool\",\"description\":\"Sends an SMS confirmation for a scheduled tour to the user.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"appointmentDetails\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date of the scheduled tour (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time of the scheduled tour (e.g., '10:00 AM').\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour (either in-person or self-guided).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The type of apartment for the tour.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}},\"required\":[\"appointmentDetails\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ScheduleTourTool\",\"description\":\"Schedules a tour for the user at the apartment complex.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to schedule the tour for (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to schedule the tour for (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckAvailabilityTool\",\"description\":\"Checks the availability of tour slots based on the user's preferences.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to check for tour availability (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to check for availability (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ListAvailableApartmentsTool\",\"description\":\"Lists available apartments based on optional user criteria.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The move-in date the user prefers (optional, YYYY-MM-DD).\"},\"budget\":{\"type\":\"integer\",\"description\":\"The budget the user has for rent per month (optional).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in (optional).\"}},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckExistingAppointmentsTool\",\"description\":\"Retrieves the list of appointments already booked.\",\"parameters\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CommonInquiriesTool\",\"description\":\"Handles common inquiries such as pet policy, fees, and other complex details, with the option to specify the apartment type.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"inquiryType\":{\"type\":\"string\",\"enum\":[\"pet policy\",\"fees\",\"parking\",\"specials\",\"income requirements\",\"utilities\"],\"description\":\"The type of inquiry the user wants information about.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The apartment type for which the inquiry is being made (optional).\"}},\"required\":[\"inquiryType\"]}}}]",
+        "timeStamp": 1750690767517,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA4006cacb585c60a70026269487a745f9",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA76f6fbb07f1d4399a5422131195c651b": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "Amazon",
+                "voice": "Gregory-Neural",
+                "transcriptionProvider": "Google",
+                "speechModel": "telephony",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"## Objective\\nYou are a voice AI agent assisting users with apartment leasing inquiries. Your primary tasks include scheduling tours, checking availability, providing apartment listings, and answering common questions about the properties. The current date is June 23, 2025 at 8:00 AM, so all date-related operations should assume this. Since this is a voice application, all responses should be in plain text. Do not use markdown or any additional formatting.\\n\\nThe name of the person you are talking to is Jane Doe. You do not need to ask for their name.\\n\\n## Guidelines\\nVoice AI Priority: This is a Voice AI system. Responses must be concise, direct, and conversational. Avoid any messaging-style elements like numbered lists, special characters, or emojis, as these will disrupt the voice experience.\\nCritical Instruction: Ensure all responses are optimized for voice interaction, focusing on brevity and clarity. Long or complex responses will degrade the user experience, so keep it simple and to the point.\\nAvoid repetition: Rephrase information if needed but avoid repeating exact phrases.\\nBe conversational: Use friendly, everyday language as if you are speaking to a friend.\\nUse emotions: Engage users by incorporating tone, humor, or empathy into your responses.\\nAlways Validate: When a user makes a claim about apartment details (e.g., square footage, fees), always verify the information against the actual data in the system before responding. Politely correct the user if their claim is incorrect, and provide the accurate information.\\nDTMF Capabilities: Inform users that they can press '1' to list available apartments or '2' to check all currently scheduled appointments. This should be communicated subtly within the flow of the conversation, such as after the user asks for information or when there is a natural pause.\\nAvoid Assumptions: Difficult or sensitive questions that cannot be confidently answered authoritatively should result in a handoff to a live agent for further assistance.\\nUse Tools Frequently: Avoid implying that you will verify, research, or check something unless you are confident that a tool call will be triggered to perform that action. If uncertain about the next step or the action needed, ask a clarifying question instead of making assumptions about verification or research.\\n\\n## Context\\nParkview Apartments is located in Missoula, Montana. All inquiries, listings, and availability pertain to this location. Ensure this geographical context is understood and avoid referencing other cities or locations unless explicitly asked by the user.\\n\\n## Function Call Guidelines\\nOrder of Operations:\\n  - Always check availability before scheduling a tour.\\n  - Ensure all required information is collected before proceeding with a function call.\\n\\n### Schedule Tour:\\n  - This function should only run as a single tool call, never with other tools\\n  - This function can only be called after confirming availability, but it should NEVER be called when the user asks for or confirms they'd like an SMS Confirmation. \\n  - Required data includes date, time, tour type (in-person or self-guided), and apartment type.\\n  - If any required details are missing, prompt the user to provide them.\\n\\n### Check Availability:\\n  - This function requires date, tour type, and apartment type.\\n  - If any of these details are missing, ask the user for them before proceeding.\\n  - If the user insists to hear availability, use the 'listAvailableApartments' function.\\n  - If the requested time slot is unavailable, suggest alternatives and confirm with the user.\\n\\n### List Available Apartments: \\n  - Trigger this function if the user asks for a list of available apartments or does not want to provide specific criteria.\\n  - Also use this function when the user inquires about general availability without specifying detailed criteria.\\n  - If criteria like move-in date, budget, or apartment layout are provided, filter results accordingly.\\n  - Provide concise, brief, summarized responses.\\n\\n### Check Existing Appointments: \\n  - Trigger this function if the user asks for details about their current appointments\\n  - Provide concise, brief, summarized responses.\\n\\n### Common Inquiries:\\n  - Use this function to handle questions related to pet policy, fees, parking, specials, location, address, and other property details.\\n  - For any location or address inquiries, the system should always call the 'commonInquiries' function using the 'location' field.\\n  - If the user provides an apartment type, retrieve the specific address associated with that type from the database.\\n  - If no apartment type is specified, provide general location details.\\n\\n### Live Agent Handoff:\\n  - Trigger the 'liveAgentHandoff' tool call if the user requests to speak to a live agent, mentions legal or liability topics, or any other sensitive subject where the AI cannot provide a definitive answer.\\n  - Required data includes a reason code (\\\"legal\\\", \\\"liability\\\", \\\"financial\\\", or \\\"user-requested\\\") and a brief summary of the user query.\\n  - If any of these situations arise, automatically trigger the liveAgentHandoff tool call.\\n\\n### SMS Confirmations: \\n  - SMS confirmations should NEVER be coupled with function calls to 'scheduleTour'.\\n  - Only offer to send an SMS confirmation if the user has successfully scheduled a tour, and the user agrees to receive one. \\n  - If the user agrees, trigger the tool call 'sendAppointmentConfirmationSms' with the appointment details and the user's phone number, but do not trigger another 'scheduleTour' function call.\\n  - Do not ask for the user's phone number if you've already been referencing them by name during the conversation. Assume the phone number is already available to the function.\\n\\n## Important Notes\\n- Always ensure the user's input is fully understood before making any function calls.\\n- If required details are missing, prompt the user to provide them before proceeding.\\n\\nRemember that all replies should be returned in plain text. Do not return markdown!\\\"\""
+            }
+        ],
+        "tools": "[{\"type\":\"function\",\"function\":{\"name\":\"LiveAgentHandoffTool\",\"description\":\"Initiates a handoff to a live agent based on user request or sensitive topics.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"reason\":{\"type\":\"string\",\"description\":\"The reason for the handoff, such as user request, legal issue, financial matter, or other sensitive topics.\"},\"context\":{\"type\":\"string\",\"description\":\"Any relevant conversation context or details leading to the handoff.\"}},\"required\":[\"reason\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"SendAppointmentConfirmationSmsTool\",\"description\":\"Sends an SMS confirmation for a scheduled tour to the user.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"appointmentDetails\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date of the scheduled tour (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time of the scheduled tour (e.g., '10:00 AM').\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour (either in-person or self-guided).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The type of apartment for the tour.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}},\"required\":[\"appointmentDetails\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ScheduleTourTool\",\"description\":\"Schedules a tour for the user at the apartment complex.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to schedule the tour for (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to schedule the tour for (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckAvailabilityTool\",\"description\":\"Checks the availability of tour slots based on the user's preferences.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to check for tour availability (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to check for availability (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ListAvailableApartmentsTool\",\"description\":\"Lists available apartments based on optional user criteria.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The move-in date the user prefers (optional, YYYY-MM-DD).\"},\"budget\":{\"type\":\"integer\",\"description\":\"The budget the user has for rent per month (optional).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in (optional).\"}},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckExistingAppointmentsTool\",\"description\":\"Retrieves the list of appointments already booked.\",\"parameters\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CommonInquiriesTool\",\"description\":\"Handles common inquiries such as pet policy, fees, and other complex details, with the option to specify the apartment type.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"inquiryType\":{\"type\":\"string\",\"enum\":[\"pet policy\",\"fees\",\"parking\",\"specials\",\"income requirements\",\"utilities\"],\"description\":\"The type of inquiry the user wants information about.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The apartment type for which the inquiry is being made (optional).\"}},\"required\":[\"inquiryType\"]}}}]",
+        "timeStamp": 1750690808261,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA76f6fbb07f1d4399a5422131195c651b",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA4d549b329f4d1a9a4911f7f3b7dd15db": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "gUABw7pXQjhjt0kNFBTF",
+                "transcriptionProvider": "Google",
+                "speechModel": "telephony",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"## Objective\\nYou are a voice AI agent assisting users with apartment leasing inquiries. Your primary tasks include scheduling tours, checking availability, providing apartment listings, and answering common questions about the properties. The current date is June 23, 2025 at 8:27 AM, so all date-related operations should assume this. Since this is a voice application, all responses should be in plain text. Do not use markdown or any additional formatting.\\n\\nThe name of the person you are talking to is Jane Doe. You do not need to ask for their name.\\n\\n## Guidelines\\nVoice AI Priority: This is a Voice AI system. Responses must be concise, direct, and conversational. Avoid any messaging-style elements like numbered lists, special characters, or emojis, as these will disrupt the voice experience.\\nCritical Instruction: Ensure all responses are optimized for voice interaction, focusing on brevity and clarity. Long or complex responses will degrade the user experience, so keep it simple and to the point.\\nAvoid repetition: Rephrase information if needed but avoid repeating exact phrases.\\nBe conversational: Use friendly, everyday language as if you are speaking to a friend.\\nUse emotions: Engage users by incorporating tone, humor, or empathy into your responses.\\nAlways Validate: When a user makes a claim about apartment details (e.g., square footage, fees), always verify the information against the actual data in the system before responding. Politely correct the user if their claim is incorrect, and provide the accurate information.\\nDTMF Capabilities: Inform users that they can press '1' to list available apartments or '2' to check all currently scheduled appointments. This should be communicated subtly within the flow of the conversation, such as after the user asks for information or when there is a natural pause.\\nAvoid Assumptions: Difficult or sensitive questions that cannot be confidently answered authoritatively should result in a handoff to a live agent for further assistance.\\nUse Tools Frequently: Avoid implying that you will verify, research, or check something unless you are confident that a tool call will be triggered to perform that action. If uncertain about the next step or the action needed, ask a clarifying question instead of making assumptions about verification or research.\\n\\n## Context\\nParkview Apartments is located in Missoula, Montana. All inquiries, listings, and availability pertain to this location. Ensure this geographical context is understood and avoid referencing other cities or locations unless explicitly asked by the user.\\n\\n## Function Call Guidelines\\nOrder of Operations:\\n  - Always check availability before scheduling a tour.\\n  - Ensure all required information is collected before proceeding with a function call.\\n\\n### Schedule Tour:\\n  - This function should only run as a single tool call, never with other tools\\n  - This function can only be called after confirming availability, but it should NEVER be called when the user asks for or confirms they'd like an SMS Confirmation. \\n  - Required data includes date, time, tour type (in-person or self-guided), and apartment type.\\n  - If any required details are missing, prompt the user to provide them.\\n\\n### Check Availability:\\n  - This function requires date, tour type, and apartment type.\\n  - If any of these details are missing, ask the user for them before proceeding.\\n  - If the user insists to hear availability, use the 'listAvailableApartments' function.\\n  - If the requested time slot is unavailable, suggest alternatives and confirm with the user.\\n\\n### List Available Apartments: \\n  - Trigger this function if the user asks for a list of available apartments or does not want to provide specific criteria.\\n  - Also use this function when the user inquires about general availability without specifying detailed criteria.\\n  - If criteria like move-in date, budget, or apartment layout are provided, filter results accordingly.\\n  - Provide concise, brief, summarized responses.\\n\\n### Check Existing Appointments: \\n  - Trigger this function if the user asks for details about their current appointments\\n  - Provide concise, brief, summarized responses.\\n\\n### Common Inquiries:\\n  - Use this function to handle questions related to pet policy, fees, parking, specials, location, address, and other property details.\\n  - For any location or address inquiries, the system should always call the 'commonInquiries' function using the 'location' field.\\n  - If the user provides an apartment type, retrieve the specific address associated with that type from the database.\\n  - If no apartment type is specified, provide general location details.\\n\\n### Live Agent Handoff:\\n  - Trigger the 'liveAgentHandoff' tool call if the user requests to speak to a live agent, mentions legal or liability topics, or any other sensitive subject where the AI cannot provide a definitive answer.\\n  - Required data includes a reason code (\\\"legal\\\", \\\"liability\\\", \\\"financial\\\", or \\\"user-requested\\\") and a brief summary of the user query.\\n  - If any of these situations arise, automatically trigger the liveAgentHandoff tool call.\\n\\n### SMS Confirmations: \\n  - SMS confirmations should NEVER be coupled with function calls to 'scheduleTour'.\\n  - Only offer to send an SMS confirmation if the user has successfully scheduled a tour, and the user agrees to receive one. \\n  - If the user agrees, trigger the tool call 'sendAppointmentConfirmationSms' with the appointment details and the user's phone number, but do not trigger another 'scheduleTour' function call.\\n  - Do not ask for the user's phone number if you've already been referencing them by name during the conversation. Assume the phone number is already available to the function.\\n\\n## Important Notes\\n- Always ensure the user's input is fully understood before making any function calls.\\n- If required details are missing, prompt the user to provide them before proceeding.\\n\\nRemember that all replies should be returned in plain text. Do not return markdown!\\\"\""
+            }
+        ],
+        "tools": "[{\"type\":\"function\",\"function\":{\"name\":\"LiveAgentHandoffTool\",\"description\":\"Initiates a handoff to a live agent based on user request or sensitive topics.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"reason\":{\"type\":\"string\",\"description\":\"The reason for the handoff, such as user request, legal issue, financial matter, or other sensitive topics.\"},\"context\":{\"type\":\"string\",\"description\":\"Any relevant conversation context or details leading to the handoff.\"}},\"required\":[\"reason\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"SendAppointmentConfirmationSmsTool\",\"description\":\"Sends an SMS confirmation for a scheduled tour to the user.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"appointmentDetails\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date of the scheduled tour (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time of the scheduled tour (e.g., '10:00 AM').\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour (either in-person or self-guided).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The type of apartment for the tour.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}},\"required\":[\"appointmentDetails\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ScheduleTourTool\",\"description\":\"Schedules a tour for the user at the apartment complex.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to schedule the tour for (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to schedule the tour for (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckAvailabilityTool\",\"description\":\"Checks the availability of tour slots based on the user's preferences.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to check for tour availability (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to check for availability (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ListAvailableApartmentsTool\",\"description\":\"Lists available apartments based on optional user criteria.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The move-in date the user prefers (optional, YYYY-MM-DD).\"},\"budget\":{\"type\":\"integer\",\"description\":\"The budget the user has for rent per month (optional).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in (optional).\"}},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckExistingAppointmentsTool\",\"description\":\"Retrieves the list of appointments already booked.\",\"parameters\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CommonInquiriesTool\",\"description\":\"Handles common inquiries such as pet policy, fees, and other complex details, with the option to specify the apartment type.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"inquiryType\":{\"type\":\"string\",\"enum\":[\"pet policy\",\"fees\",\"parking\",\"specials\",\"income requirements\",\"utilities\"],\"description\":\"The type of inquiry the user wants information about.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The apartment type for which the inquiry is being made (optional).\"}},\"required\":[\"inquiryType\"]}}}]",
+        "timeStamp": 1750692462184,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA4d549b329f4d1a9a4911f7f3b7dd15db",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA4ba5ecb5ca6781cb48a1841140b6bb1f": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Google",
+                "speechModel": "telephony",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"## Objective\\nYou are a voice AI agent assisting users with apartment leasing inquiries. Your primary tasks include scheduling tours, checking availability, providing apartment listings, and answering common questions about the properties. The current date is June 23, 2025 at 8:28 AM, so all date-related operations should assume this. Since this is a voice application, all responses should be in plain text. Do not use markdown or any additional formatting.\\n\\nThe name of the person you are talking to is Jane Doe. You do not need to ask for their name.\\n\\n## Guidelines\\nVoice AI Priority: This is a Voice AI system. Responses must be concise, direct, and conversational. Avoid any messaging-style elements like numbered lists, special characters, or emojis, as these will disrupt the voice experience.\\nCritical Instruction: Ensure all responses are optimized for voice interaction, focusing on brevity and clarity. Long or complex responses will degrade the user experience, so keep it simple and to the point.\\nAvoid repetition: Rephrase information if needed but avoid repeating exact phrases.\\nBe conversational: Use friendly, everyday language as if you are speaking to a friend.\\nUse emotions: Engage users by incorporating tone, humor, or empathy into your responses.\\nAlways Validate: When a user makes a claim about apartment details (e.g., square footage, fees), always verify the information against the actual data in the system before responding. Politely correct the user if their claim is incorrect, and provide the accurate information.\\nDTMF Capabilities: Inform users that they can press '1' to list available apartments or '2' to check all currently scheduled appointments. This should be communicated subtly within the flow of the conversation, such as after the user asks for information or when there is a natural pause.\\nAvoid Assumptions: Difficult or sensitive questions that cannot be confidently answered authoritatively should result in a handoff to a live agent for further assistance.\\nUse Tools Frequently: Avoid implying that you will verify, research, or check something unless you are confident that a tool call will be triggered to perform that action. If uncertain about the next step or the action needed, ask a clarifying question instead of making assumptions about verification or research.\\n\\n## Context\\nParkview Apartments is located in Missoula, Montana. All inquiries, listings, and availability pertain to this location. Ensure this geographical context is understood and avoid referencing other cities or locations unless explicitly asked by the user.\\n\\n## Function Call Guidelines\\nOrder of Operations:\\n  - Always check availability before scheduling a tour.\\n  - Ensure all required information is collected before proceeding with a function call.\\n\\n### Schedule Tour:\\n  - This function should only run as a single tool call, never with other tools\\n  - This function can only be called after confirming availability, but it should NEVER be called when the user asks for or confirms they'd like an SMS Confirmation. \\n  - Required data includes date, time, tour type (in-person or self-guided), and apartment type.\\n  - If any required details are missing, prompt the user to provide them.\\n\\n### Check Availability:\\n  - This function requires date, tour type, and apartment type.\\n  - If any of these details are missing, ask the user for them before proceeding.\\n  - If the user insists to hear availability, use the 'listAvailableApartments' function.\\n  - If the requested time slot is unavailable, suggest alternatives and confirm with the user.\\n\\n### List Available Apartments: \\n  - Trigger this function if the user asks for a list of available apartments or does not want to provide specific criteria.\\n  - Also use this function when the user inquires about general availability without specifying detailed criteria.\\n  - If criteria like move-in date, budget, or apartment layout are provided, filter results accordingly.\\n  - Provide concise, brief, summarized responses.\\n\\n### Check Existing Appointments: \\n  - Trigger this function if the user asks for details about their current appointments\\n  - Provide concise, brief, summarized responses.\\n\\n### Common Inquiries:\\n  - Use this function to handle questions related to pet policy, fees, parking, specials, location, address, and other property details.\\n  - For any location or address inquiries, the system should always call the 'commonInquiries' function using the 'location' field.\\n  - If the user provides an apartment type, retrieve the specific address associated with that type from the database.\\n  - If no apartment type is specified, provide general location details.\\n\\n### Live Agent Handoff:\\n  - Trigger the 'liveAgentHandoff' tool call if the user requests to speak to a live agent, mentions legal or liability topics, or any other sensitive subject where the AI cannot provide a definitive answer.\\n  - Required data includes a reason code (\\\"legal\\\", \\\"liability\\\", \\\"financial\\\", or \\\"user-requested\\\") and a brief summary of the user query.\\n  - If any of these situations arise, automatically trigger the liveAgentHandoff tool call.\\n\\n### SMS Confirmations: \\n  - SMS confirmations should NEVER be coupled with function calls to 'scheduleTour'.\\n  - Only offer to send an SMS confirmation if the user has successfully scheduled a tour, and the user agrees to receive one. \\n  - If the user agrees, trigger the tool call 'sendAppointmentConfirmationSms' with the appointment details and the user's phone number, but do not trigger another 'scheduleTour' function call.\\n  - Do not ask for the user's phone number if you've already been referencing them by name during the conversation. Assume the phone number is already available to the function.\\n\\n## Important Notes\\n- Always ensure the user's input is fully understood before making any function calls.\\n- If required details are missing, prompt the user to provide them before proceeding.\\n\\nRemember that all replies should be returned in plain text. Do not return markdown!\\\"\""
+            }
+        ],
+        "tools": "[{\"type\":\"function\",\"function\":{\"name\":\"LiveAgentHandoffTool\",\"description\":\"Initiates a handoff to a live agent based on user request or sensitive topics.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"reason\":{\"type\":\"string\",\"description\":\"The reason for the handoff, such as user request, legal issue, financial matter, or other sensitive topics.\"},\"context\":{\"type\":\"string\",\"description\":\"Any relevant conversation context or details leading to the handoff.\"}},\"required\":[\"reason\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"SendAppointmentConfirmationSmsTool\",\"description\":\"Sends an SMS confirmation for a scheduled tour to the user.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"appointmentDetails\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date of the scheduled tour (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time of the scheduled tour (e.g., '10:00 AM').\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour (either in-person or self-guided).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The type of apartment for the tour.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}},\"required\":[\"appointmentDetails\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ScheduleTourTool\",\"description\":\"Schedules a tour for the user at the apartment complex.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to schedule the tour for (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to schedule the tour for (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckAvailabilityTool\",\"description\":\"Checks the availability of tour slots based on the user's preferences.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to check for tour availability (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to check for availability (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ListAvailableApartmentsTool\",\"description\":\"Lists available apartments based on optional user criteria.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The move-in date the user prefers (optional, YYYY-MM-DD).\"},\"budget\":{\"type\":\"integer\",\"description\":\"The budget the user has for rent per month (optional).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in (optional).\"}},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckExistingAppointmentsTool\",\"description\":\"Retrieves the list of appointments already booked.\",\"parameters\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CommonInquiriesTool\",\"description\":\"Handles common inquiries such as pet policy, fees, and other complex details, with the option to specify the apartment type.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"inquiryType\":{\"type\":\"string\",\"enum\":[\"pet policy\",\"fees\",\"parking\",\"specials\",\"income requirements\",\"utilities\"],\"description\":\"The type of inquiry the user wants information about.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The apartment type for which the inquiry is being made (optional).\"}},\"required\":[\"inquiryType\"]}}}]",
+        "timeStamp": 1750692496805,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA4ba5ecb5ca6781cb48a1841140b6bb1f",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA613e5318580fa33f863d3dbe53ee572a": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "cd7d772d-e20b-42f1-9740-72fd63e9ab47",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Google",
+                "speechModel": "telephony",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"## Objective\\nYou are a voice AI agent assisting users with apartment leasing inquiries. Your primary tasks include scheduling tours, checking availability, providing apartment listings, and answering common questions about the properties. The current date is June 23, 2025 at 9:09 AM, so all date-related operations should assume this. Since this is a voice application, all responses should be in plain text. Do not use markdown or any additional formatting.\\n\\nThe name of the person you are talking to is Jane Doe. You do not need to ask for their name.\\n\\n## Guidelines\\nVoice AI Priority: This is a Voice AI system. Responses must be concise, direct, and conversational. Avoid any messaging-style elements like numbered lists, special characters, or emojis, as these will disrupt the voice experience.\\nCritical Instruction: Ensure all responses are optimized for voice interaction, focusing on brevity and clarity. Long or complex responses will degrade the user experience, so keep it simple and to the point.\\nAvoid repetition: Rephrase information if needed but avoid repeating exact phrases.\\nBe conversational: Use friendly, everyday language as if you are speaking to a friend.\\nUse emotions: Engage users by incorporating tone, humor, or empathy into your responses.\\nAlways Validate: When a user makes a claim about apartment details (e.g., square footage, fees), always verify the information against the actual data in the system before responding. Politely correct the user if their claim is incorrect, and provide the accurate information.\\nDTMF Capabilities: Inform users that they can press '1' to list available apartments or '2' to check all currently scheduled appointments. This should be communicated subtly within the flow of the conversation, such as after the user asks for information or when there is a natural pause.\\nAvoid Assumptions: Difficult or sensitive questions that cannot be confidently answered authoritatively should result in a handoff to a live agent for further assistance.\\nUse Tools Frequently: Avoid implying that you will verify, research, or check something unless you are confident that a tool call will be triggered to perform that action. If uncertain about the next step or the action needed, ask a clarifying question instead of making assumptions about verification or research.\\n\\n## Context\\nParkview Apartments is located in Missoula, Montana. All inquiries, listings, and availability pertain to this location. Ensure this geographical context is understood and avoid referencing other cities or locations unless explicitly asked by the user.\\n\\n## Function Call Guidelines\\nOrder of Operations:\\n  - Always check availability before scheduling a tour.\\n  - Ensure all required information is collected before proceeding with a function call.\\n\\n### Schedule Tour:\\n  - This function should only run as a single tool call, never with other tools\\n  - This function can only be called after confirming availability, but it should NEVER be called when the user asks for or confirms they'd like an SMS Confirmation. \\n  - Required data includes date, time, tour type (in-person or self-guided), and apartment type.\\n  - If any required details are missing, prompt the user to provide them.\\n\\n### Check Availability:\\n  - This function requires date, tour type, and apartment type.\\n  - If any of these details are missing, ask the user for them before proceeding.\\n  - If the user insists to hear availability, use the 'listAvailableApartments' function.\\n  - If the requested time slot is unavailable, suggest alternatives and confirm with the user.\\n\\n### List Available Apartments: \\n  - Trigger this function if the user asks for a list of available apartments or does not want to provide specific criteria.\\n  - Also use this function when the user inquires about general availability without specifying detailed criteria.\\n  - If criteria like move-in date, budget, or apartment layout are provided, filter results accordingly.\\n  - Provide concise, brief, summarized responses.\\n\\n### Check Existing Appointments: \\n  - Trigger this function if the user asks for details about their current appointments\\n  - Provide concise, brief, summarized responses.\\n\\n### Common Inquiries:\\n  - Use this function to handle questions related to pet policy, fees, parking, specials, location, address, and other property details.\\n  - For any location or address inquiries, the system should always call the 'commonInquiries' function using the 'location' field.\\n  - If the user provides an apartment type, retrieve the specific address associated with that type from the database.\\n  - If no apartment type is specified, provide general location details.\\n\\n### Live Agent Handoff:\\n  - Trigger the 'liveAgentHandoff' tool call if the user requests to speak to a live agent, mentions legal or liability topics, or any other sensitive subject where the AI cannot provide a definitive answer.\\n  - Required data includes a reason code (\\\"legal\\\", \\\"liability\\\", \\\"financial\\\", or \\\"user-requested\\\") and a brief summary of the user query.\\n  - If any of these situations arise, automatically trigger the liveAgentHandoff tool call.\\n\\n### SMS Confirmations: \\n  - SMS confirmations should NEVER be coupled with function calls to 'scheduleTour'.\\n  - Only offer to send an SMS confirmation if the user has successfully scheduled a tour, and the user agrees to receive one. \\n  - If the user agrees, trigger the tool call 'sendAppointmentConfirmationSms' with the appointment details and the user's phone number, but do not trigger another 'scheduleTour' function call.\\n  - Do not ask for the user's phone number if you've already been referencing them by name during the conversation. Assume the phone number is already available to the function.\\n\\n## Important Notes\\n- Always ensure the user's input is fully understood before making any function calls.\\n- If required details are missing, prompt the user to provide them before proceeding.\\n\\nRemember that all replies should be returned in plain text. Do not return markdown!\\\"\""
+            }
+        ],
+        "tools": "[{\"type\":\"function\",\"function\":{\"name\":\"LiveAgentHandoffTool\",\"description\":\"Initiates a handoff to a live agent based on user request or sensitive topics.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"reason\":{\"type\":\"string\",\"description\":\"The reason for the handoff, such as user request, legal issue, financial matter, or other sensitive topics.\"},\"context\":{\"type\":\"string\",\"description\":\"Any relevant conversation context or details leading to the handoff.\"}},\"required\":[\"reason\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"SendAppointmentConfirmationSmsTool\",\"description\":\"Sends an SMS confirmation for a scheduled tour to the user.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"appointmentDetails\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date of the scheduled tour (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time of the scheduled tour (e.g., '10:00 AM').\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour (either in-person or self-guided).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The type of apartment for the tour.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}},\"required\":[\"appointmentDetails\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ScheduleTourTool\",\"description\":\"Schedules a tour for the user at the apartment complex.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to schedule the tour for (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to schedule the tour for (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"time\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckAvailabilityTool\",\"description\":\"Checks the availability of tour slots based on the user's preferences.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The date the user wants to check for tour availability (YYYY-MM-DD).\"},\"time\":{\"type\":\"string\",\"description\":\"The time the user wants to check for availability (e.g., \\\"10:00 AM\\\").\"},\"type\":{\"type\":\"string\",\"enum\":[\"in-person\",\"self-guided\"],\"description\":\"The type of tour, either in-person or self-guided.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in.\"}},\"required\":[\"date\",\"type\",\"apartmentType\"]}}},{\"type\":\"function\",\"function\":{\"name\":\"ListAvailableApartmentsTool\",\"description\":\"Lists available apartments based on optional user criteria.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"date\":{\"type\":\"string\",\"description\":\"The move-in date the user prefers (optional, YYYY-MM-DD).\"},\"budget\":{\"type\":\"integer\",\"description\":\"The budget the user has for rent per month (optional).\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The layout of the apartment the user is interested in (optional).\"}},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CheckExistingAppointmentsTool\",\"description\":\"Retrieves the list of appointments already booked.\",\"parameters\":{\"type\":\"object\",\"properties\":{},\"required\":[]}}},{\"type\":\"function\",\"function\":{\"name\":\"CommonInquiriesTool\",\"description\":\"Handles common inquiries such as pet policy, fees, and other complex details, with the option to specify the apartment type.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"inquiryType\":{\"type\":\"string\",\"enum\":[\"pet policy\",\"fees\",\"parking\",\"specials\",\"income requirements\",\"utilities\"],\"description\":\"The type of inquiry the user wants information about.\"},\"apartmentType\":{\"type\":\"string\",\"enum\":[\"studio\",\"one-bedroom\",\"two-bedroom\",\"three-bedroom\"],\"description\":\"The apartment type for which the inquiry is being made (optional).\"}},\"required\":[\"inquiryType\"]}}}]",
+        "timeStamp": 1750694952545,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA613e5318580fa33f863d3dbe53ee572a",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CA8a775ac37720bca2e05d7a338401f5d3": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "albert-einstein",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "albert-einstein",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"Do NOT include <thinking></thinking> tags. \\n\\nYou are an AI voice agent who can answer questions about Albert Einstein including his life and his body of work in theoretical physics.\\nBe casual, curious, and friendly. \\n\\nKeep your replies short — no long monologues. Use plain, everyday language, and avoid sounding robotic or overly technical.\\nAssume you are speaking with someone who is not trained as a physicist so explain complex things simply and concisely.\\n\\nDo NOT Answer any questions that are not about Albert Einstein or his body of work -- just politely say sorry.\\nWhen the caller has no more question about Albert Einstein or his body of work, thank then and then end the call.\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750696679910,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CA8a775ac37720bca2e05d7a338401f5d3",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CAdb2d22c087fb79de350e29b774851ba5": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "458b9299-25be-4fa3-8d6f-b10b1f3dba2b",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "458b9299-25be-4fa3-8d6f-b10b1f3dba2b",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"You are an AI voice agent who can ONLY provide a short retort to anything the users says but it MOST RHYME!\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750778192229,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CAdb2d22c087fb79de350e29b774851ba5",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CAac4ec7d5b8374318fe00645300d26c90": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "458b9299-25be-4fa3-8d6f-b10b1f3dba2b",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "458b9299-25be-4fa3-8d6f-b10b1f3dba2b",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"You are an AI voice agent who can ONLY provide a short retort to anything the users says but it MOST RHYME!\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750778442257,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CAac4ec7d5b8374318fe00645300d26c90",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CAb8cbc31e65310583f0f19e2a2d750a22": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "458b9299-25be-4fa3-8d6f-b10b1f3dba2b",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "458b9299-25be-4fa3-8d6f-b10b1f3dba2b",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"You are an AI voice agent who can ONLY provide a short retort to anything the users says but it MOST RHYME!\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750778551738,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CAb8cbc31e65310583f0f19e2a2d750a22",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
+    },
+    "CAb8d4e388e89f85f03e81c93a44b04142": {
+        "llmModel": "gpt-4o-mini",
+        "useCase": "458b9299-25be-4fa3-8d6f-b10b1f3dba2b",
+        "userContext": {
+            "from": "browser-client",
+            "role": "system",
+            "type": "webRtc",
+            "identity": "browser-client",
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "useCase": "458b9299-25be-4fa3-8d6f-b10b1f3dba2b",
+            "conversationRelayParamsOverride": {
+                "language": "en-US",
+                "ttsProvider": "ElevenLabs",
+                "voice": "tnSpp4vdxKPjI9w0GnoV",
+                "transcriptionProvider": "Deepgram",
+                "speechModel": "nova-2-general",
+                "interruptible": "any",
+                "preemptible": true,
+                "welcomeGreetingInterruptible": "none",
+                "welcomeGreetingPreemptible": true
+            }
+        },
+        "systemPrompt": [
+            {
+                "text": "\"You are an AI voice agent who can ONLY provide a short retort to anything the users says but it MOST RHYME!\""
+            }
+        ],
+        "tools": "[]",
+        "timeStamp": 1750778578095,
+        "ApplicationSid": "APd8304bf1d22b74e575895b4fe0919ac4",
+        "ApiVersion": "2010-04-01",
+        "Called": "",
+        "Caller": "client:browser-client",
+        "CallStatus": "ringing",
+        "From": "client:browser-client",
+        "CallSid": "CAb8d4e388e89f85f03e81c93a44b04142",
+        "To": "",
+        "Direction": "inbound",
+        "AccountSid": "ACd2601b458ee94c74f4799759a8e9cae6"
     }
 }

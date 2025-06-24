@@ -1,5 +1,5 @@
 import { useState, useRef, useImperativeHandle, forwardRef } from "react";
-import { Stack, Heading, Card } from "@twilio-paste/core";
+import { Stack, Heading, Card, Box, Paragraph } from "@twilio-paste/core";
 
 // import MessageLog from "./MessageLog";
 import MessageLog from "../ui-components/Transcription/MessageLog";
@@ -101,7 +101,25 @@ const Transcript = forwardRef((props, ref) => {
         <Heading as="h1" variant="heading30" marginBottom="space40">
           Conversation Transcription
         </Heading>
-        <MessageLog events={events} />
+
+        { events.length != 0 && (
+          <div>
+          <Paragraph>Scroll to review the transcript.</Paragraph>
+          <Box
+            overflowY="auto"
+            overflowX="auto"
+            maxHeight="50vh"
+            border="1px solid #ccc"
+            borderRadius="borderRadius20"
+            width="100%"
+            maxWidth={["100%", "100%", "100%"]} // full width on mobile, max 800px on desktop
+            padding="space40"
+          >
+          <MessageLog events={events} />
+          </Box>
+          </div>
+        )}
+
       </Card>
     </Stack>
   );
