@@ -2,6 +2,7 @@
     "restaurant-ordering": {
         "name": "restaurant-ordering",
         "title": "Restaurant Ordering",
+        "role": "system",
         "description": "Demonstrate how a customer can call into a restaurant and place an order",
         "conversationRelayParams": {
             "dtmfDetection": true,
@@ -19,6 +20,7 @@
     "albert-einstein": {
         "name": "albert-einstein",
         "title": "Albert Einstein Guide",
+        "role": "system",
         "description": "Caller can ask questions about Albert Einstein.",
         "conversationRelayParams": {
             "dtmfDetection": true,
@@ -36,6 +38,7 @@
     "rhyming-parrot": {
         "name": "rhyming-parrot",
         "title": "Rhyming Parrot Agent",
+        "role": "system",
         "description": "Reply back to anything said with a rhyme!",
         "conversationRelayParams": {
             "dtmfDetection": true,
@@ -53,6 +56,7 @@
     "apartment-search": {
         "name": "apartment-search",
         "title": "Apartment Search",
+        "role": "system",
         "description": "A property leasing use case where a user can schedule tours and inquire about available apartments.",
         "conversationRelayParams": {
             "dtmfDetection": true,
@@ -70,6 +74,7 @@
     "tool-calling-example": {
         "name": "tool-calling-example",
         "title": "Tool Calling Example",
+        "role": "system",
         "description": "Shows tool calling from a voice AI application!",
         "conversationRelayParams": {
             "dtmfDetection": true,
