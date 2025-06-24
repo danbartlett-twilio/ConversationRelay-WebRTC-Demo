@@ -5,6 +5,7 @@ import { formatLLMMessage } from './llm-formatting-helpers.mjs';
 
 import { makeApartmentSearchToolCalls } from './tools/apartment-search/tools.mjs';
 import { makeRestaurantOrderingToolCalls } from './tools/restaurant-ordering/tools.mjs';
+import { makeToolCallingExampleToolCalls } from './tools/tool-calling-example/tools.mjs';
 
 import { FSDB } from "file-system-db"; 
 
@@ -115,6 +116,9 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
                     case "apartment-search":
                         toolCallResult = await makeApartmentSearchToolCalls(llmResult.tool_calls, callSid, sessionDetails);
                         break;
+                    case "tool-calling-example":
+                        toolCallResult = await makeToolCallingExampleToolCalls(llmResult.tool_calls, callSid, sessionDetails);
+                        break;                        
                     default:
                         console.error("No tool calls handler found for use case: ", sessionDetails.useCase);
                         break;

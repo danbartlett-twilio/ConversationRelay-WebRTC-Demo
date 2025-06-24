@@ -6,11 +6,11 @@
         "identity": "browser-client",
         "firstName": "Jane",
         "lastName": "Doe",
-        "useCase": "458b9299-25be-4fa3-8d6f-b10b1f3dba2b",
+        "useCase": "tool-calling-example",
         "conversationRelayParamsOverride": {
             "language": "en-US",
             "ttsProvider": "ElevenLabs",
-            "voice": "tnSpp4vdxKPjI9w0GnoV",
+            "voice": "SaqYcK3ZpDKBAImA8AdW",
             "transcriptionProvider": "Deepgram",
             "speechModel": "nova-2-general",
             "interruptible": "any",

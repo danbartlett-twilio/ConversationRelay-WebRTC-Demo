@@ -8,17 +8,26 @@ export TWILIO_API_SECRET=your-twilio-api-key-secret
 export WS_DOMAIN_NAME=your-ngrok-subdomain.ngrok.app
 export WS_URL=wss://your-ngrok-subdomain.ngrok.app/
 
-# AI PLATFORM SELECTION (invokeBedrock | invokeOpenAI)
+# AI PLATFORM SELECTION (invokeOpenAI | invokeBedrock)
 export AI_PLATFORM=invokeOpenAI
+
+# OPEN AI ENVIRONMENT VARIABLES
+export OPENAI_API_KEY=your-open-ai-key
+export OPENAI_LLM_MODEL=gpt-4o-mini
 
 # AWS ENVIRONMENT VARIABLES
 export AWS_PROFILE=local-aws-profile
 export AWS_MODEL_IDENTIFIER=bedrock-model-id
 export AWS_REGION=your-aws-region
 
-# OPEN AI ENVIRONMENT VARIABLES
-export OPENAI_API_KEY=your-open-ai-key
-export OPENAI_LLM_MODEL=gpt-4o-mini
+# TWILIO SEND MESSAGE ENVIRONMENT VARIABLES
+export TWILIO_MESSAGE_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxx
+export TWILIO_MESSAGE_AUTH_TOKEN=4jkljxxxxxxxxxxxxxxxxxx
+export TWILIO_MESSAGE_FROM=+15555551212
+
+# TWILIO SENDGRID EMAILS ENVIRONMENT VARIABLES
+export TWILIO_SENDGRID_API_KEY=SG.Yyxxxxxxxxxxxxxxxxxxxx
+export TWILIO_SENDGRID_FROM=verifified-user@yoursendgrid.domain.com
 
 export STACK_USE_CASE=albertEinsteinUseCase
 
