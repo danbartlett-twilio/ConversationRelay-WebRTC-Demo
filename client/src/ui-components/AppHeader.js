@@ -20,7 +20,6 @@ import { CallActiveIcon } from "@twilio-paste/icons/esm/CallActiveIcon";
 import { UsersIcon } from "@twilio-paste/icons/esm/UsersIcon";
 import { HistoryIcon } from "@twilio-paste/icons/esm/HistoryIcon";
 import { DirectoryIcon } from "@twilio-paste/icons/esm/DirectoryIcon";
-import { BusinessIcon } from "@twilio-paste/icons/esm/BusinessIcon";
 
 const styles = {
   wrapper: { width: "100%" },
@@ -120,16 +119,6 @@ const AppHeader = (props) => {
                   Call History
                 </Button>
               </Tooltip>
-              <Tooltip text="Shopify Storefront Demo">
-                <Button
-                  variant="secondary"
-                  disabled={page === "shopify"}
-                  onClick={() => handlePageClick("shopify")}
-                >
-                  <BusinessIcon decorative />
-                  Shopify
-                </Button>
-              </Tooltip>
             </ButtonGroup>
           </Box>
           {/* Responsive for mobile hamburger menu */}
@@ -181,40 +170,11 @@ const AppHeader = (props) => {
                   Call History
                 </Box>
               </MenuItem>
-
-              <MenuItem
-                {...menu}
-                onClick={() => handlePageClick("shopify")}
-                disabled={props.currentPage === "shopify"}
-              >
-                <Box display="flex" alignItems="center" columnGap="space30">
-                  <BusinessIcon decorative />
-                  Shopify
-                </Box>
-              </MenuItem>
             </Menu>
           </Box>
         </TopbarActions>
       </Topbar>
     </Box>
-
-    // TODO: Old Header - Remove
-    // <div style={styles.wrapper}>
-    // <div style={styles.headTwoColumnLayout} >
-    //     <div style={styles.headLeftColumn} >
-    //         <img src="/images/twilio_logo.jpg" alt="Twilio Logo" width="100" height="50" /> </div>
-    //     <div style={styles.headRightColumn}>
-    //         <Heading
-    //             marginBottom='space0'
-    //             as="h2"
-    //                 variant="heading8"
-    //             color={{color:'#ffffff'}}
-    //             >Conversation Relay - Cloud Intelligence
-    //         </Heading>
-
-    //     </div>
-    // </div>
-    // </div>
   );
   return layout;
 };
