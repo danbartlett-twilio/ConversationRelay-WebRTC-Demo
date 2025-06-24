@@ -1,6 +1,5 @@
 // import React from "react";
 import { Avatar } from "@twilio-paste/core";
-import botImage from "../../images/bot.png"; // Red bot image
 import { AgentIcon } from "@twilio-paste/icons/esm/AgentIcon";
 import { ProductAutopilotIcon } from "@twilio-paste/icons/esm/ProductAutopilotIcon";
 
@@ -23,10 +22,9 @@ function formatTime(ts) {
   });
 }
 
-export default function MessageLog({ events = [] }) {
+export default function MessageLog({ events = [], showLatency = false }) {
   // Sort events by timestamp and reverse so newest comes first
   const sortedEvents = [...events].sort((a, b) => a.ts - b.ts).reverse(); // [{}, {}, {type: 'interrupt'}, ... {}]
-
   return (
     <ChatLog>
       {sortedEvents.map((event, index) => {
@@ -69,18 +67,20 @@ export default function MessageLog({ events = [] }) {
             </div>
           );
         }
+        if (showLatency) {
+          if (isLatency) {
+            return (
+              <ChatMessage variant={"inbound"} key={index}>
+                <ChatBubble>Response Latency: {event.value}ms</ChatBubble>
 
-        if (isLatency) {
-          return (
-            <ChatMessage variant={"inbound"} key={index}>
-              <ChatBubble backgroundColor="red">
-                Response Latency: {event.value}ms
-              </ChatBubble>
-              <ChatMessageMeta aria-label="">
-                <ChatMessageMetaItem></ChatMessageMetaItem>
-              </ChatMessageMeta>
-            </ChatMessage>
-          );
+                <ChatMessageMeta>
+                  <ChatMessageMetaItem></ChatMessageMetaItem>
+                </ChatMessageMeta>
+              </ChatMessage>
+            );
+          } else {
+            return null;
+          }
         }
 
         return null;

@@ -1,5 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+
+import {Provider } from "jotai"
+
 import "./styles.css";
 import Wrapper from "./ui-components/Wrapper";
 
@@ -10,6 +13,8 @@ console.log(
 const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
-    <Wrapper />
+    <Provider>
+      <Wrapper />
+    </Provider>
   </StrictMode>
 );

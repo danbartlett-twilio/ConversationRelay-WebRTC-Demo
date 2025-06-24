@@ -3,9 +3,8 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import { 
     Grid, Column, Alert, Tooltip, Heading, Text, DetailText,
-     Card, Box, Input, AlertDialog,
-    Button, Table, THead, TBody, Tr, Th, Label,
-    SideModalContainer, SideModal, SideModalHeader, SideModalHeading, SideModalBody, Paragraph,
+    Card, Box, Input, AlertDialog,
+    Button, Table, THead, TBody, Tr, Th, Label,Paragraph,
     useSideModalState
  } from '@twilio-paste/core';
 
@@ -14,27 +13,19 @@ import { SearchIcon } from "@twilio-paste/icons/esm/SearchIcon";
 import AddUseCaseForm from './AddUseCaseForm'
 import UseCaseRecord from './UseCaseRecord';
 
-import { updateUserHelper, createUserHelper, deleteUserHelper } from '../../helpers/clientDataHelper';
-
-//  DEV only - locally set users
-// const usersData = [
-//     { "key": 'Alice', "value" : { role: "system", firstName: "Alice", lastName:"Jones", type:'webRtc', identity: 'ajones', phone: '+13035551111', email: 'test'}} ,
-//      { "key" : 'Bob', "value" : { role: "user", firstName: "Bob", lastName:"Jones", type:'webRtc', identity: 'bjones', phone: '+13035552222', email: 'test'}} ,
-//      { "key" :'Charlie', "value": { role: "system", firstName: "Charlie", lastName:"Avila", type:'sip', identity: 'sip:cavila@domain.com', phone: '+13035553333',email: 'test'}} ,
-//      { "key" :'David', "value": { role: "user", firstName: "David", lastName:"James", type:'phone', identity: '+13035551212', phone: '+13035554444', email: 'test'}} ,
-//      { "key" :'Eve', "value": { role: "user", firstName: "Eve", lastName:"Smith", type:'sip', identity: 'sip:esmith@domain.com', phone: '+13035555555', email: 'test'}}
-//     ]
-
+import { updateUseCaseHelper, deleteUseCaseHelper } from '../../helpers/clientDataHelper';
 
 const UseCases = () => {
     const [search, setSearch] = useState('');
-    const [users, setUsers] = useState([]);
-    const [filteredUsers, setFilteredUsers] = useState([]);
-    const [selectedUser, setSelectedUser] = useState(null);
+    const [useCases, setUseCases] = useState([]);
+    const [filteredUseCases, setFilteredUseCases] = useState([]);
+    const [selectedUseCase, setSelectedUseCase] = useState(null);
+    const [mode, setMode] = useState(''); // 'edit', 'clone'
+    const [disabled, setDisabled] = useState(false);
     const [reload, setReload] = useState(false);
 
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-    const [deleteUser, setDeleteUser] = useState(null);
+    const [deleteUseCase, setDeleteUseCase] = useState(null);
 
     // Alert state alert state for updating current user configuration
     const [showAlert, setShowAlert] = useState(false);
@@ -42,165 +33,139 @@ const UseCases = () => {
     const [alertType, setAlertType] = useState("neutral");
 
 
-    // State for the side modal dialog
-    const dialog = useSideModalState({})
-
+    const dialog = useSideModalState({});
+    
 
     // Fetch all users from the backend when the component mounts or reload state changes
     useEffect(() => {
         //   get all users from the backend
-        const fetchUsers = async () => {
-            const usersURL = process.env.REACT_APP_GET_ALL_USERS_URL;
+        const fetchUseCases = async () => {
+            const useCaseURL = process.env.REACT_APP_GET_ALL_USE_CASE_URL;
             try {
-                const response = await axios.get(usersURL);
-                setUsers(response.data);
-                setFilteredUsers(response.data);
+                const response = await axios.get(useCaseURL);
+                setUseCases(response.data);
+                setFilteredUseCases(response.data);
             } catch (error) {
                 console.error("Error fetching users: ", error);
             }
         }
-        fetchUsers();   
+        fetchUseCases();   
     },[reload])
 
-    //  DEV only - locally set users
-    // useEffect(() => {
-    //     // Simulate fetching users from an API
-    //     setUsers(users);
-    //     setFilteredUsers(users);
-    // }
-    // , []);
+    // alert timeout effect to hide alert after 5 seconds
+    useEffect(() => {
+        if (showAlert) {
+            const timer = setTimeout(() => {
+                setShowAlert(false);
+            }, 5000); // Hide alert after 5 seconds
+            return () => clearTimeout(timer);
+        }
+    },[showAlert])
+
 
     // handler to clear search input and reset filtered users
     const clearSearch = () => {
         setSearch('');
-        setFilteredUsers(users);
+        setFilteredUseCases(useCases);
     }
 
     // handler to filter users based on search input
     const handleSearchChange = (event) => {
         setSearch( event.target.value.toLowerCase())
-        setFilteredUsers(Object.values(users).filter(user => user.value.firstName.toLowerCase().includes(event.target.value.toLowerCase())))
+        setFilteredUseCases(Object.values(useCases).filter(uCase => uCase.value.title.toLowerCase().includes(event.target.value.toLowerCase())))
     }
 
     // handler to select a user from the list and display their details
-    const handleUserSelect = (user) => { 
-        console.log('handleUserSelect', user)
-        setSelectedUser(user)
+    const handleUseCaseSelect = (uCase) => { 
+        setMode('edit')
+        setSelectedUseCase(uCase)
+    }
+
+    // handler to clone a user from the list and display their details
+    const handleUseCaseClone = (uCase) => {
+        setMode('clone')
+        setSelectedUseCase(uCase)
     }
 
     // handler to clear user detail form
-    const clearSelectedUser = () => { 
-        setSelectedUser(null)
-    }
-
-    // handler to display side drawer to a new user
-    const handleAddUser = () => {   
-        setSelectedUser(null);
-        dialog.show()
+    const clearSelectedUseCase = () => { 
+        setSelectedUseCase(null)
+        setMode('');
+        setDisabled(false);
     }
 
     // handler to refresh the user list
     const handleRefresh = () => { 
-        setSelectedUser(null);
+        setSelectedUseCase(null);
         setReload(!reload) 
         setAlertMessage('User list reloaded');
         setAlertType("neutral")
         setShowAlert(true)
     }
 
-
     // handler to update a selected user from the list
-    const updateUser = async (userAttributes) => {
-        let resp = await updateUserHelper(userAttributes);
+    const updateUseCase = async (useCaseAttributes) => {
+        console.log('updateUseCase', useCaseAttributes)
+        let resp = await updateUseCaseHelper(useCaseAttributes);
         if(resp.status==='success'){
-            setAlertMessage('User configuration was successfully updated');
+            setAlertMessage('Use Case configuration was successfully updated');
             setAlertType("neutral")
             setShowAlert(true)
         } else {
-            setAlertMessage('An error has occurred updating this user.');
+            setAlertMessage('An error has occurred updating this use case.');
             setAlertType("error")
             setShowAlert(true)
         }
-        setShowDeleteDialog(false);
-        clearSelectedUser()
+        setSelectedUseCase(null);
+        setMode('');
+        setDisabled(false);
         setReload(!reload);
     }
 
     // handler to display the delete user dialog
-    const dialogDeleteUser = (user) => { 
+    const dialogDeleteUseCase = (useCase) => { 
+        console.log('dialogDeleteUseCase', useCase)
         setShowDeleteDialog(true)
-        setDeleteUser(user);
+        setDeleteUseCase(useCase);
+    }
+
+    // handler to set the disabled state for the AddUseCaseForm form
+    const handleDisabled = (value) => {
+        setDisabled(value);
     }
 
     // handler to delete a user from the list
-    const handleUserDelete = async () => {
-        console.log('handleUserDelete', deleteUser)
-        const identity = {identity: deleteUser.key}
-       //  Call server API to create the user
-       let resp = await deleteUserHelper(identity);
+    const handleUseCaseDelete = async () => {
+        console.log('handleUseCaseDelete', deleteUseCase)
+     const key = {key: deleteUseCase.key}
+     console.log('key', key)
+    //  Call server API to create the user
+    let resp = await deleteUseCaseHelper(key);
 
-        if(resp.status==='success'){
-            setAlertMessage('User configuration was successfully deleted');
-            setAlertType("neutral")
-            setShowAlert(true)
-        } else {
-            setAlertMessage('An error has occurred deleting this user.');
-            setAlertType("error")
-            setShowAlert(true)
-        }
-        setShowDeleteDialog(false);
-        setDeleteUser(null);
-        setReload(!reload);
-        dialog.hide()
+    if(resp.status==='success'){
+        setAlertMessage('Use case configuration was successfully deleted');
+        setAlertType("neutral")
+        setShowAlert(true)
+    } else {
+        setAlertMessage('An error has occurred deleting this use case.');
+        setAlertType("error")
+        setShowAlert(true)
     }
-
-    // handler to create new application users
-    const createUser = async (user) => {
-        let from = '';
-        switch (user.type) {
-            case 'webRtc':
-                from = `client:${user.identity}`;
-                break;
-            case 'sip':
-                from = `sip:${user.identity}`;
-                break;
-            case 'phone':
-                from = user.identity; // phone number
-                break;
-            default:
-        }
-
-        // structure the submitted user attributes
-        const userAttributes = {
-            identity: user.identity,
-            from : from,
-            role: 'user',
-            type: user.type,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            phone: user.phone,
-            email: user.email,
-        }
-        let resp = await createUserHelper(userAttributes);
-        if(resp.status==='success'){
-            setAlertMessage('User configuration created successfully');
-            setAlertType("neutral")
-            setShowAlert(true)
-            setReload(!reload);
-        } else {
-                setAlertMessage('An error has occurred creating this user.');
-            setAlertType("error")
-            setShowAlert(true)
-        }
-        dialog.hide()   
+    setShowDeleteDialog(false);
+    setDeleteUseCase(null);
+    setSelectedUseCase(null);
+    setMode('');
+    setDisabled(false)
+    setReload(!reload);
+    dialog.hide()
     }
 
     // Render the users page
     let layout =  (
-        <div>
+        <div style={{margin: '20px'}}>
             <Box style={{marginTop:10, }} height="100vh">
                 <Grid gutter="space40">
-                    <Column span={12}>
+                    <Column span={[12, 12, 12]}>
                         <div style={{marginBottom: '10px'}}>
                         {/* Display application alerts */}
                         { showAlert && (
@@ -214,10 +179,12 @@ const UseCases = () => {
                         )}
                         </div>
                     </Column>
-                    <Column span={4}>
-                        <Card marginLeft={'100px'}width="100%" >
-                            <Heading as="h3" variant="heading30" marginBottom="space40">Application Users</Heading>
-                            <Paragraph marginBottom="space40">Manage users for your application. Users can be added, deleted, and updated.</Paragraph>
+                    <Column span={[12, 12, 4]}>
+                        <Card padding="space100">
+                            <Heading as="h3" variant="heading30" marginBottom="space40">Application UseCases</Heading>
+                            <Paragraph marginBottom="space40">Manage use cases for your application. Custom Use cases can be added, updated, and deleted. </Paragraph>
+                            <Paragraph marginBottom="space40">"System-Templates" can be "cloned" to create a quick use case.</Paragraph>
+                            <Paragraph marginBottom="space100">"User-Templates" can be edited or "cloned" to modify or create a use case.</Paragraph>
                             
                             <Box overflowY="auto" height="auto" maxHeight="500px">
                                 <Box style={{marginBottom: '20px'}} padding="space20">
@@ -225,7 +192,7 @@ const UseCases = () => {
                                     <Input 
                                         aria-describedby="search" 
                                         id="search" 
-                                        name="email_address" 
+                                        name="search" 
                                         type="text"
                                         value={search} 
                                         insertAfter={
@@ -241,15 +208,24 @@ const UseCases = () => {
                                 <Table  >
                                     <THead stickyHeader top={0}>
                                         <Tr>
-                                            <Th>Delete</Th>
+                                            <Th>Edit</Th>
+                                            <Th>Clone</Th>
                                             <Th>User</Th>
-                                            <Th>View</Th>
+                                            <Th>Delete</Th>
                                         </Tr>
                                     </THead>
                                     <TBody>
                                         {
-                                            Object.values(filteredUsers).filter(user => user.value.role === 'user').map((user, index) => (
-                                                <UseCaseRecord key={index} user={user} deleteUser={dialogDeleteUser} userSelect={handleUserSelect}/>
+                                            Object.values(filteredUseCases).map((uCase, index) => (
+                                                // Object.values(filteredUseCases).filter(uCase => uCase.value.role === 'user').map((uCase, index) => (
+                                                <UseCaseRecord 
+                                                    key={index} 
+                                                    useCase={uCase} 
+                                                    deleteUseCase={dialogDeleteUseCase} 
+                                                    useCaseSelect={handleUseCaseSelect}
+                                                    cloneUseCase = {handleUseCaseClone}
+                                                    isDisabled={handleDisabled}
+                                                    />
                                             ))
                                         }
                                     </TBody>
@@ -260,52 +236,47 @@ const UseCases = () => {
                                     <Button variant="secondary" size="small" onClick={()=> handleRefresh()} fullWidth>Refresh</Button>
                                 </Box>
 
-                            <Box as="div" style={{marginBottom: '10px'}} padding="space60" >
-                                <Button variant="primary"  onClick={()=> handleAddUser()} fullWidth>Add User</Button>
-                            </Box>
+
                         </Card>
                     </Column>
-                    <Column span={8}>
-                        <Card>
-                            <Heading as="h3" variant="heading30" marginBottom="space40">User Details</Heading>
-                            <Paragraph marginBottom="space40">Update a selected user's details.</Paragraph>                        
-                            <AddUseCaseForm mode={'edit'} selectedUser={selectedUser} updateUser={updateUser} clearForm={clearSelectedUser} />
+                    <Column span={[12, 12, 8]}>
+                        <Card padding="space100">
+                            <Heading as="h3" variant="heading30" marginBottom="space40">UseCase Details</Heading>
+                            <Paragraph marginBottom="space40">Update a selected UseCase's details.</Paragraph> 
+
+                            { selectedUseCase ? 
+                            <AddUseCaseForm 
+                                mode={mode}
+                                disabled={disabled} 
+                                selectedUseCase={selectedUseCase} 
+                                updateUseCase={updateUseCase} 
+                                clearForm={clearSelectedUseCase} />
+                            : 
+                                <div style={{ marginTop: '100px', textAlign: "center" }}>
+                                    <Paragraph><span style={{color: 'red'}}>No selected use case</span></Paragraph>
+                                </div>
+                            }                       
                         </Card>
                     </Column>
 
                 </Grid>
 
-                {/* Side modal for add user features */}
-                <SideModalContainer state={dialog}>
-                    {/* Place this button wherever you want to trigger the modal */}
-                    <SideModal aria-label="Add User Modal" width="400px">
-                        <SideModalHeader>
-                        <SideModalHeading>Add User</SideModalHeading>
-                        </SideModalHeader>
-                        <SideModalBody>
-                        {/* Modal content here */}
-                            <AddUseCaseForm mode={'add'} createUser={createUser}/>
-                        </SideModalBody>
-                    </SideModal>
-                </SideModalContainer>
-
-                
                 {/* Alert visualization for user deletion */}
                 <AlertDialog
-                    heading="Delete User"
+                    heading="Delete Use Case"
                     isOpen={showDeleteDialog}
-                    onConfirm={handleUserDelete}
+                    onConfirm={handleUseCaseDelete}
                     onConfirmLabel="Delete"
                     onDismiss={() => setShowDeleteDialog(false)}
                     onDismissLabel="Cancel"
                 >
-                    <Paragraph>Are you sure you want to delete this user?</Paragraph>
-                    <Text>Name: {deleteUser?.value.firstName} {deleteUser?.value.lastName}</Text>
-                    <DetailText>Identity: {deleteUser?.value.identity} ({deleteUser?.value.type})</DetailText>
+                    <Paragraph>Are you sure you want to delete this useCase?</Paragraph>
+                    <Text>Name: {deleteUseCase?.value.title}</Text>
+
                 </AlertDialog>
             </Box>
         </div>
     )
     return layout
 }
-export default AddUseCaseForm;
+export default UseCases;

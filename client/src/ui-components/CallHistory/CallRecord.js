@@ -1,8 +1,7 @@
 
 import { Th, Tr, Td, Text, DetailText, Button } from '@twilio-paste/core'
 import { DeleteIcon } from "@twilio-paste/icons/esm/DeleteIcon";
-import { EditIcon } from "@twilio-paste/icons/esm/EditIcon";
-
+import { ShowIcon } from "@twilio-paste/icons/esm/ShowIcon";
 
 const getTimeDate = (timestamp) => {
   const date = new Date(timestamp);
@@ -25,7 +24,7 @@ const CallRecord = (props) => {
         <Tr>
           <Td>
             <Button variant="secondary_icon" size="icon_small" aria-label="View call"  onClick={ () => handleViewCall()}>
-              <EditIcon decorative={false} title="View call"/>
+              <ShowIcon decorative={false} title="View call"/>
             </Button>
           </Td>
           <Th scope="row">

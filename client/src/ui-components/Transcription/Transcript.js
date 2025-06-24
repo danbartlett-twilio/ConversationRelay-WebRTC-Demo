@@ -1,12 +1,13 @@
 import { useState, useRef, useImperativeHandle, forwardRef } from "react";
-import { Stack, Heading, Card } from "@twilio-paste/core";
+import { Stack, Card, Flex, Heading, Switch, Box } from "@twilio-paste/core";
 
 // import MessageLog from "./MessageLog";
-import MessageLog from "../ui-components/Transcription/MessageLog";
-import "../styles/MessageLog.css"; // Import the CSS styles
+import MessageLog from "./MessageLog";
+import "../../styles/MessageLog.css"; // Import the CSS styles
 
 const Transcript = forwardRef((props, ref) => {
   const [socket, setSocket] = useState(null);
+  const [showLatency, setShowLatency] = useState(false);
   const textLog = useRef(null);
 
   const [events, setEvents] = useState([]);
@@ -88,6 +89,10 @@ const Transcript = forwardRef((props, ref) => {
     });
   };
 
+  const toggleLatency = () => {
+    showLatency ? setShowLatency(false) : setShowLatency(true);
+  };
+
   const closeWebsockToController = () => {
     if (socket) {
       socket.close();
@@ -98,10 +103,28 @@ const Transcript = forwardRef((props, ref) => {
   let layout = (
     <Stack orientation="vertical" spacing="space40">
       <Card padding="space120">
-        <Heading as="h1" variant="heading30" marginBottom="space40">
-          Conversation Transcription
-        </Heading>
-        <MessageLog events={events} />
+        <Flex>
+          <Flex>
+            <Box>
+              <Heading as="h1" variant="heading30" marginBottom="space40">
+                Conversation Transcription
+              </Heading>
+            </Box>
+          </Flex>
+          <Flex grow></Flex>
+          <Flex>
+            <Box>
+              <Switch
+                id="latency-toggle"
+                checked={showLatency}
+                onChange={toggleLatency}
+              >
+                Show Latency
+              </Switch>
+            </Box>
+          </Flex>
+        </Flex>
+        <MessageLog events={events} showLatency={showLatency} />
       </Card>
     </Stack>
   );

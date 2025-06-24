@@ -1,57 +1,51 @@
 import { useState, useEffect } from 'react';
 import { 
-    Card, Box, Input,
-    Button, Label, HelpText, Form, FormControl, RadioGroup, Radio, 
+    Card, Box, Input, TextArea, Heading,
+    Button, Label, HelpText, Form, FormControl, 
  } from '@twilio-paste/core';
 
-import { useUID } from '@twilio-paste/core/uid-library';
+import UseCaseCombo from './UseCaseCombo';
+
+import { v4 as uuidv4 } from 'uuid';
 
 const AddUseCaseForm = (props) => {
-        const [userType, setUserType] = useState('webRtc');
-        const [userRole, setUserRole] = useState('user');       // default role is user
-        const [mode, setMode] = useState(props.mode);           // form mode ( add, edit )
-        const [firstName, setFirstName] = useState('');
-        const [lastName, setLastName] = useState('');
-        const [email, setEmail] = useState('');
-        const [phone, setPhone] = useState('');
-        const [demoPhone, setDemoPhone] = useState('');
-        const [sipAddress, setSipAddress] = useState('');
-        const [webRtcIdentity, setWebRtcIdentity] = useState('');
+
+
+        const [mode, setMode] = useState(props.mode);           // form mode ( edit, clone )
+        const [title, setTitle] = useState('');
+        const [description, setDescription] = useState('');
+        const [welcomeGreeting, setWelcomeGreeting] = useState('');
+        const [prompt, setPrompt] = useState('');
+
+
+        const [selectedSttProvider, setSelectedSttProvider] = useState(null);
+        const [selectedTtsProvider, setSelectedTtsProvider] = useState(null);
+        const [selectedVoice, setSelectedVoice] = useState(null);
+        const [speechModel, setSpeechModel] = useState(null);
+        
         const [crParamsOverride, setCrParamsOverride] = useState('');
         const[typeUpdate, setTypeUpdate] = useState(false);
         const[uiChange, setUiChange] = useState(false);
 
         //  initialize local state for form and currently selected user
         useEffect(() => {
-            if (props.mode === 'edit') {
-                setUserType(props.selectedUser?.value.type || 'webRtc');
-                setUserRole(props.selectedUser?.value.role || 'user');
-                setFirstName(props.selectedUser?.value.firstName || '');
-                setLastName(props.selectedUser?.value.lastName || '');
-                setEmail(props.selectedUser?.value.email || '');
-                setPhone(props.selectedUser?.value.phone || '');
-                
-                props.selectedUser?.value.type === 'webRtc' ? setWebRtcIdentity(props.selectedUser?.value.identity) : setWebRtcIdentity('');
-                props.selectedUser?.value.type === 'phone' ? 
-                    setDemoPhone(props.selectedUser?.value.identity ) : setDemoPhone('');
-                props.selectedUser?.type === 'sip' ? 
-                    setSipAddress(props.selectedUser?.value.identity) : setSipAddress('');
+            // if (props.mode === 'edit') {
+                setTitle(props.selectedUseCase?.value.title || '')
+                setDescription(props.selectedUseCase?.value.description || '');
+                setWelcomeGreeting(props.selectedUseCase?.value.conversationRelayParams?.welcomeGreeting || '')
+                setPrompt(JSON.parse(props.selectedUseCase?.value.prompt) || '');
 
-                setCrParamsOverride(props.selectedUser?.value.conversationRelayParamsOverride);
-            }
-        },[props.selectedUser])
+                setSelectedSttProvider(props.selectedUseCase?.value.conversationRelayParams?.transcriptionProvider || null);
+                setSelectedTtsProvider(props.selectedUseCase?.value.conversationRelayParams?.ttsProvider || null);
+                setSelectedVoice(props.selectedUseCase?.value.conversationRelayParams?.voice || null);
 
-    // use effect to auto-generate the webRTC identity and SIP user parts when adding a new user
-    useEffect(() => { 
-        if(mode=='add'){
-            if(userType === 'webRtc') { setWebRtcIdentity(composeIdentity()) }
-            if(userType === 'sip') {
-                let domain = process.env.REACT_APP_PV_SIP_DOMAIN
-                let sipaddress = `${composeIdentity()}@${domain}`;
-                setSipAddress(sipaddress) 
-            }
-        }
-    },[firstName, lastName, typeUpdate])
+                if(props.selectedUseCase?.value.conversationRelayParams?.transcriptionProvider==='Google'){
+                    setSpeechModel('telephony')
+                } else { setSpeechModel('nova-2-general')}
+
+                setCrParamsOverride(props.selectedUseCase?.value.conversationRelayParams);
+            // }
+        },[props.selectedUseCase])
 
     //  handler to clear the form - props in Users component
     const handleClearForm = () => { 
@@ -59,221 +53,184 @@ const AddUseCaseForm = (props) => {
         setUiChange(false) 
     }
 
-    // handler to auto-create webRTC and SIP identities based on first and last name
-    const composeIdentity = () => { 
-        if (firstName === '' || lastName === '') { return '' } else {
-            return (firstName[0] + lastName).toLowerCase() 
-        } 
-    }
-
     //  handlers to update local state for first name
-    const handleFirstNameChange = (e) => { 
+    const handleTitleChange = (e) => { 
         setUiChange(true)
-        setFirstName(e.target.value) 
+        setTitle(e.target.value) 
     }
 
     //  handler to update local state for last name
-    const handleLastNameChange = (e) => { 
+    const handleDescriptionChange = (e) => { 
         setUiChange(true)
-        setLastName(e.target.value)
+        setDescription(e.target.value)
     }
 
-    // handler to update user type
-    const handleUserTypeChange = (newValue) => {
-        setUserType(newValue);
-        setTypeUpdate(!typeUpdate)
+    const handleWelcomeGreetingChange = (e) => { 
+    setUiChange(true)
+    setWelcomeGreeting(e.target.value)
     }
 
-    //  handler to update local state for phone
-    const handlePhoneChange = (e) => {
+    const handlePromptChange = (e) => {
         setUiChange(true)
-        setPhone(e.target.value);
+        setPrompt(e.target.value)
     }
+
 
     // handler to update local state for email
-    const handleEmailChange = (e) => {
+    const handleUiChange = (value) => {
+        setUiChange(value)
+    }
+
+    const handlePropertyChange = (property, value) => {
         setUiChange(true)
-        setEmail(e.target.value);
+        console.log('handlePropertyChange', property, value)
+        switch (property) {
+            case 'sttProvider':
+                setSelectedSttProvider(value);
+                break;
+            case 'ttsProvider':
+                setSelectedTtsProvider(value);
+                break;
+            case 'voice':
+                setSelectedVoice(value);
+                break;
+            case 'speechModel':
+                setSpeechModel(value);
+                break;
+            default:
+                console.warn(`Unknown property: ${property}`);
+        }
     }
 
     // handler to update user - pass user object to parent Users component
-    const handleUpdateUser = () => {
-        const user = {
-            identity: userType === 'webRtc' ? webRtcIdentity : (userType === 'sip' ? sipAddress : demoPhone),
-            type: userType, // webRtc, sip, phone
-            role: userRole,
-            firstName: firstName.trim(),
-            lastName: lastName.trim(),
-            phone: phone.trim(),
-            email: email.trim(),
-            conversationRelayParamsOverride: crParamsOverride
+    const handleUpdateUseCase = () => {
+
+        let role = ''
+        let key = ''
+        if(props.mode==='edit') { 
+            key = props.selectedUseCase.key;
+            role = props.selectedUseCase.value.role;
+        } else {
+            key = uuidv4()
+            role = 'user' 
         }
-        props.updateUser(user)
+        const useCase = {
+            mode: props.mode,
+            key: key,
+            value: {
+                name: title.trim().toLowerCase(),
+                title: title.trim(),
+                description: description.trim(),
+                role: role,
+                prompt: JSON.stringify(prompt.trim()),
+                tools: props.selectedUseCase.value.tools,
+                dtmf: props.selectedUseCase.value.dtmf,
+                conversationRelayParams: {
+                    dtmfDetection: true,
+                    interruptByDtmf: true,
+                    interruptible: true,
+                    ttsProvider: selectedTtsProvider,
+                    voice: selectedVoice,
+                    speechModel: speechModel,
+                    transcriptionProvider: selectedSttProvider,
+                    welcomeGreeting: welcomeGreeting,
+                }
+            }
+        }
+        console.log('useCase', useCase)
+        props.updateUseCase(useCase)
+        setUiChange(false)
     }
 
-    // handler to add a new user - pass user object to parent Users component
-    const handleAddUser = () => {
-        const user = {
-            identity: userType === 'webRtc' ? webRtcIdentity : (userType === 'sip' ? sipAddress : demoPhone),
-            type: userType, // webRtc, sip, phone
-            firstName: firstName.trim(),
-            lastName: lastName.trim(),
-            phone: phone.trim(),
-            email: email.trim(),
-            conversationRelayParamsOverride: crParamsOverride
-        }        
-        props.createUser(user)
-    }
 
     // content to render
     let layout = (
         <Box padding="space60">
-            <Form maxWidth="size70">
-                <Card>
+            <Form padding="space60" >
+                <Card width="100%">
+                    <Heading as="h2" htmlFor="title" marginBottom="space100">
+                        { (props.mode === 'edit')? ' Edit/View existing use case': ' Cloning system use case'}
+                    </Heading>
                     <FormControl >
-                        <Label htmlFor="firstName" required>First name</Label>
+                        <Label htmlFor="title" required>Title of Use Case</Label>
                                 <Input
                                     type="text"
-                                    id={'firstName'}
-                                    name="firstName"
-                                    value={ firstName}
-                                    onChange={(e) => handleFirstNameChange(e)}
-                                    placeholder="First name"
+                                    id={'title'}
+                                    name="title"
+                                    value={title}
+                                    disabled={props.disabled}
+                                    onChange={(e) => handleTitleChange(e)}
+                                    placeholder="Title of use case"
                                     required
                                 />
                         <HelpText as="div" color="colorTextWeak">
-                        Enter your first name 
+                        A brief title for the use case 
                         </HelpText>
                         <div style={{marginBottom: '15px'}}></div>
                     </FormControl>
                     <FormControl>
-                        <Label htmlFor="lastName" required>Last name</Label>
+                        <Label htmlFor="email" required>Use Case Description</Label>
+                        <TextArea 
+                            onChange={(e)=>{handleDescriptionChange(e)}} 
+                            aria-describedby="message_help_text" 
+                            id="description" 
+                            name="description"
+                            value={description}
+                            disabled={props.disabled}
+                            resize="vertical"
+                            required />
+
+                        <HelpText as="div" color="colorTextWeak">
+                        A brief description of the use case 
+                        </HelpText>
+                        <div style={{marginBottom: '15px'}}></div>
+                    </FormControl>  
+
+                    <FormControl >
+                        <Label htmlFor="welcomeGreeting" required>Welcome Greeting</Label>
                                 <Input
                                     type="text"
-                                    id={'lastName'}
-                                    name="lastName"
-                                    value={lastName}
-                                    onChange={(e) => handleLastNameChange(e)}
-                                    placeholder="Last name"
+                                    id={'welcomeGreeting'}
+                                    name="welcomeGreeting"
+                                    value={ welcomeGreeting}
+                                    disabled={props.disabled}
+                                    onChange={(e) => handleWelcomeGreetingChange(e)}
+                                    placeholder="Simple greeting for the use case"
                                     required
                                 />
                         <HelpText as="div" color="colorTextWeak">
-                        Enter your last name 
+                        A brief title for the use case 
                         </HelpText>
                         <div style={{marginBottom: '15px'}}></div>
-                    </FormControl>
+                    </FormControl>  
+
+
+
                     <FormControl>
-                        <Label htmlFor="phone" required>Mobile Number (e.164)</Label>
-                                <Input
-                                    type="text"
-                                    id={'phone'}
-                                    name="phone"
-                                    value={phone}
-                                    onChange={(e) => handlePhoneChange(e)}
-                                    placeholder="Mobile Number"
-                                    required
-                                />
+                        <Label htmlFor="email" required>Ai Prompt</Label>
+                        <TextArea 
+                            onChange={(e)=>{handlePromptChange(e)}} 
+                            aria-describedby="message_help_text" 
+                            id="prompt" 
+                            name="prompt" 
+                            resize="vertical"
+                            value={prompt}
+                            disabled={props.disabled}
+                            required />
+
                         <HelpText as="div" color="colorTextWeak">
-                        Enter your mobile number (e.164 format)
-                        </HelpText>
-                        <div style={{marginBottom: '15px'}}></div>
-                    </FormControl>
-                    <FormControl>
-                        <Label htmlFor="email" required>Email Address</Label>
-                            <Input
-                                type="text"
-                                id={'email'}
-                                name="email"
-                                value={email}
-                                onChange={(e) => handleEmailChange(e)}
-                                placeholder="Email address"
-                                required
-                            />
-                        <HelpText as="div" color="colorTextWeak">
-                        Enter your last name 
+                        Descriptive prompting for your AI use case 
                         </HelpText>
                         <div style={{marginBottom: '15px'}}></div>
                     </FormControl>
 
-                    <FormControl>
-                        <RadioGroup
-                        name="uncontrolled-radio-group"
-                        legend="Select a User Type"
-                        orientation='horizontal'
-                        value={userType}
-                        onChange={(newValue) => handleUserTypeChange(newValue)}
-                        helpText="Choose the type of user for your use case."
-                        disabled={props.mode === 'edit' ? true : false}
-                        >
-                        <Radio
-                            id={useUID()}
-                            value="webRtc"
-                            name="userType"
-                            defaultChecked
-                        >
-                            webRTC
-                        </Radio>
-                        <Radio
-                            id={useUID()}
-                            value="sip"
-                            name="userType"
-                        >
-                            SIP
-                        </Radio>
-                        <Radio
-                            id={useUID()}
-                            value="phone"
-                            name="userType"
-                        >
-                            Phone Number
-                        </Radio>
-                        </RadioGroup>                                        
-                    </FormControl>
+                    <UseCaseCombo 
+                        disabled={props.disabled}
+                        uiChange={handleUiChange} 
+                        selectedUseCase={props.selectedUseCase}
+                        propertyChange={handlePropertyChange} 
+                        />
 
-                    <div style={{marginBottom: '15px'}}></div>
-                    {/* UserAddress */}
-                    { userType === 'webRtc' && (
-                    <FormControl>
-                        <Label htmlFor="demoPhone" required>Web RTC Identity (auto-created)</Label>
-                                <Input
-                                    type="text"
-                                    id={'demoPhone'}
-                                    name="demoPhone"
-                                    value={ webRtcIdentity}
-                                    readOnly
-                                />
-                    </FormControl>
-                    )}
-                    { userType === 'sip' && (
-                    <FormControl>
-                        <Label htmlFor="demoPhone" required>SIP Address (auto-created)</Label>
-                                <Input
-                                    type="text"
-                                    id={'demoPhone'}
-                                    name="demoPhone"
-                                    value={ sipAddress }
-                                    readOnly
-                                />
-                    </FormControl>
-                    )}
-
-                    { userType === 'phone' && (
-                    <FormControl>
-                        <Label htmlFor="demoPhone" required>Demo Phone Number</Label>
-                                <Input
-                                    type="text"
-                                    id={'demoPhone'}
-                                    name="demoPhone"
-                                    value={ demoPhone }
-                                    onChange={(e) => setDemoPhone(e.target.value)}
-                                    placeholder="Demo phone"
-                                    required
-                                />
-                        <HelpText as="div" color="colorTextWeak">
-                        Twilio phone number to use for demo purposes 
-                        </HelpText>
-                    </FormControl>
-                    )}
                     <div style={{marginBottom: '25px'}}></div>
                     <FormControl>
                         <Box as={'div'} marginTop="20px" marginBottom="20px">
@@ -283,33 +240,23 @@ const AddUseCaseForm = (props) => {
                         </Box>
                         <div>
                             <div>
-                            {
-                                mode === 'edit' ?
-                                    <Button variant="secondary" type="button" style={{marginLeft: '10px'}} onClick={() => handleClearForm()}>
-                                    Clear Form
-                                    </Button> : <></>
-                            }
-                            <span style={{float: 'right'}}>
-                                { props.selectedUser  && (
-                                <Button
-                                    variant={ uiChange ? 'destructive' : 'primary'} 
-                                    type="button"
-                                    onClick={() => handleUpdateUser()} 
-                                    >
-                                    Update User
-                                </Button>
-                                )}
+                            
 
-                                { mode === 'add' && (
-                                    <Button
-                                        variant={ uiChange ? 'destructive' : 'primary'} 
-                                        type="button"
-                                        onClick={() => handleAddUser() }
-                                        >
-                                        Add User
-                                    </Button>
-                                )}
-                                </span>
+                                    <div>
+                                        <Button variant="secondary" type="button" style={{marginLeft: '10px'}} onClick={() => handleClearForm()}>
+                                        Clear Form
+                                        </Button> 
+                                        <span style={{float: "right"}}>
+                                            <Button
+                                            disabled={!uiChange}
+                                            variant={uiChange ? "destructive" : "primary"}
+                                            onClick={(e) => handleUpdateUseCase(e)}
+                                            >
+                                            Save Configuration
+                                            </Button>
+                                        </span>
+                                    </div>
+                            
                             </div>
                         </div>
                     </FormControl>

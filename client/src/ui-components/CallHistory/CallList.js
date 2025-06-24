@@ -6,8 +6,6 @@ import {
   Alert,
   Tooltip,
   Heading,
-  Text,
-  DetailText,
   Card,
   Box,
   Input,
@@ -19,13 +17,7 @@ import {
   Tr,
   Th,
   Label,
-  SideModalContainer,
-  SideModal,
-  SideModalHeader,
-  SideModalHeading,
-  SideModalBody,
   Paragraph,
-  useSideModalState,
 } from "@twilio-paste/core";
 
 import { SearchIcon } from "@twilio-paste/icons/esm/SearchIcon";
@@ -54,7 +46,6 @@ const CallList = () => {
   // Fetch all users from the backend when the component mounts or reload state changes
   useEffect(() => {
     //   get all users from the backend
-
     const fetchSessions = async () => {
       const sessionsURL = process.env.REACT_APP_GET_ALL_SESSIONS_URL;
 
@@ -70,8 +61,6 @@ const CallList = () => {
   }, [reload]);
 
   useEffect(() => {
-    console.log("selectedCall changed", selectedCall);
-
     const fetchSessionChat = async () => {
       if (selectedCall) {
         const sessionURL =
@@ -89,6 +78,14 @@ const CallList = () => {
     fetchSessionChat();
   }, [selectedCall]);
 
+      useEffect(() => {
+        if (showAlert) {
+            const timer = setTimeout(() => {
+                setShowAlert(false);
+            }, 5000); // Hide alert after 5 seconds
+            return () => clearTimeout(timer);
+        }
+    },[showAlert])
   // handler to clear search input and reset filtered users
   const clearSearch = () => {
     setSearch("");

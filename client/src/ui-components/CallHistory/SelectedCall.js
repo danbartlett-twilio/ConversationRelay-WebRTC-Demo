@@ -149,10 +149,8 @@ const SelectedCall = (props) => {
                     </Box>
                   </div>
                 ) : (
-                  <div style={{ textAlign: "center" }}>
-                    <Paragraph style={{ color: "red" }}>
-                      No selected call
-                    </Paragraph>
+                  <div style={{ marginTop: '100px', textAlign: "center" }}>
+                      <Paragraph><span style={{color: 'red'}}>No selected call</span></Paragraph>
                   </div>
                 )}
               </TabPanel>
@@ -172,8 +170,8 @@ const SelectedCall = (props) => {
                     </Box>
                   </div>
                 ) : (
-                  <div style={{ textAlign: "center" }}>
-                    <Paragraph>No selected call</Paragraph>
+                  <div style={{ marginTop: '100px', textAlign: "center" }}>
+                      <Paragraph><span style={{color: 'red'}}>No selected use case</span></Paragraph>
                   </div>
                 )}
               </TabPanel>

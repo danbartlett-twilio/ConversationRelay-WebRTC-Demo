@@ -14,20 +14,44 @@ import { FSDB } from "file-system-db";
 // Method: GET
 // Description: This route retrieves all use cases from the useCases.json file and sends them as a response.
 router.get("/get-use-cases", async (req, res) => {
-  //console.log("get-use-cases called");
   const useCases = new FSDB(`../data/use-cases.json`, false);
-  //console.log("useCases", useCases.getAll());
   const allUseCases = useCases.getAll();
   res.send(allUseCases);
 });
 
 // URI:  <server>/client-data/update-use-case
-// Method: GET
+// Method: POST
 // Description: This route updates specific use case from data passed in the request.
-router.get("/update-use-case", async (req, res) => {
+router.post("/update-use-case", async (req, res) => {
   const useCases = new FSDB(`../data/use-cases.json`, false);
-  res.send("hello");
+  const useCaseKey = req.body.key;
+
+  useCases.set(useCaseKey, {
+    name: req.body.value.name,
+    role: req.body.value.role,
+    title: req.body.value.title, // webRtc, sip, phone
+    description: req.body.value.description,
+    prompt: req.body.value.prompt,
+    tools: req.body.value.tools,
+    dtmf: req.body.value.dtmf,
+    conversationRelayParams: req.body.value.conversationRelayParams,
+  });
+  res.send({ status: "success", data: useCases.get(req.body.key) });
 });
+
+// URI:  <server>/client-data/delete-use-case
+// Method: POST
+// Description: This route delete specific use case given the key of the object.
+router.post("/delete-use-case", async (req, res) => {
+  const useCases = new FSDB(`../data/use-cases.json`, false);
+  const useCaseKey = req.body.key;
+
+  console.log("delete-use-case called with key: ", useCaseKey);
+
+  useCases.delete(useCaseKey);
+  res.send({ status: "success", data: { key: useCaseKey } });
+
+})
 
 // URI:  <server>/client-data/get-users
 // Method: GET

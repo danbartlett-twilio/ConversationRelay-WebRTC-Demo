@@ -3,8 +3,6 @@ import { Avatar, Box, Flex, Heading, Card, Button } from "@twilio-paste/core";
 import { AgentIcon } from "@twilio-paste/icons/esm/AgentIcon";
 import { ProductAutopilotIcon } from "@twilio-paste/icons/esm/ProductAutopilotIcon";
 
-import botImage from "../images/bot.png";
-
 const Audiovisualizer = ({ localAnalyser, remoteAnalyser }) => {
   const canvasRef = useRef();
 
