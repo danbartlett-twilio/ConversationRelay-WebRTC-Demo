@@ -20,6 +20,7 @@ import { CallActiveIcon } from "@twilio-paste/icons/esm/CallActiveIcon";
 import { UsersIcon } from "@twilio-paste/icons/esm/UsersIcon";
 import { HistoryIcon } from "@twilio-paste/icons/esm/HistoryIcon";
 import { DirectoryIcon } from "@twilio-paste/icons/esm/DirectoryIcon";
+import { BusinessIcon } from "@twilio-paste/icons/esm/BusinessIcon";
 
 const styles = {
   wrapper: { width: "100%" },
@@ -115,8 +116,18 @@ const AppHeader = (props) => {
                   disabled={page === "calls"}
                   onClick={() => handlePageClick("calls")}
                 >
-                  <DirectoryIcon decorative />
+                  <HistoryIcon decorative />
                   Call History
+                </Button>
+              </Tooltip>
+              <Tooltip text="Shopify Storefront Demo">
+                <Button
+                  variant="secondary"
+                  disabled={page === "shopify"}
+                  onClick={() => handlePageClick("shopify")}
+                >
+                  <BusinessIcon decorative />
+                  Shopify
                 </Button>
               </Tooltip>
             </ButtonGroup>
@@ -166,8 +177,19 @@ const AppHeader = (props) => {
                 disabled={props.currentPage === "calls"}
               >
                 <Box display="flex" alignItems="center" columnGap="space30">
-                  <DirectoryIcon decorative />
+                  <HistoryIcon decorative />
                   Call History
+                </Box>
+              </MenuItem>
+
+              <MenuItem
+                {...menu}
+                onClick={() => handlePageClick("shopify")}
+                disabled={props.currentPage === "shopify"}
+              >
+                <Box display="flex" alignItems="center" columnGap="space30">
+                  <BusinessIcon decorative />
+                  Shopify
                 </Box>
               </MenuItem>
             </Menu>

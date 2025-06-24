@@ -14,6 +14,7 @@ import Users from "./Users/Users";
 import UseCases from "./UseCases/UseCases";
 import CallHistory from "./CallHistory/CallHistory";
 import AppHeader from "./AppHeader";
+import Ecommerce from "./Shopify/Ecommerce";
 
 const styles = {
   wrapper: { width: "100%" },
@@ -53,6 +54,8 @@ const Wrapper = () => {
         return <UseCases />;
       case "calls":
         return <CallHistory />;
+      case "shopify":
+        return <Ecommerce />;
       default:
         return <Main />;
     }
