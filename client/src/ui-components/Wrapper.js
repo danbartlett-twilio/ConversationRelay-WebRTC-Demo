@@ -80,10 +80,7 @@ const Wrapper = () => {
     <Theme.Provider theme="Twilio">
       <Flex>
         <Flex grow>
-          <Box
-            width="100%"
-            // backgroundColor="colorBackgroundPrimaryWeaker"
-          >
+          <Box width="100%">
             <AppHeader currentPage={page} setCurrentPage={handlePageClick} />
             <Box>{showPage(page)}</Box>
           </Box>

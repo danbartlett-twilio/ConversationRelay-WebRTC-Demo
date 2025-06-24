@@ -13,10 +13,9 @@ import { Flex, Box, Grid, Column, Stack, Alert } from "@twilio-paste/core";
 
 import AppHeader from "./AppHeader";
 import StartCard from "../ui-components/StartCard";
-import BotProperties from "../ui-components/BotProperties";
-import Visualizer from "../ui-components/Visualizer";
-import Audiovisualizer from "../ui-components/Audiovisualizer";
-import Transcript from "../ui-components/Transcript";
+import BotProperties from "./BotConfiguration/BotProperties";
+import Audiovisualizer from "./Audiovisualizer/Audiovisualizer";
+import Transcript from "./Transcription/Transcript";
 import { setupAnalyzer } from "../helpers/utils";
 import { use } from "react";
 
