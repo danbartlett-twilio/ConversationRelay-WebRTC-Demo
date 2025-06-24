@@ -33,15 +33,8 @@ export default function MessageLog({ events = [] }) {
     <ChatLog>
       {sortedEvents.map((event, index) => {
         let isTokens = false;
-        event.value.role === "assistant"
-          ? (isTokens = true)
-          : (isTokens = false);
-        event.value.role === "tool"
-          ? (isTokens = true)
-          : (isTokens = false);          
-        // Do not display messsages with empty content (tool calls)
-        if (index === 0) {
-          isTokens = true; // First message is welcome message          
+        if (event.value.role === "assistant" || event.value.role === "tool") {
+          isTokens = true;
         }
         // Do not display messsages with empty content (tool calls)
         if (event.value.content === "") {
@@ -51,6 +44,7 @@ export default function MessageLog({ events = [] }) {
         if (event.value.role === "system") {
           return;
         }
+        // pull out content from tool calls
         let content = event.value.content;
         if (content.includes('"message":')) {
           content = JSON.parse(content).message;
