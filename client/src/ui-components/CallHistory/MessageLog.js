@@ -36,14 +36,29 @@ export default function MessageLog({ events = [] }) {
         event.value.role === "assistant"
           ? (isTokens = true)
           : (isTokens = false);
+        event.value.role === "tool"
+          ? (isTokens = true)
+          : (isTokens = false);          
+        // Do not display messsages with empty content (tool calls)
+        if (index === 0) {
+          isTokens = true; // First message is welcome message          
+        }
+        // Do not display messsages with empty content (tool calls)
+        if (event.value.content === "") {
+          return;
+        }
         // Avoid display of "system" messages
         if (event.value.role === "system") {
           return;
         }
+        let content = event.value.content;
+        if (content.includes('"message":')) {
+          content = JSON.parse(content).message;
+        }
 
         return (
           <ChatMessage variant={isTokens ? "inbound" : "outbound"} key={index}>
-            <ChatBubble backgroundColor="red">{event.value.content}</ChatBubble>
+            <ChatBubble backgroundColor="red">{content}</ChatBubble>
             <ChatMessageMeta aria-label="">
               <ChatMessageMetaItem>
                 {!isTokens ? formatTime(event.value.timestamp) : <></>}

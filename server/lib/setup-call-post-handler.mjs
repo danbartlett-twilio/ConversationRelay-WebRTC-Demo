@@ -131,6 +131,9 @@ export const setupCallPostHandler = async (twilioBody) => {
         let sessionData = {                  
             llmModel: llmModel, // LLM model to use for this session
             useCase: useCaseTitle,
+            useCaseName: useCase.name,
+            useCaseTitle: useCase.title,
+            useCaseDescription: useCase.description, 
             welcomeGreeting: useCase.welcomeGreeting, // Welcome greeting for the session
             userContext: userContext,
             systemPrompt: [ { text: prompt } ],
@@ -149,6 +152,9 @@ export const setupCallPostHandler = async (twilioBody) => {
         // Format the prompt from the user to LLM standards.            
         let systemChatMessage  = await formatLLMMessage("system", prompt);           
         sessionChats.set("chat::" + Date.now().toString(), systemChatMessage);
+        let welcomeGreeting  = await formatLLMMessage("assistant", useCase.conversationRelayParams.welcomeGreeting);
+        welcomeGreeting.timestamp = Date.now();
+        sessionChats.set("chat::" + Date.now().toString(), welcomeGreeting);
 
         /**
          * ConversationRelay is extremely configurable. Attributes can be passed in

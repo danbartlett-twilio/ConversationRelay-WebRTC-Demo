@@ -30,7 +30,7 @@ export async function saveToolResult(tool, toolResult) {
     };        */
   
     console.info("in saveToolResult and finalToolResult\n" + JSON.stringify(finalToolResult, null, 2));      
-
+    finalToolResult.timestamp = Date.now();
     const sessionChats = new FSDB(`../data/sessions/${tool.callSid}/chats.json`, false);
     sessionChats.set(`chat::${Date.now().toString()}${tool.callSid.slice(-5)}`, finalToolResult);
 

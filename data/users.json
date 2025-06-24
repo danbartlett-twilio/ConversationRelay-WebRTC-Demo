@@ -10,7 +10,7 @@
         "conversationRelayParamsOverride": {
             "language": "en-US",
             "ttsProvider": "ElevenLabs",
-            "voice": "SaqYcK3ZpDKBAImA8AdW",
+            "voice": "tnSpp4vdxKPjI9w0GnoV",
             "transcriptionProvider": "Deepgram",
             "speechModel": "nova-2-general",
             "interruptible": "any",
