@@ -8,7 +8,7 @@ async function scheduleTour(tool) {
 
   const appointments = new FSDB(`../data/use-cases/apartment-search/data.appointments.json`, false);
   const appointmentsRaw = appointments.getAll();   
-  const availableAppointments = appointmentsRaw.Items.map(appointment => {                
+  const availableAppointments = appointmentsRaw.map(appointment => {                
       return { ...appointment.appointment };
   });         
 

@@ -33,7 +33,7 @@ export const tools =
       {
         type: "function",
         function: {
-          name: "SendAppointmentConfirmationSmsTool",
+          name: "SendSms",
           description:
             "Sends an SMS confirmation for a scheduled tour to the user.",
           parameters: {
@@ -42,6 +42,10 @@ export const tools =
               appointmentDetails: {
                 type: "object",
                 properties: {
+                  to_phone: {
+                    type: "string",            
+                    description: "The E.164 formatted phone number to receive the SMS.",
+                  },                  
                   date: {
                     type: "string",
                     description: "The date of the scheduled tour (YYYY-MM-DD).",
@@ -63,7 +67,7 @@ export const tools =
                     description: "The type of apartment for the tour.",
                   },
                 },
-                required: ["date", "time", "type", "apartmentType"],
+                required: ["to_phone", "date", "time", "type", "apartmentType"],
               }              
             },
             required: ["appointmentDetails"],

@@ -10,7 +10,7 @@ async function saveAppointment (appointment) {
 
 }
 
-const refreshApartments = async () => {    
+const refreshApartments = async () => {      
 
   let daysOut = 7;
 
@@ -73,4 +73,5 @@ const refreshApartments = async () => {
 
 };
 
+appointments.deleteAll();
 refreshApartments();

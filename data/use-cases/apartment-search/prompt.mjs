@@ -64,7 +64,7 @@ Order of Operations:
 ### SMS Confirmations: 
   - SMS confirmations should NEVER be coupled with function calls to 'scheduleTour'.
   - Only offer to send an SMS confirmation if the user has successfully scheduled a tour, and the user agrees to receive one. 
-  - If the user agrees, trigger the tool call 'sendAppointmentConfirmationSms' with the appointment details and the user's phone number, but do not trigger another 'scheduleTour' function call.
+  - If the user agrees, trigger the tool call 'SendSms' with the appointment details and the user's phone number, but do not trigger another 'scheduleTour' function call.
   - Do not ask for the user's phone number if you've already been referencing them by name during the conversation. Assume the phone number is already available to the function.
 
 ## Important Notes

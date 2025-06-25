@@ -3,7 +3,7 @@ import { CheckExistingAppointmentsTool } from './check-existing-appointments.mjs
 import { CommonInquiriesTool } from './common-inquiries.mjs';
 import { ListAvailableApartmentsTool } from './list-available-apartments.mjs';
 import { ScheduleTourTool } from './schedule-tour.mjs';
-import { SendAppointmentConfirmationSmsTool } from './send-appointment-confirmation-sms.mjs';
+import { SendSms } from './send-message.mjs';
 
 // Tools are called dynamically but ONLY if they match a function
 // in this object.
@@ -13,7 +13,7 @@ export const ToolHandler = {
     CommonInquiriesTool,
     ListAvailableApartmentsTool,
     ScheduleTourTool,
-    SendAppointmentConfirmationSmsTool
+    SendSms
 };
 
 export async function makeApartmentSearchToolCalls(tool_calls_object, callSid, sessionDetails) {
