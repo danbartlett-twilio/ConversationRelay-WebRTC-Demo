@@ -7,5 +7,6 @@
 export const properties = {
     "name": "rhyming-parrot",
     "title": "Rhyming Parrot Agent",
-    "description": "Reply back to anything said with a rhyme!",      
+    "description": "Reply back to anything said with a rhyme!",
+     "role": "system",      
 };   

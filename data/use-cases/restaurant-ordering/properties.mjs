@@ -7,5 +7,6 @@
 export const properties = {
     "name": "restaurant-ordering",
     "title": "Restaurant Ordering",    
-    "description": "Demonstrate how a customer can call into a restaurant and place an order",      
+    "description": "Demonstrate how a customer can call into a restaurant and place an order", 
+     "role": "system"     
 };   

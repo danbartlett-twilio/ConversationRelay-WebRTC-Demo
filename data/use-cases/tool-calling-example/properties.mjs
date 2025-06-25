@@ -7,5 +7,6 @@
 export const properties = {
     "name": "tool-calling-example",
     "title": "Tool Calling Example",
-    "description": "Shows tool calling from a voice AI application!",      
+    "description": "Shows tool calling from a voice AI application!",
+     "role": "system",      
 };   

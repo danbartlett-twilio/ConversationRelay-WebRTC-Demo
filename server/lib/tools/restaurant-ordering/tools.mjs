@@ -1,13 +1,17 @@
 import { PlaceOrder } from './place-order.mjs';
 import { CheckRestaurantPickUpTime } from './check-restaurant-pick-up-time.mjs';
 import { CheckRestaurantDeliveryTime } from './check-restaurant-delivery-time.mjs';
+import { SendSms } from './send-message.mjs';
+import { SendEmail } from './send-email.mjs';
 
 // Tools are called dynamically but ONLY if they match a function
 // in this object.
 export const ToolHandler = {
     PlaceOrder,
     CheckRestaurantPickUpTime,
-    CheckRestaurantDeliveryTime        
+    CheckRestaurantDeliveryTime,
+    SendSms,
+    SendEmail
 };
 
 export async function makeRestaurantOrderingToolCalls(tool_calls_object, callSid, sessionDetails) {

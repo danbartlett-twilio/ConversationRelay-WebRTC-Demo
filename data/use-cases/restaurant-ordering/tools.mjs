@@ -92,6 +92,65 @@ export const tools =
         required: ["order_type"],
       },
     },
-  }      
+  },
+  {
+    type: "function",
+    function: {
+      name: "SendSms",
+      description:
+        "Sends an SMS message if requested by the user for the order confirmation or for restaurant hours or location.",
+      parameters: {
+        type: "object",
+        properties: {
+          to_phone: {
+            type: "string",            
+            description: "The E.164 formatted phone number to receive the SMS.",
+          },
+          message_type: {
+            type: "string",
+            enum: ["order confirmation", "hours", "location"],
+            description: "The type of message to send.",
+          },              
+          restaurant_hours: {
+            type: "string",
+            description: "The hours of operation for the restaurant.",
+          },
+          restaurant_location: {
+            type: "string",
+            description: "The location of the restaurant.",
+          },              
+        },
+        required: ["to_phone", "message_type"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "SendEmail",
+      description:
+        "Sends an Email if requested by the user for the order confirmation.",
+      parameters: {
+        type: "object",
+        properties: {
+          order_type: {
+            type: "string",
+            enum: ["pickup", "delivery"],
+            description: "The type of order.",
+          },          
+          message_type: {
+            type: "string",
+            enum: ["order confirmation"],
+            description: "The type of email to send.",
+          },          
+          to_email: {
+            type: "string",            
+            description: "The email address confirmed by the caller.",
+          }                      
+        },
+        required: ["to_email"],
+      },
+    },
+  },        
 
 ];

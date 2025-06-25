@@ -21,7 +21,7 @@ export async function PlaceOrder(tool) {
   };
     
   const sessionOrder = new FSDB(`../data/sessions/${tool.callSid}/orders.json`, false);
-  sessionOrder.set(`order::${Date.now().toString()}`, confirmedOrder);
+  sessionOrder.set(`order`, confirmedOrder);
   console.log(`[PlaceOrderFunction] Order successfully saved.`);
 
   let toolResult = { message: `Your order has been accepted.`};

@@ -11,6 +11,8 @@ async function sendEmailWithTwilio(emailObject) {
 
   console.info("MessageObject\n" + JSON.stringify(emailObject, null, 2));    
 
+  try {
+    
     // This could be made dynamic if sending from 
     // multiple SendGrid accounts.
     mail.setApiKey(process.env.TWILIO_SENDGRID_API_KEY);    
@@ -29,6 +31,15 @@ async function sendEmailWithTwilio(emailObject) {
     let response = await mail.send(emailSendObject);
 
     console.log("response ==> ", response);
+
+  } catch (error) {
+    
+    console.error("Error sending email with Twilio SendGrid: ", error);
+    
+    // Just logging the error here and will still return true
+    // because this is a demo / poc!
+
+  }
 
   return true;
 

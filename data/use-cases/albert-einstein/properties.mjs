@@ -7,5 +7,6 @@
 export const properties = {
     "name": "albert-einstein",
     "title": "Albert Einstein Guide",
-    "description": "Caller can ask questions about Albert Einstein.",      
+    "description": "Caller can ask questions about Albert Einstein.",   
+     "role": "system",   
 };   

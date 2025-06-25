@@ -14,7 +14,7 @@ export async function SendSMS(tool) {
   const randomQuote = await returnQuote();
 
   let messageObject = {
-    To: args.to_phone_number,
+    To: args.to_phone,
     MessageBody: randomQuote
   };
 
