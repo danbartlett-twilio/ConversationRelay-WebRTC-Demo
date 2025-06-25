@@ -124,7 +124,17 @@ const Transcript = forwardRef((props, ref) => {
             </Box>
           </Flex>
         </Flex>
+                    <Box
+                      overflowY="auto"
+                      overflowX="auto"
+                      maxHeight="50vh"
+                      width="100%"
+                      maxWidth={["100%", "100%", "100%"]} // full width on mobile, max 800px on desktop
+                      padding="space40"
+                      style={{border: '1px solid #eaeaea', borderRadius: '8px'}}
+                    >
         <MessageLog events={events} showLatency={showLatency} />
+        </Box>
       </Card>
     </Stack>
   );

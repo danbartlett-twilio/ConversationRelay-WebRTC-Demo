@@ -40,6 +40,7 @@ const UseCaseCombo = (props) => {
   const [selectedUseCase, setSelectedUseCase] = useState(
     props.useCases[0] || null
   );
+  const [description, setDescription] = useState(props.useCases[0]?.value?.description);
 
   const [voices, setVoices] = useState(null);
   const [selectedVoices, setSelectedVoices] = useState(null);
@@ -120,6 +121,7 @@ const UseCaseCombo = (props) => {
       setSelectedTtsProvider(
         selectedItem.value.conversationRelayParams.ttsProvider
       );
+      setDescription(selectedItem.value.description);
 
       const providerVoices = voices.find(
         (provider) =>
@@ -216,6 +218,10 @@ const UseCaseCombo = (props) => {
             );
           })}
         </Select>
+        <Box as="div" marginTop="space40">
+          <Label>Use Case Description</Label>
+          <Paragraph>{description}</Paragraph>
+        </Box>
         <Box as="div" marginTop="space40">
           {/* Transcription Provider select component */}
           <Box as={"div"}>
