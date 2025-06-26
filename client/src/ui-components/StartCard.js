@@ -30,7 +30,7 @@ const StartCard = (props) => {
     <Stack orientation="vertical" spacing="space40">
       <Card padding="space120">
         <Heading as="h2" variant="heading20">
-          Conversation Relay WebRTC Quickstart
+          ConversationRelay WebRTC Quickstart
         </Heading>
         <Paragraph>
           Connecting to an AI Agent is simple. Press the button below to get
@@ -49,7 +49,7 @@ const StartCard = (props) => {
               setPausePressed(!pausePressed);
             }}
           >
-            Talk to Conversation Relay Agent
+            Talk to ConversationRelay Agent
             {pausePressed ? (
               <MicrophoneOnIcon decorative />
             ) : (

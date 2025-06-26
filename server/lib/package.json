@@ -5,7 +5,7 @@
     "license": "MIT",
     "author": "Dan Bartlett, Charlie Avila, Ben Johnstone.",
     "version": "1.1.1",
-    "description": "Dependencies required for the Twilio Conversation Relay Lambda layer to work with Bedrock with websockets.",
+    "description": "Dependencies required for the Twilio ConversationRelay Lambda layer to work with Bedrock with websockets.",
     "dependencies": {
       "@aws-sdk/client-bedrock-runtime": "^3.778.0"
     }

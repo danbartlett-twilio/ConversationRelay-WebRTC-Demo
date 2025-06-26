@@ -80,7 +80,7 @@ const Audiovisualizer = ({ localAnalyser, remoteAnalyser }) => {
       <Box width="100%" display={["flex", "flex", "flex"]}>
         <Avatar
           size="sizeIcon110"
-          name="Conversation Relay Avatar"
+          name="ConversationRelay Avatar"
           icon={ProductAutopilotIcon}
           color="decorative30"
         />

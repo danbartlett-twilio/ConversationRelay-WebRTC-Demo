@@ -325,12 +325,12 @@ const UseCaseCombo = (props) => {
       >
         <ModalHeader>
           <ModalHeading as="h3" id={"voiceDialog"}>
-            Conversation Relay: TTS Voice Support
+            ConversationRelay: TTS Voice Support
           </ModalHeading>
         </ModalHeader>
         <ModalBody>
           <Paragraph>
-            Conversation Relay supports a wide variety of TTS voices (2000+)
+            ConversationRelay supports a wide variety of TTS voices (2000+)
             from several providers (Google, Amazon and Eleven Labs).
           </Paragraph>
           <Paragraph>
