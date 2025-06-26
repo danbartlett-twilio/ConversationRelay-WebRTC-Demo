@@ -8,7 +8,7 @@
 
 5) create Twilio TwiML APP, point the url to POST to your ngrok url + "/twiml" (https://your-subdomain.ngrok.app/twiml)
 
-6) copy server/start-local-server.sh.copy to server/start-local-server.sh and set YOUR env variables in server/start-local-server.sh
+6) copy server/start-local-server.sh.sample to server/start-local-server.sh and set YOUR env variables in server/start-local-server.sh
 
 7) Start server (cd server, npm install, ./start-local-server.sh )
 
