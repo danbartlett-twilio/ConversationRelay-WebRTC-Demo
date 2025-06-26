@@ -11,8 +11,8 @@ export WS_URL=wss://your-ngrok-subdomain.ngrok.app/
 # AI PLATFORM SELECTION (invokeOpenAI | invokeBedrock)
 export AI_PLATFORM=invokeOpenAI
 
-# OPEN AI ENVIRONMENT VARIABLES
-export OPENAI_API_KEY=your-open-ai-key
+# OPENAI ENVIRONMENT VARIABLES
+export OPENAI_API_KEY=your-openai-key
 export OPENAI_LLM_MODEL=gpt-4o-mini
 
 # AWS ENVIRONMENT VARIABLES
