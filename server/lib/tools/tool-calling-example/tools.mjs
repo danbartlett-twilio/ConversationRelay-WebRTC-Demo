@@ -1,3 +1,6 @@
+// This file needs to be imported in lib/default-websocket-handler.mjs
+// and added to the switch (sessionDetails.useCase) in that file.
+
 import { GetJoke } from './get-joke.mjs';
 import { GetQuote } from './get-quote.mjs';
 import { SendSMS } from './send-message.mjs';
