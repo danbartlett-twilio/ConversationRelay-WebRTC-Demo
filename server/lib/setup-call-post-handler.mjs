@@ -169,7 +169,7 @@ export const setupCallPostHandler = async (twilioBody) => {
          */ 
         let conversationRelayParams = {
             ...useCase.conversationRelayParams,
-            "debug": "speaker-events tokens-played",
+            "debug": "speaker-events tokens-played", // Include events for development and observability
             ...userContext.conversationRelayParamsOverride // Override conversation relay params from user context (if needed)  
         };
 

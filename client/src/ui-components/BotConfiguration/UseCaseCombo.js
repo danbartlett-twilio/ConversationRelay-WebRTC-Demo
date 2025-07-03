@@ -279,7 +279,7 @@ const UseCaseCombo = (props) => {
               {selectedVoices?.value?.map((item) => {
                 return (
                   <Option key={item.value} value={item.value}>
-                    {item.name}
+                    {item.name} ({item.language})
                   </Option>
                 );
               })}

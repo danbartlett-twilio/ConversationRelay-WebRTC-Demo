@@ -148,8 +148,8 @@ router.post("/delete-user", async (req, res) => {
 // URI:  <server>/client-data/get-transcription-voices
 // Method: GET
 // Description: This route updates specific user from data passed in the request.
-router.get("/get-transcription-voices", async (req, res) => {
-  const voices = new FSDB(`../data/transcription-providers.json`, false);
+router.get("/get-tts-voices", async (req, res) => {
+  const voices = new FSDB(`../data/tts-providers.json`, false);
   const allVoices = voices.getAll();
   res.send(allVoices);
 });
