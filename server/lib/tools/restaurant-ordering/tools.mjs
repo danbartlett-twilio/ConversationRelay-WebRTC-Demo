@@ -1,3 +1,6 @@
+// This file needs to be imported in lib/default-websocket-handler.mjs
+// and added to the switch (sessionDetails.useCase) in that file.
+
 import { PlaceOrder } from './place-order.mjs';
 import { CheckRestaurantPickUpTime } from './check-restaurant-pick-up-time.mjs';
 import { CheckRestaurantDeliveryTime } from './check-restaurant-delivery-time.mjs';

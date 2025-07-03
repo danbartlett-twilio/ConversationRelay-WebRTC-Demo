@@ -1,3 +1,6 @@
+// This file needs to be imported in lib/default-websocket-handler.mjs
+// and added to the switch (sessionDetails.useCase) in that file.
+
 import { CheckAvailabilityTool } from './check-availability.mjs';
 import { CheckExistingAppointmentsTool } from './check-existing-appointments.mjs';
 import { CommonInquiriesTool } from './common-inquiries.mjs';
