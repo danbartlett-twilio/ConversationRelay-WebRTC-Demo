@@ -1,7 +1,7 @@
 {
     "name": "conversation-relay-bedrock-customer-service-live-voice",
     "version": "1.0.0",
-    "description": "A simple websockets application with Amazon Bedrock and Twilio Conversation Relay.",
+    "description": "A simple websockets application with Amazon Bedrock or the OpenAI API and Twilio ConversationRelay, triggered by a WebRTC or voice call.",
     "type": "module",
     "main": "index.js",
     "scripts": {
