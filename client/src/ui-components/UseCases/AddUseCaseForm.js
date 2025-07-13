@@ -127,7 +127,6 @@ const AddUseCaseForm = (props) => {
                 dtmf: props.selectedUseCase.value.dtmf,
                 conversationRelayParams: {
                     dtmfDetection: true,
-                    interruptByDtmf: true,
                     interruptible: true,
                     ttsProvider: selectedTtsProvider,
                     voice: selectedVoice,

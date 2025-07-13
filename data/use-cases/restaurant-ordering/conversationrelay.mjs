@@ -6,10 +6,10 @@
 
 export const conversationrelay = {
     "dtmfDetection": true,
-    "interruptByDtmf": true,
     "interruptible": true,
     "transcriptionProvider": "Deepgram",
     "ttsProvider": "Google",
-    "voice": "en-US-Neural2-F",    
+    "voice": "en-US-Neural2-F",   
+    "welcomeGreetingInterruptible": true, 
     "welcomeGreeting": "Thanks for calling Twilio Dough Boy Pizza! How can I help you?"
 };   

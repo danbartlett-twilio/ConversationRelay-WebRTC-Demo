@@ -116,10 +116,8 @@ router.post("/create-user", async (req, res) => {
       voice: "UgBBYS2sOqTuMpoF3BR0",
       transcriptionProvider: "Google",
       speechModel: "telephony",
-      interruptible: "any",
-      preemptible: true,
-      welcomeGreetingInterruptible: "none",
-      welcomeGreetingPreemptible: true,
+      interruptible: true,
+      welcomeGreetingInterruptible: true,
     },
   });
 

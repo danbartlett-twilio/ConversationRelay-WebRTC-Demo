@@ -260,10 +260,7 @@ const Main = () => {
         voice: agentParams.voice,
         transcriptionProvider: agentParams.sttProvider,
         speechModel: agentParams.speechModel,
-        interruptible: "any",
-        preemptible: true,
-        welcomeGreetingInterruptible: "none",
-        welcomeGreetingPreemptible: true,
+        interruptible: true        
       },
     };
 
