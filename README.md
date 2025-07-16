@@ -1,6 +1,6 @@
 # ConversationRelay WebRTC Demo
 
-## [Read the Twilio blog that goes with this repo: Add Voice AI to your website with the Twilio Voice JavaScript SDK and ConversationRelay]( https://www.twilio.com/blog/voice-ai-conversationrelay-twilio-voice-sdk) 
+## [Read the Twilio blog that goes with this repo: Add Voice AI to your website with the Twilio Voice JavaScript SDK and ConversationRelay]( https://www.twilio.com/en-us/blog/developers/tutorials/product/voice-ai-conversationrelay-twilio-voice-sdk ) 
 
 ## Setup Instructions
 
