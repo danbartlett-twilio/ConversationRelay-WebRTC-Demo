@@ -149,12 +149,19 @@ export const setupCallPostHandler = async (twilioBody) => {
         crSession.set(twilioBody.CallSid, sessionData);
 
         const sessionChats = new FSDB(`../data/sessions/${twilioBody.CallSid}/chats.json`, false);
+        
         // Format the prompt from the user to LLM standards.            
-        let systemChatMessage  = await formatLLMMessage("system", prompt);           
-        sessionChats.set("chat::" + Date.now().toString(), systemChatMessage);
-        let welcomeGreeting  = await formatLLMMessage("assistant", useCase.conversationRelayParams.welcomeGreeting);
-        welcomeGreeting.timestamp = Date.now();
-        sessionChats.set("chat::" + Date.now().toString(), welcomeGreeting);
+        // Bedrock expects messages to begin with user message
+        // so these are omitted for Bedrock.
+        // Note that system prompt is include in session details whereas
+        // it is the first message with OpenAI.
+        if (process.env.AI_PLATFORM === "invokeOpenAI") {
+            let systemChatMessage  = await formatLLMMessage("system", prompt);           
+            sessionChats.set("chat::" + Date.now().toString(), systemChatMessage);                
+            let welcomeGreeting  = await formatLLMMessage("assistant", useCase.conversationRelayParams.welcomeGreeting);
+            welcomeGreeting.timestamp = Date.now();
+            sessionChats.set("chat::" + Date.now().toString(), welcomeGreeting);
+        }
 
         /**
          * ConversationRelay is extremely configurable. Attributes can be passed in
