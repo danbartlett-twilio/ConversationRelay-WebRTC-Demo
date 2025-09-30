@@ -105,11 +105,17 @@ export async function invokeOpenAI(promptObj) {
       // Check if the completion has finished to set "last"
       let last = chunk.choices[0]?.finish_reason === "stop" ? true : false;
 
+      // Get content from chunk, skip if undefined/null to prevent ConversationRelay errors
+      const content = chunk.choices[0]?.delta?.content;
+      if (content === undefined || content === null) {
+        continue;
+      }
+
       // Send content (current chunk content) back to WebSocket & Twilio for TTS
       promptObj.socket.send(
         JSON.stringify({
           type: "text",
-          token: chunk.choices[0]?.delta?.content,
+          token: content,
           last: false,
         })
       );
@@ -118,14 +124,14 @@ export async function invokeOpenAI(promptObj) {
         promptObj.clientSocket.send(
           JSON.stringify({
             type: "text",
-            token: chunk.choices[0]?.delta?.content,
+            token: content,
             last: false,
           })
         );
       }
 
       // Record details from current chunk
-      returnObj.content += chunk.choices[0]?.delta?.content || "";
+      returnObj.content += content;
       returnObj.last = last;
       returnObj.finish_reason = chunk.choices[0]?.finish_reason;
     }

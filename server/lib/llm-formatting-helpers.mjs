@@ -1,6 +1,6 @@
 /** 
  * LLMs expect data in a specific format. This module contains functions to
- * format the data for OpenAI and Bedrock LLMs.
+ * format the data for OpenAI, Bedrock, Anthropic Claude, and Google Gemini LLMs.
 */
 export async function formatLLMMessage(role, content) {
     
@@ -17,10 +17,14 @@ export async function formatLLMMessage(role, content) {
             
             finalMessage = { role: role, content: [ { text: content } ] };
 
+        } else if (process.env.AI_PLATFORM === "invokeAnthropic") {
+            
+            finalMessage = { role: role, content: content };
+
         } else {
 
-            console.error("AI_PLATFORM not set to OpenAI or Bedrock.");
-            throw new Error('AI_PLATFORM not set to OpenAI or Bedrock.');
+            console.error("AI_PLATFORM not set to OpenAI, Bedrock, or Anthropic");
+            throw new Error('AI_PLATFORM not set to OpenAI, Bedrock, or Anthropic');
 
         }        
 
@@ -50,10 +54,18 @@ export async function returnDefaultModel() {
             
             defaultModel = process.env.AWS_MODEL_IDENTIFIER;            
 
+        } else if (process.env.AI_PLATFORM === "invokeAnthropic") {
+            
+            defaultModel = process.env.ANTHROPIC_MODEL;            
+
+        } else if (process.env.AI_PLATFORM === "invokeGemini") {
+            
+            defaultModel = process.env.GEMINI_MODEL || "gemini-2.5-flash";            
+
         } else {
 
-            console.error("AI_PLATFORM not set to OpenAI or Bedrock.");
-            throw new Error('AI_PLATFORM not set to OpenAI or Bedrock.');
+            console.error("AI_PLATFORM not set to OpenAI, Bedrock, Anthropic, or Gemini.");
+            throw new Error('AI_PLATFORM not set to OpenAI, Bedrock, Anthropic, or Gemini.');
 
         }                
 
@@ -67,33 +79,65 @@ export async function returnDefaultModel() {
     }
 };
 
-/*export async function formatLLMTools(role, content) {
+export async function formatLLMTools(role, content, llmResult) {
     
     try {    
 
-        let finalMessage = {};
-        // OpenAI expects messsage in a different format
-        if (process.env.AI_PLATFORM === "invokeOpenAI") {
-
-            finalMessage = { role: role, content: content };
-
-        } else if (process.env.AI_PLATFORM === "invokeBedrock") {
+        let finalMessage = { role: role, content: content };
+        
+        // If tool_calls are present, format based on AI platform
+        if (llmResult && Object.keys(llmResult.tool_calls).length > 0) {
             
-            finalMessage = { role: role, content: [ { text: content } ] };
+            if (process.env.AI_PLATFORM === "invokeOpenAI") {
+                
+                // OpenAI format: tool_calls array
+                finalMessage.tool_calls = Object.values(llmResult.tool_calls);
 
-        } else {
+            } else if (process.env.AI_PLATFORM === "invokeBedrock") {
+                
+                // Bedrock format: tool_calls array
+                finalMessage.tool_calls = Object.values(llmResult.tool_calls);
 
-            console.error("AI_PLATFORM not set to OpenAI or Bedrock.");
-            throw new Error('AI_PLATFORM not set to OpenAI or Bedrock.');
+            } else if (process.env.AI_PLATFORM === "invokeAnthropic") {
+                
+                // Anthropic format: content array with text + tool_use blocks
+                const contentBlocks = [];
+                
+                if (content && content.trim() !== "") {
+                    contentBlocks.push({
+                        type: "text",
+                        text: content
+                    });
+                }
+                
+                if (llmResult.anthropic_tool_uses) {
+                    llmResult.anthropic_tool_uses.forEach(toolUse => {
+                        contentBlocks.push(toolUse);
+                    });
+                }
+                
+                finalMessage.content = contentBlocks;
 
-        }        
+            } else if (process.env.AI_PLATFORM === "invokeGemini") {
+                
+                // Gemini format: tool_calls array with standard format
+                // We maintain compatibility with the standard format in the invokeGemini module
+                finalMessage.tool_calls = Object.values(llmResult.tool_calls);
+
+            } else {
+
+                console.error("AI_PLATFORM not set to OpenAI, Bedrock, Anthropic, or Gemini.");
+                throw new Error('AI_PLATFORM not set to OpenAI, Bedrock, Anthropic, or Gemini.');
+
+            }
+        }
 
         return finalMessage;
 
     } catch (error) {
 
-        console.error("Error formatting message: ", error);
+        console.error("Error formatting tool message: ", error);
         throw error;
 
     }
-};*/
+};

@@ -1,7 +1,7 @@
 // Code for this lambda broken into several modules 
 import { prepareAndCallLLM } from './prepare-and-call-llm.mjs';
 import { savePrompt } from './database-helpers.mjs';
-import { formatLLMMessage } from './llm-formatting-helpers.mjs';
+import { formatLLMMessage, formatLLMTools } from './llm-formatting-helpers.mjs';
 
 import { makeApartmentSearchToolCalls } from './tools/apartment-search/tools.mjs';
 import { makeRestaurantOrderingToolCalls } from './tools/restaurant-ordering/tools.mjs';
@@ -87,20 +87,21 @@ export const defaultWebsocketHandler = async (callSid, socket, body, toolCallCom
 
             console.info("llmResult\n" + JSON.stringify(llmResult, null, 2));
 
-            // Format the llmResult into a chat message to persist to the database
-            let newAssistantChatMessage = await formatLLMMessage("assistant",llmResult.content)            
-
-            // If tool_calls are present, convert the tool call object to
-            // an array to adhere to llm chat messaging format
-            if (Object.keys(llmResult.tool_calls).length > 0 ) {
-                // Format tool_calls object into an array
-                newAssistantChatMessage.tool_calls = Object.values(llmResult.tool_calls);
-            }
-            
-            console.info("newChatMessage before saving to database\n" + JSON.stringify(newAssistantChatMessage, null, 2));    
-
-            // Save LLM result prompt to the database            
-            await savePrompt(callSid, newAssistantChatMessage);            
+            // Only save non-empty responses
+            if (llmResult.content || Object.keys(llmResult.tool_calls).length > 0) {
+                let newAssistantChatMessage;
+                
+                if (Object.keys(llmResult.tool_calls).length > 0) {
+                    newAssistantChatMessage = await formatLLMTools("assistant", llmResult.content, llmResult);
+                } else {
+                    newAssistantChatMessage = await formatLLMMessage("assistant", llmResult.content);
+                }
+                
+                console.info("newChatMessage before saving to database\n" + JSON.stringify(newAssistantChatMessage, null, 2));             
+                await savePrompt(callSid, newAssistantChatMessage);
+            } else {
+                console.warn("Skipping save of empty response");
+            }            
             
             // If the LLM Results includes tool call(s), format the results 
             // and make the tool calls

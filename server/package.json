@@ -1,7 +1,7 @@
 {
     "name": "conversation-relay-bedrock-customer-service-live-voice",
     "version": "1.0.0",
-    "description": "A simple websockets application with Amazon Bedrock or the OpenAI API and Twilio ConversationRelay, triggered by a WebRTC or voice call.",
+    "description": "A simple websockets application with Amazon Bedrock, the OpenAI API, the Anthropic API, and Twilio ConversationRelay, triggered by a WebRTC or voice call.",
     "type": "module",
     "main": "index.js",
     "scripts": {
@@ -13,7 +13,8 @@
     "author": "Dan Bartlett, Charlie Avila, Ben Johnstone.",
     "license": "MIT",
     "dependencies": {
-        "@aws-sdk/client-bedrock-runtime": "^3.778.0",        
+        "@anthropic-ai/sdk": "^0.27.0",
+        "@aws-sdk/client-bedrock-runtime": "^3.778.0",
         "@sendgrid/mail": "^8.1.5",
         "cors": "^2.8.5",
         "dotenv": "^16.5.0",

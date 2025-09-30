@@ -1,5 +1,6 @@
 import { invokeBedrock } from './invoke-bedrock.mjs';
 import { invokeOpenAI } from './invoke-open-ai.mjs';
+import { invokeAnthropic } from './invoke-anthropic.mjs';
 import { returnAllChats, savePrompt} from './database-helpers.mjs';
 import { formatLLMMessage } from './llm-formatting-helpers.mjs';
 
@@ -129,9 +130,11 @@ export async function prepareAndCallLLM(prepareObj) {
 
         const AIPlatformHandler = {
             invokeBedrock,
-            invokeOpenAI            
+            invokeOpenAI,
+            invokeAnthropic
         };
 
+        // Log the current AI platform for debugging
         console.info("process.env.AI_PLATFORM => " + process.env.AI_PLATFORM);
 
         // Call the LLM passing context and chat history
